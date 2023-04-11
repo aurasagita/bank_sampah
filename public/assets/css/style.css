@@ -1,0 +1,16 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI';
+    background: #FDECD8;
+}
+
+nav{
+    background-color: #07AA14;
+}
+
+nav li a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #5C2A06;
+}
