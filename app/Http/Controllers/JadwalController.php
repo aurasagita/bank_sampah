@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
+use App\Models\JadwalModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JadwalController extends Controller
 {
@@ -14,7 +16,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        return view('layouts.jadwal');
+        $jdw = DB::table('jadwal')->paginate(5);
+        return view('jadwal.jadwal',['jadwal' => $jdw]);
     }
 
     /**
@@ -24,7 +27,8 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        return view('jadwal.create_jadwal')
+                ->with('url_form', url('/jadwal'));
     }
 
     /**
@@ -35,7 +39,17 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal',
+            'nama' => 'required|string|max:25',
+            'tanggal_mulai' => 'required|string|max:25',
+            'tanggal_akhir' => 'required|string|max:25',
+           
+        ]);
+
+        $data = JadwalModel::create($request->except(['_token']));
+        return redirect('jadwal')
+            ->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -44,9 +58,9 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function show(Jadwal $jadwal)
+    public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +69,12 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jadwal $jadwal)
+    public function edit($id)
     {
-        //
+        $jadwal = JadwalModel::find($id);
+        return view('jadwal.create_jadwal')
+        ->with('jdw', $jadwal)
+        ->with('url_form',url('/jadwal/' . $id));
     }
 
     /**
@@ -67,9 +84,18 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jadwal $jadwal)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal'.$id,
+            'nama' => 'required|string|max:25',
+            'tanggal_mulai' => 'required|string|max:25',
+            'tanggal_akhir' => 'required|string|max:25',
+        ]);
+
+        $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('jadwal')
+            ->with('success', 'Data Berhasil Diedit');
     }
 
     /**

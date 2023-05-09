@@ -19,6 +19,7 @@ return new class extends Migration
         $table->string('nama')->nullable();
         $table->date('tanggal_mulai')->nullable();
         $table->date('tanggal_akhir')->nullable();
+        $table->timestamps();
     });
         
     }
