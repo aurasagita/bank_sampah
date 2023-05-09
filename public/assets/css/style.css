@@ -13,14 +13,14 @@ nav{
 }
 
 .navbar-brand{
-    margin: 0 10%;
+    margin: 0 3%;
 }
 
 nav ul {
-    margin: 0 10%;
+    margin: 0 3%;
     list-style: none;
     display: flex;
-    gap: 40px;
+    gap: 30px;
 }
 
 nav li a {
@@ -32,8 +32,45 @@ nav li a {
 }
 
 nav li a:hover{
-    border-radius: 5px;
     background-color: #FFFF;
+    color: #07AA14;
+    transition: 1s;
+}
+
+.c-item {
+    height: 708px;
+}
+
+.judul h3{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #07AA14;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.garis{
+    display: inline-block;
+    width: 20px;
     color: #07AA14;
 }
 
+.isi img{
+    width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.isi p{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin: 0 12%;
+    font-size: 16px;
+    font-weight: normal;
+    color: #07AA14;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
