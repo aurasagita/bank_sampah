@@ -15,7 +15,7 @@ class NasabahController extends Controller
      */
     public function index()
     {
-        //
+        return view('layouts.nasabah');
     }
 
     /**

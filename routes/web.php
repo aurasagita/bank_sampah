@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\NasabahController;
+use App\Http\Controllers\SopirController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +25,8 @@ Route::get('/', function () {
 Route::get('/index', [IndexController::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/jadwal', [JadwalController::class, 'index']);
+Route::get('/nasabah', [NasabahController::class, 'index']);
+Route::get('/sopir', [SopirController::class, 'index']);
+
+
