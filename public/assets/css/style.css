@@ -1,16 +1,39 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Segoe UI';
+    font-family: 'Poppins', sans-serif;
     background: #FDECD8;
 }
 
 nav{
     background-color: #07AA14;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9999;
+}
+
+.navbar-brand{
+    margin: 0 10%;
+}
+
+nav ul {
+    margin: 0 10%;
+    list-style: none;
+    display: flex;
+    gap: 40px;
 }
 
 nav li a {
-    font-size: 15px;
-    font-weight: 500;
-    color: #5C2A06;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: normal;
+    color: #FFFF;
+    font-family: 'Poppins', sans-serif;
 }
+
+nav li a:hover{
+    border-radius: 5px;
+    background-color: #FFFF;
+    color: #07AA14;
+}
+
