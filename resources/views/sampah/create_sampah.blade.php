@@ -12,18 +12,18 @@
         <div class="card-body">
             <form method="POST" action="{{$url_form }}">
                 @csrf
-                {!! (isset($$sampah))? method_field('PUT'):''!!}
+                {!! (isset($sampah))? method_field('PUT'):''!!}
                 
                 <div class="form-group">
                   <label>Jenis Sampah</label>
-                  <input class="form-control @error('jenis_sampah') is-invalid @enderror" value="{{isset($$sampah)? $$sampah->jenis_sampah : old('jenis_sampah') }}" name="jenis_sampah" type="text"/>
+                  <input class="form-control @error('jenis_sampah') is-invalid @enderror" value="{{isset($sampah)? $sampah->jenis_sampah : old('jenis_sampah') }}" name="jenis_sampah" type="text"/>
                   @error('jenis_sampah')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
                 <div class="form-group">
                   <label>Harga</label>
-                  <input class="form-control @error('harga') is-invalid @enderror" value="{{isset($$sampah)? $$sampah->harga : old('harga') }}" name="harga" type="date"/>
+                  <input class="form-control @error('harga') is-invalid @enderror" value="{{isset($sampah)? $sampah->harga : old('harga') }}" name="harga" type="text"/>
                   @error('harga')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror

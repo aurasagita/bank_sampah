@@ -25,7 +25,8 @@ class SampahController extends Controller
      */
     public function create()
     {
-        //
+        return view ('sampah.create_sampah')
+        ->with('url_form',url('/sampah'));
     }
 
     /**
@@ -36,7 +37,18 @@ class SampahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            
+            'jenis_sampah'=>'required|string|max:30',
+            'harga'=>'required|integer'
+            
+
+            
+        ]);
+        $data = SampahModel::create($request->except(['_token']));
+
+        return redirect('sampah')
+            ->with('success','Mahasiswa berhasil ditambahkan');
     }
 
     /**
@@ -49,7 +61,7 @@ class SampahController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -58,7 +70,10 @@ class SampahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sampah=SampahModel::find($id);
+        return view('sampah.create_sampah')
+            ->with('sampah', $sampah)
+            ->with('url_form',url('/sampah/'. $id));
     }
 
     /**
@@ -70,7 +85,14 @@ class SampahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            
+            'jenis_sampah'=>'required|string|max:30',
+            'harga'=>'required|integer'    
+        ]);
+        $data = SampahModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('sampah')
+            ->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
@@ -81,6 +103,9 @@ class SampahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        SampahModel::where('id','=',$id)->delete();
+        return redirect('sampah')
+        ->with('success','Mahasiswa Berhasil Dihapus');
     }
 }
