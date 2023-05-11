@@ -42,7 +42,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                     </form>
-                                    <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary">Show</a>
+                                    <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary">Detail</a>
                                 </td>
                             </tr>
                         @endforeach
