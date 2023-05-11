@@ -56,9 +56,10 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function show(NasabahModel $nasabah)
+    public function show($id)
     {
-        //
+        $nasabah = NasabahModel::where('id', $id)->get();
+        return view('nasabah.detail_nasabah', ['nasabah' => $nasabah[0]]);
     }
 
     /**
