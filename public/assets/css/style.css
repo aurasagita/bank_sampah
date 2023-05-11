@@ -2,7 +2,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #FDECD8;
+    background: #ffffff;
 }
 
 nav{
@@ -38,39 +38,49 @@ nav li a:hover{
 }
 
 .c-item {
-    height: 708px;
+    height: 700px;
 }
 
-.judul h3{
-    padding-top: 30px;
-    padding-bottom: 20px;
-    font-size: 18px;
+.judul h3 {
+    padding-top: 40px;
+    padding-bottom: 10px;
     font-weight: bold;
     color: #07AA14;
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
 
-.garis{
-    display: inline-block;
-    width: 20px;
-    color: #07AA14;
+.judul h3::after {
+    content: "";
+    border-bottom: 5px solid #07AA14;
+    width: 90px;
+    display: block;
+    margin: 15px auto;
 }
 
 .isi img{
-    width: 800px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 600px;
+    float: left;
+    margin:0 3% 5% 5%;
+}
+
+.judul-isi{
+    margin-bottom: 10px;
+    color: #2c2c2c;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .isi p{
-    padding-top: 30px;
-    padding-bottom: 20px;
-    margin: 0 12%;
     font-size: 16px;
     font-weight: normal;
-    color: #07AA14;
+    color: #808080;
     font-family: 'Poppins', sans-serif;
-    text-align: center;
+    text-align: justify;
+    margin-right: 4%;
+}
+
+.container{
+    height: 800px;
+    background-color: #07AA14;
 }
