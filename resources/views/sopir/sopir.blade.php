@@ -38,7 +38,7 @@
                                 <td>
                                     <div class="action_button" style="display : flex;">
                                         <div class="pr-1">
-                                            <a href="{{url('/sopir/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning pr-1">Edit</a>
+                                            <a href="{{url('/sopir/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
                                         </div>
                                         <div class="pr-1">
                                             <form method="POST" action="{{url('/sopir/'.$m->id)}}">

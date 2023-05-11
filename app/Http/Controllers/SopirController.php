@@ -27,7 +27,8 @@ class SopirController extends Controller
      */
     public function create()
     {
-        // 
+        return view('sopir.create_sopir')
+            ->with('url_form', url('/sopir'));
     }
 
     /**
@@ -38,7 +39,15 @@ class SopirController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_sopir'=>'required|string|max:10|unique:sopir,id_sopir',
+            'nama'=>'required|string|max:50',
+            'alamat'=>'required|string|max:255',
+            'phone'=>'required|digits_between:5, 15'
+        ]);
+
+        $data = SopirModel::create($request->except(['_token']));
+        return redirect('sopir')->with('success', 'Sopir Berhasil Ditambahkan');
     }
 
     /**
