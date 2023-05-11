@@ -67,9 +67,11 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function edit(NasabahModel $nasabah)
+    public function edit($id)
     {
-        //
+        $nasabah = NasabahModel::find($id);
+        return view('nasabah.create_nasabah')
+        ->with('nsb', $nasabah)->with('url_form', url('/nasabah/'.$id));
     }
 
     /**
@@ -79,9 +81,18 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NasabahModel $nasabah)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_nasabah'=>'required|string|max:10|unique:nasabah,id_nasabah,'.$id,
+            'nama'=>'required|string|max:50',
+            'alamat'=>'required|string|max:255',
+            'phone'=>'required|digits_between:5, 15'
+        ]);
+
+        $data = NasabahModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('nasabah')
+            ->with('success', 'Nasabah Berhasil Ditambahkan');
     }
 
     /**
