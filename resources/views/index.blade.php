@@ -52,10 +52,10 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active c-item">
-          <img src="assets/dist/img/slide3.jpg" class="d-block w-100 c-img" alt="...">
+          <img src="assets/dist/img/slide3-2.jpg" class="d-block w-100 c-img" alt="...">
         </div>
         <div class="carousel-item c-item">
-          <img src="assets/dist/img/slide2.jpg" class="d-block w-100 c-img" alt="...">
+          <img src="assets/dist/img/slide2-1.jpg" class="d-block w-100 c-img" alt="...">
         </div>
         <div class="carousel-item c-item">
           <img src="assets/dist/img/slide1.jpg" class="d-block w-100 c-img" alt="...">
@@ -68,16 +68,54 @@
   <section id="tentang-kami">
     <div class="judul">
       <h3>Tentang Kami</h3>
-      <span id="garis"></span>
     </div>
     <div class="isi">
-      <img src="assets/dist/img/foto1.jpg" alt="">
-      <p>Bank Sampah Malang (BSM) adalah suatu lembaga yang berbadan hukum koperasi yang pendiriannya difasilitasi oleh Pemerintah Kota Malang melalui Dinas Kebersihan dan Pertamanan untuk membantu dalam hal pemberdayaan masyarakat untuk ikut serta aktif dalam pengolahan sampah dari sumbernya (rumah tangga). Seiring perjalanan waktu BSM menjadi mitra Kota Malang dalam hal membina, melatih, mendampingi dalam pengolahan sampah 3R (reduce, reuse and recycle) masyarakat Kota Malang yang mandiri.</p>
+      <p><img src="assets/dist/img/foto1.jpg" alt=""><br><span class="judul-isi">Bank Sampah Malang</span><br>
+        Sampah Malang (BSM) adalah suatu lembaga yang berbadan hukum koperasi yang pendiriannya difasilitasi oleh Pemerintah Kota Malang melalui Dinas Kebersihan dan Pertamanan untuk membantu dalam hal pemberdayaan masyarakat untuk ikut serta aktif dalam pengolahan sampah dari sumbernya (rumah tangga). 
+        <br> <br> Seiring perjalanan waktu BSM menjadi mitra Kota Malang dalam hal membina, melatih, mendampingi dalam pengolahan sampah 3R (reduce, reuse and recycle) masyarakat Kota Malang yang mandiri.</p>
     </div>
-
   </section>
 
+  <!--Layanan-->
+  <br><br><br><br><br>
+  <section id="layanan">
+    <div class="container text-center">
+      <h3>Layanan</h3>
+      <div class="row">
+        <div class="col-md-3">
+            <span class="card">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <h4 class="mt-3">Daftar</h4>
+            <p>Lakukan pendaftaran untuk menjadi Nasabah kami dan mulai membnagun lingkungan yang bersih.</p>
+          </div>
+          <div class="col-md-3">
+            <span class="card">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <h4 class="mt-3">Daftar</h4>
+            <p>Lakukan pendaftaran untuk menjadi Nasabah kami dan mulai membnagun lingkungan yang bersih.</p>
+          </div>
+          <div class="col-md-3">
+            <span class="card">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <h4 class="mt-3">Daftar</h4>
+            <p>Lakukan pendaftaran untuk menjadi Nasabah kami dan mulai membnagun lingkungan yang bersih.</p>
+          </div>
+          <div class="col-md-3">
+            <span class="card">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </span>
+            <h4 class="mt-3">Daftar</h4>
+            <p>Lakukan pendaftaran untuk menjadi Nasabah kami dan mulai membnagun lingkungan yang bersih.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
