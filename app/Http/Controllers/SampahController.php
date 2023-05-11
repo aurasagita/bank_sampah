@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sampah;
+use App\Models\SampahModel;
 use Illuminate\Http\Request;
 
 class SampahController extends Controller
@@ -14,7 +14,8 @@ class SampahController extends Controller
      */
     public function index()
     {
-        //
+        $sampah = SampahModel::all();
+        return view('sampah.sampah')->with('sampah',$sampah);
     }
 
     /**
@@ -41,10 +42,10 @@ class SampahController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sampah $sampah)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class SampahController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sampah $sampah)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class SampahController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sampah $sampah)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class SampahController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sampah $sampah)
+    public function destroy($id)
     {
         //
     }
