@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('nasabah', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user', 10)->unique();
+            $table->string('id_nasabah', 10)->unique();
             $table->string('nama', 50)->nullable();
             $table->string('alamat', 255)->nullable();
             $table->string('phone', 15)->nullable();
-            $table->string('jenis_tra', 10)->nullable();
-            $table->string('kelompok', 20)->nullable();
             $table->timestamps();
         });
     }
