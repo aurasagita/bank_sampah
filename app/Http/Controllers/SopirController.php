@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sopir;
 use App\Http\Controllers\Controller;
+use App\Models\SopirModel;
 use Illuminate\Http\Request;
 
 class SopirController extends Controller
@@ -15,7 +16,8 @@ class SopirController extends Controller
      */
     public function index()
     {
-        return view('layouts.sopir');
+        $sopir = SopirModel::all();
+        return view('sopir.sopir')->with('spr', $sopir);
     }
 
     /**
@@ -25,7 +27,7 @@ class SopirController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -45,7 +47,7 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function show(Sopir $sopir)
+    public function show()
     {
         //
     }
@@ -56,7 +58,7 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sopir $sopir)
+    public function edit()
     {
         //
     }
@@ -68,7 +70,7 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sopir $sopir)
+    public function update(Request $request)
     {
         //
     }
@@ -79,7 +81,7 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sopir $sopir)
+    public function destroy()
     {
         //
     }
