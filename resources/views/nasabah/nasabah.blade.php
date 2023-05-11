@@ -36,13 +36,21 @@
                                 <td>{{$m->alamat}}</td>
                                 <td>{{$m->phone}}</td>
                                 <td>
-                                    <a href="{{url('/nasabah/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form method="POST" action="{{url('/nasabah/'.$m->id)}}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                    </form>
-                                    <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary">Detail</a>
+                                    <div class="action_button" style="display : flex;">
+                                        <div class="pr-1">
+                                            <a href="{{url('/nasabah/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
+                                        </div>
+                                        <div class="pr-1">
+                                            <form method="POST" action="{{url('/nasabah/'.$m->id)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger ms-5">Hapus</button>
+                                            </form>
+                                        </div>
+                                        <div class="pr-1">
+                                            <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary">Detail</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
