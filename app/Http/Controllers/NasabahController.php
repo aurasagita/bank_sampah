@@ -101,8 +101,9 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NasabahModel $nasabah)
+    public function destroy($id)
     {
-        //
+           NasabahModel::where('id', '=', $id)->delete();
+           return redirect('nasabah')->with('success', 'Nasabah Berhasil Dihapus');
     }
 }
