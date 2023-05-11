@@ -56,9 +56,10 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $sopir = SopirModel::where('id', $id)->get();
+        return view('sopir.detail_sopir', ['sopir' => $sopir[0]]);
     }
 
     /**
@@ -67,9 +68,11 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        //
+        $sopir = SopirModel::find($id);
+        return view('sopir.create_sopir')
+        ->with('spr', $sopir)->with('url_form', url('/sopir/'.$id));
     }
 
     /**
@@ -79,9 +82,18 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_sopir'=>'required|string|max:10|unique:sopir,id_sopir,'.$id,
+            'nama'=>'required|string|max:50',
+            'alamat'=>'required|string|max:255',
+            'phone'=>'required|digits_between:5, 15'
+        ]);
+
+        $data = SopirModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('sopir')
+            ->with('success', 'Sopir Berhasil Ditambahkan');
     }
 
     /**
@@ -90,8 +102,9 @@ class SopirController extends Controller
      * @param  \App\Models\Sopir  $sopir
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        SopirModel::where('id', '=', $id)->delete();
+           return redirect('sopir')->with('success', 'Sopir Berhasil Dihapus');
     }
 }
