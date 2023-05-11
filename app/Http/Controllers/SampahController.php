@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sampah;
+use App\Models\SampahModel;
 use Illuminate\Http\Request;
 
 class SampahController extends Controller
@@ -14,7 +14,8 @@ class SampahController extends Controller
      */
     public function index()
     {
-        //
+        $sampah = SampahModel::all();
+        return view('sampah.sampah')->with('sampah',$sampah);
     }
 
     /**
@@ -24,7 +25,8 @@ class SampahController extends Controller
      */
     public function create()
     {
-        //
+        return view ('sampah.create_sampah')
+        ->with('url_form',url('/sampah'));
     }
 
     /**
@@ -35,51 +37,75 @@ class SampahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            
+            'jenis_sampah'=>'required|string|max:30',
+            'harga'=>'required|integer'
+            
+
+            
+        ]);
+        $data = SampahModel::create($request->except(['_token']));
+
+        return redirect('sampah')
+            ->with('success','Mahasiswa berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sampah $sampah)
+    public function show($id)
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sampah $sampah)
+    public function edit($id)
     {
-        //
+        $sampah=SampahModel::find($id);
+        return view('sampah.create_sampah')
+            ->with('sampah', $sampah)
+            ->with('url_form',url('/sampah/'. $id));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sampah $sampah)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            
+            'jenis_sampah'=>'required|string|max:30',
+            'harga'=>'required|integer'    
+        ]);
+        $data = SampahModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('sampah')
+            ->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sampah  $sampah
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sampah $sampah)
+    public function destroy($id)
     {
-        //
+        
+        SampahModel::where('id','=',$id)->delete();
+        return redirect('sampah')
+        ->with('success','Mahasiswa Berhasil Dihapus');
     }
 }
