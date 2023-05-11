@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jadwal_pengambilan_sampah', function (Blueprint $table) {
+        Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
             $table->string('id_jadwal', 10)->unique();
             $table->string('id_nasabah', 10)->nullable();
             $table->string('id_sopir', 10)->nullable();
+            $table->date('tanggal_pengambilan')->nullable();
             $table->string('konfirmasi', 1)->nullable();
-            $table->float('grandtotal', 8)->nullable();
-            $table->float('alamat_pengambilan', 255)->nullable();
-            $table->date('tanggal_penjadwalan', 50)->nullable();
-            $table->date('tanggal_pengambilan', 50)->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwal_pengambilan_sampah');
+        Schema::dropIfExists('jadwal');
     }
 };

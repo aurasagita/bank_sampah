@@ -15,16 +15,8 @@ return new class extends Migration
     {
         Schema::create('sampah', function (Blueprint $table) {
             $table->id();
-            $table->string('id_sampah',20)->unique();
-            $table->string('nama')->nullable();
-            $table->string('jenis',30)->nullable();
-            $table->string('kode',10)->nullable();
-            $table->float('harga_kelompok_langsung')->nullable();
-            $table->float('harga_kelompok_tabung')->nullable();
-            $table->float('harga_bsm_langsung')->nullable();
-            $table->float('harga_bsm_tabung')->nullable();
-            $table->float('harga_binaan_langsung')->nullable();
-            $table->float('harga_binaan_tabung')->nullable();
+            $table->string('jenis_sampah',30)->nullable();
+            $table->float('harga')->nullable();
             $table->timestamps();
         });
     }
