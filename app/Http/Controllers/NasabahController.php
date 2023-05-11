@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Nasabah;
 use App\Http\Controllers\Controller;
+use App\Models\NasabahModel;
 use Illuminate\Http\Request;
 
 class NasabahController extends Controller
@@ -15,7 +16,8 @@ class NasabahController extends Controller
      */
     public function index()
     {
-        return view('layouts.nasabah');
+        $nasabah = NasabahModel::all();
+        return view('nasabah.nasabah')->with('nsb', $nasabah);
     }
 
     /**
@@ -25,7 +27,8 @@ class NasabahController extends Controller
      */
     public function create()
     {
-        //
+        return view('nasabah.create_nasabah')
+            ->with('url_form', url('/nasabah'));
     }
 
     /**
@@ -36,7 +39,15 @@ class NasabahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_nasabah'=>'required|string|max:10|unique:nasabah,id_nasabah',
+            'nama'=>'required|string|max:50',
+            'alamat'=>'required|string|max:255',
+            'phone'=>'required|digits_between:5, 15'
+        ]);
+
+        $data = NasabahModel::create($request->except(['_token']));
+        return redirect('nasabah')->with('success', 'Nasabah Berhasil Ditambahkan');
     }
 
     /**
@@ -45,7 +56,7 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function show(Nasabah $nasabah)
+    public function show(NasabahModel $nasabah)
     {
         //
     }
@@ -56,7 +67,7 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function edit(Nasabah $nasabah)
+    public function edit(NasabahModel $nasabah)
     {
         //
     }
@@ -68,7 +79,7 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nasabah $nasabah)
+    public function update(Request $request, NasabahModel $nasabah)
     {
         //
     }
@@ -79,7 +90,7 @@ class NasabahController extends Controller
      * @param  \App\Models\Nasabah  $nasabah
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Nasabah $nasabah)
+    public function destroy(NasabahModel $nasabah)
     {
         //
     }
