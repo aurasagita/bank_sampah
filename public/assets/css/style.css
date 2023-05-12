@@ -41,16 +41,16 @@ nav li a:hover{
     height: 700px;
 }
 
-.judul h3 {
+.tentang-kami-container h3 {
     padding-top: 40px;
     padding-bottom: 10px;
-    font-weight: bold;
+    font-weight: 900;
     color: #07AA14;
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
 
-.judul h3::after {
+.tentang-kami-container h3::after {
     content: "";
     border-bottom: 5px solid #07AA14;
     width: 90px;
@@ -58,29 +58,62 @@ nav li a:hover{
     margin: 15px auto;
 }
 
-.isi img{
-    width: 600px;
+.tentang-kami-container img{
+    width: 670px;
     float: left;
     margin:0 3% 5% 5%;
 }
 
 .judul-isi{
     margin-bottom: 10px;
-    color: #2c2c2c;
+    color: #303030;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
-.isi p{
+.tentang-kami-container p{
     font-size: 16px;
     font-weight: normal;
     color: #808080;
     font-family: 'Poppins', sans-serif;
     text-align: justify;
     margin-right: 4%;
+    line-height: 1.5;
 }
 
-.container{
-    height: 800px;
-    background-color: #07AA14;
+.layanan-container{
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    float: left;
+    margin: 0% 5% 0% 5%;
+
+}
+
+.layanan-container .icons{
+    background: #07AA14;
+    font-family: 'Poppins', sans-serif;
+    color: #FFFF;
+    border: 1px solid rgb(0, 0, 0,.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex: 1 1 25rem;
+}
+
+.layanan-container .icons h5{
+    font-weight: bold;
+}
+
+.layanan-container .icons img{
+    height: 60px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.layanan-container .icons span{
+    font-size: 16px;
+    color: #ffffffd3;
 }
