@@ -11,8 +11,21 @@ class JadwalModel extends Model
     protected $table = 'jadwal';
     protected $fillable =[
         'id_jadwal',
-        'nama',
-        'tanggal_mulai',
-        'tanggal_akhir'
+        'id_nasabah',
+        'id_sopir',
+        'tanggal_pengambilan',
+        'konfirmasi'
     ];
+
+    public function jadwal(){
+        return $this->belongsTo(JadwalModel::class);
+    }
+
+    public function nasabah(){
+        return $this->belongsTo(NasabahModel::class);
+    }
+
+    public function sopir(){
+        return $this->belongsTo(SopirModel::class);
+    }
 }

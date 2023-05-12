@@ -12,4 +12,8 @@ class NasabahModel extends Model
     protected $fillable = [
         'id_nasabah', 'nama', 'alamat', 'phone'
     ];
+
+    public function jadwal_nasabah() {
+        return $this->hasMany(JadwalModel::class);
+    }
 }
