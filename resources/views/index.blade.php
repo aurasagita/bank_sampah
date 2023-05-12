@@ -74,6 +74,7 @@
       <br><span class="judul-isi">Bank Sampah Malang</span><br>
       <p>Sampah Malang (BSM) adalah suatu lembaga yang berbadan hukum koperasi yang pendiriannya difasilitasi oleh Pemerintah Kota Malang melalui Dinas Kebersihan dan Pertamanan untuk membantu dalam hal pemberdayaan masyarakat untuk ikut serta aktif dalam pengolahan sampah dari sumbernya (rumah tangga). 
       <br> <br> Seiring perjalanan waktu BSM menjadi mitra Kota Malang dalam hal membina, melatih, mendampingi dalam pengolahan sampah 3R (reduce, reuse and recycle) masyarakat Kota Malang yang mandiri.</p>
+      <div class="clearfix"></div>
     </div>
   </section>
 
@@ -83,32 +84,81 @@
       <div class="icons">
         <img src="assets/dist/img/edit.svg" alt="">
         <div class="info">
-          <h5>Daftar</h5>
+          <h6>Daftar</h6>
           <span>Mari mendaftar menjadi nasabah kami</span>
         </div>
       </div>
       <div class="icons">
         <img src="assets/dist/img/setor.svg" alt="">
         <div class="info">
-          <h5>Setor</h5>
+          <h6>Setor</h6>
           <span>Setor sampah melalui sistem kami</span>
         </div>
       </div>
       <div class="icons">
         <img src="assets/dist/img/ambil.svg" alt="">
         <div class="info">
-          <h5>Diambil</h5>
+          <h6>Diambil</h6>
           <span>Pengambilan sampah dilakukan oleh Sopir kami</span>
         </div>
       </div>
       <div class="icons">
         <img src="assets/dist/img/bayar.svg" alt="">
         <div class="info">
-          <h5>Kami Bayar</h5>
+          <h6>Kami Bayar</h6>
           <span>Kami bayar sampah sesuai yang disetorkan</span>
         </div>
       </div>
   </div>
+  </section>
+
+  <!-- Sampah -->
+  <section id="sampah">
+    <div class="sampah-container">
+      <h3>Sampah</h3>
+      <div class="sampah">
+        <div class="box">
+          <img src="assets/dist/img/K1.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 1500/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/K2.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/K3.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 1000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/K4.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 1250/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/K5.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 2250/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/K6.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 3000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/K8.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 1250/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/K7.jpg" alt="">
+          <h5>KERTAS</h5>
+          <h6>Rp 1000/kg</h6>
+        </div>
+      </div>
+    </div>
   </section>
 
   
