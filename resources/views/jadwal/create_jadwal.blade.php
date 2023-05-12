@@ -21,23 +21,36 @@
                   @enderror
                 </div>
                 <div class="form-group">
-                  <label>Nama</label>
-                  <input class="form-control @error('nama') is-invalid @enderror" value="{{isset($jdw)? $jdw->nama : old('nama') }}" name="nama" type="text"/>
-                  @error('nama')
+                  <label>Id Nasabah</label>
+                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_nasabah : old('id_nasabah') }}" name="id_nasabah" type="text"/>
+                  @error('id_nasabah')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
                 <div class="form-group">
-                  <label>Tanggal Mulai</label>
-                  <input class="form-control @error('tanggal_mulai') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_mulai : old('tanggal_mulai') }}" name="tanggal_mulai" type="date"/>
-                  @error('tanggal_mulai')
+                  <label>Id Sopir</label>
+                  <input class="form-control @error('id_sopir') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_sopir : old('id_sopir') }}" name="id_sopir" type="text"/>
+                  @error('id_sopir')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
                 <div class="form-group">
-                  <label>Tanggal Akhir</label>
-                  <input class="form-control @error('tanggal_akhir') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_akhir : old('tanggal_akhir') }}" name="tanggal_akhir" type="date"/>
-                  @error('tanggal_akhir')
+                  <label>Tanggal Pengambilan</label>
+                  <input class="form-control @error('tanggal_pengambilan') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_pengambilan : old('tanggal_pengambilan') }}" name="tanggal_pengambilan" type="date"/>
+                  @error('tanggal_pengambilan')
+                    <span class="error invalid-feedback">{{ $message }} </span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label>Konfirmasi</label>
+                  <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->konfirmasi : old('konfirmasi') }}" name="konfirmasi" type="text">
+                    
+                    <option value="">Dijemput</option>
+                    <option value="">Terambil</option>
+                   
+                  </select>
+                  
+                  @error('konfirmasi')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
