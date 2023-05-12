@@ -22,10 +22,10 @@ class JadwalModel extends Model
     }
 
     public function nasabah(){
-        return $this->belongsTo(NasabahModel::class);
+        return $this->belongsTo(NasabahModel::class, 'id_nasabah', 'id');
     }
 
     public function sopir(){
-        return $this->belongsTo(SopirModel::class);
+        return $this->belongsTo(SopirModel::class, 'id_sopir', 'id');
     }
 }
