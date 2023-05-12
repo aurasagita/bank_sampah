@@ -16,7 +16,7 @@ class NasabahController extends Controller
      */
     public function index()
     {
-        $nasabah = NasabahModel::all();
+        $nasabah = NasabahModel::with('jadwal')->get();
         return view('nasabah.nasabah')->with('nsb', $nasabah);
     }
 

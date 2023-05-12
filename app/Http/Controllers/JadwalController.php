@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use App\Models\JadwalModel;
+use App\Models\NasabahModel;
+use App\Models\SopirModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +18,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jdw = DB::table('jadwal')->paginate(5);
+        $jdw = JadwalModel::with('jadwal')->get();
+        //$jdw = DB::table('jadwal')->paginate(5);
         return view('jadwal.jadwal',['jadwal' => $jdw]);
     }
 
@@ -27,8 +30,10 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('jadwal.create_jadwal')
-                ->with('url_form', url('/jadwal'));
+        $nasabah = NasabahModel::all();
+        $sopir = SopirModel::all();
+        return view('jadwal.create_jadwal',['nasabah'=>$nasabah],['sopir'=>$sopir])
+        ->with('url_form', url('/jadwal'));
     }
 
     /**
@@ -41,15 +46,17 @@ class JadwalController extends Controller
     {
         $request->validate([
             'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal',
-            'nama' => 'required|string|max:25',
-            'tanggal_mulai' => 'required|string|max:25',
-            'tanggal_akhir' => 'required|string|max:25',
-           
+            'id_nasabah'=>'required',
+            'id_sopir'=>'required',
+            'tanggal_pengambilan'=>'required|date',
+            'konfirmasi'=>'required|string'
         ]);
 
-        $data = JadwalModel::create($request->except(['_token']));
+        JadwalModel::insert($request->except(['_token']));
+
+        //$data = JadwalModel::create($request->except(['_token']));
         return redirect('jadwal')
-            ->with('success', 'Data Berhasil Ditambahkan');
+            ->with('success', 'Jadwal Berhasil Ditambahkan');
     }
 
     /**
@@ -104,7 +111,7 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jadwal $jadwal)
+    public function destroy(JadwalModel $jadwal)
     {
         //
     }

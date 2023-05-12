@@ -12,4 +12,8 @@ class SopirModel extends Model
     protected $fillable = [
         'id_sopir', 'nama', 'alamat', 'phone'
     ];
+
+    public function jadwal_sopir(){
+        return $this->hasMany(JadwalModel::class);
+    }
 }

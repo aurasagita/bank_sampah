@@ -20,13 +20,35 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
+
                 <div class="form-group">
+                  <label for="Id Nasabah">Id Nasabah</label>
+                  <select name="id_nasabah" class="form-control @error('id_nasabah')
+                    is-invalid @enderror">
+                    @foreach($nasabah as $nsb)
+                    <option value="{{$nsb->id}}">{{$nsb->id_nasabah}}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="Id Sopir">Id Sopir</label>
+                  <select name="id_sopir" class="form-control @error('id_sopir')
+                    is-invalid @enderror">
+                    @foreach($sopir as $spr)
+                    <option value="{{$spr->id}}">{{$spr->id_sopir}}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <!--<div class="form-group">
                   <label>Id Nasabah</label>
                   <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_nasabah : old('id_nasabah') }}" name="id_nasabah" type="text"/>
                   @error('id_nasabah')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
+                
                 <div class="form-group">
                   <label>Id Sopir</label>
                   <input class="form-control @error('id_sopir') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_sopir : old('id_sopir') }}" name="id_sopir" type="text"/>
@@ -34,6 +56,7 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
+                -->
                 <div class="form-group">
                   <label>Tanggal Pengambilan</label>
                   <input class="form-control @error('tanggal_pengambilan') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_pengambilan : old('tanggal_pengambilan') }}" name="tanggal_pengambilan" type="date"/>
@@ -44,10 +67,9 @@
                 <div class="form-group">
                   <label>Konfirmasi</label>
                   <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->konfirmasi : old('konfirmasi') }}" name="konfirmasi" type="text">
-                    
-                    <option value="">Dijemput</option>
-                    <option value="">Terambil</option>
-                   
+                    <option value="Menunggu Pick Up">Menunggu Pick Up</option>
+                    <option value="Pick Up">Pick Up</option>
+                    <option value="Selesai">Selesai</option>
                   </select>
                   
                   @error('konfirmasi')

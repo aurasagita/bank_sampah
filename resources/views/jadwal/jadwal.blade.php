@@ -23,12 +23,13 @@
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>No</th>
+                  <th>#</th>
                   <th>Id Jadwal</th>
-                  <th>Nama </th>
-                  <th>Tanggal Mulai</th>
-                  <th>Tanggal Akhir</th>
-                  <th>Aksi</th>
+                  <th>Id Nasabah</th>
+                  <th>Id Sopir</th>
+                  <th>Tanggal Ambil</th>
+                  <th>Konfirmasi</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -37,9 +38,10 @@
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->id_jadwal}}</td>
-                      <td>{{$k->nama}}</td>
-                      <td>{{$k->tanggal_mulai}}</td>
-                      <td>{{$k->tanggal_akhir}}</td>
+                      <td>{{$k->nasabah->id_nasabah}}</td>
+                      <td>{{$k->sopir->id_sopir}}</td>
+                      <td>{{$k->tanggal_pengambilan}}</td>
+                      <td>{{$k->konfirmasi}}</td>
                       <td>
                         <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 
@@ -53,17 +55,11 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="8" class="text-center">Data tidak ada</td>
+                    <td colspan="7" class="text-center">Data tidak ada</td>
                   </tr>
                 @endif
               </tbody>
             </table>
-            <br/>
-            Halaman : {{ $jadwal->currentPage() }} <br/>
-	          Jumlah Data : {{ $jadwal->total() }} <br/>
-	          Data Per Halaman : {{ $jadwal->perPage() }} <br/>
- 
-            {{ $jadwal->links() }}
           </div>
         </div>
     </div>

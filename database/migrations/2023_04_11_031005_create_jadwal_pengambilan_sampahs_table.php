@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
-            $table->string('id_jadwal', 10)->unique();
-            $table->string('id_nasabah', 10)->nullable();
-            $table->string('id_sopir', 10)->nullable();
+            $table->string('id_jadwal', 10);
+            $table->unsignedBigInteger('id_nasabah');
+            $table->unsignedBigInteger('id_sopir');
+            $table->foreign('id_nasabah')->references('id')->on('nasabah')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_sopir')->references('id')->on('sopir')->onDelete('cascade')->onUpdate('cascade');
             $table->date('tanggal_pengambilan')->nullable();
-            $table->string('konfirmasi', 1)->nullable();
+            $table->string('konfirmasi')->nullable();
             $table->timestamps();
         });
     }
