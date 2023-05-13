@@ -2,6 +2,9 @@
 
 @section('content')
 <section class="content">
+  <div >
+    {{Breadcrumbs::render('jadwal')}}
+  </div>
     <div class="card">
         <div class="card-header border-0">
           <div class="d-flex justify-content-between">
@@ -35,8 +38,8 @@
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->id_jadwal}}</td>
-                      <td>{{$k->jadwal_nasabah->id_nasabah}}</td>
-                      <td>{{$k->jadwal_sopir->id_sopir}}</td>
+                      <td>{{$k->nasabah->id_nasabah}}</td>
+                      <td>{{$k->sopir->id_sopir}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>
                       <td>
@@ -57,12 +60,6 @@
                 @endif
               </tbody>
             </table>
-            <br/>
-            Halaman : {{ $jadwal->currentPage() }} <br/>
-	          Jumlah Data : {{ $jadwal->total() }} <br/>
-	          Data Per Halaman : {{ $jadwal->perPage() }} <br/>
- 
-            {{ $jadwal->links() }}
           </div>
         </div>
     </div>

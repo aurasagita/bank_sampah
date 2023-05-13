@@ -36,17 +36,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-left">
-              <li class="breadcrumb-item "><a class="fa fa-home" href="/dashboard"></a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div>
-         
-        </div>
-      </div><!-- /.container-fluid -->
+     
     </section>
 
     <!-- Main content -->

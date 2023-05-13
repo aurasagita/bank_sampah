@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/index', [IndexController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id');
 Route::resource('/nasabah', NasabahController::class)->parameter('nasabah', 'id');
 Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
