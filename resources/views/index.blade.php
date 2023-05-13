@@ -37,7 +37,7 @@
               <a href="#layanan">Layanan</a>
             </li>
             <li class="nav-item">
-              <a href="#">Sampah</a>
+              <a href="#sampah">Sampah</a>
             </li>
             <li class="nav-item">
               <a href="#">Temukan Kami</a>
@@ -119,43 +119,153 @@
       <div class="sampah">
         <div class="box">
           <img src="assets/dist/img/K1.jpg" alt="">
-          <h5>KERTAS</h5>
-          <h6>Rp 1500/kg</h6>
+          <h5>KERTAS - K1</h5>
+          <h6>Rp 1250/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K2.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K2</h5>
           <h6>Rp 2000/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K3.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K3</h5>
           <h6>Rp 1000/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K4.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K4</h5>
           <h6>Rp 1250/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K5.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K5</h5>
           <h6>Rp 2250/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K6.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K6</h5>
           <h6>Rp 3000/kg</h6>
         </div>
         <div class="box">
-          <img src="assets/dist/img/K8.jpg" alt="">
-          <h5>KERTAS</h5>
+          <img src="assets/dist/img/A1.jpg" alt="">
+          <h5>LOGAM - A1</h5>
+          <h6>Rp 6000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/A2.jpg" alt="">
+          <h5>LOGAM - A2</h5>
+          <h6>Rp 5000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/A3.jpg" alt="">
+          <h5>LOGAM - A3</h5>
+          <h6>Rp 4000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/A6.jpg" alt="">
+          <h5>LOGAM - A6</h5>
+          <h6>Rp 3500/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/BS1.jpg" alt="">
+          <h5>LOGAM - BS1</h5>
+          <h6>Rp 6000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/BS2.jpg" alt="">
+          <h5>LOGAM - BS2</h5>
+          <h6>Rp 5000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P01.jpg" alt="">
+          <h5>PLASTIK - P1</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P09.jpg" alt="">
+          <h5>PLASTIK - P9</h5>
+          <h6>Rp 2250/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P12.jpg" alt="">
+          <h5>PLASTIK - P12</h5>
+          <h6>Rp 1500/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P14.jpg" alt="">
+          <h5>PLASTIK - P14</h5>
+          <h6>Rp 1750/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P19.jpg" alt="">
+          <h5>PLASTIK - P19</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P20.jpg" alt="">
+          <h5>PLASTIK - P20</h5>
+          <h6>Rp 2500/pcs</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P22.jpg" alt="">
+          <h5>PLASTIK - P22</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P26.jpg" alt="">
+          <h5>PLASTIK - P26</h5>
           <h6>Rp 1250/kg</h6>
         </div>
         <div class="box">
-          <img src="assets/dist/img/K7.jpg" alt="">
-          <h5>KERTAS</h5>
-          <h6>Rp 1000/kg</h6>
+          <img src="assets/dist/img/P30.jpg" alt="">
+          <h5>PLASTIK - P30</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P36.jpg" alt="">
+          <h5>PLASTIK - P36</h5>
+          <h6>Rp 1750/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P37.jpg" alt="">
+          <h5>PLASTIK - P37</h5>
+          <h6>Rp 3500/pcs</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B1.jpg" alt="">
+          <h5>BOTOL - B1</h5>
+          <h6>Rp 4000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B2.jpg" alt="">
+          <h5>BOTOL - B2</h5>
+          <h6>Rp 3750/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B4.jpg" alt="">
+          <h5>BOTOL - B4</h5>
+          <h6>Rp 2500/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B5.jpg" alt="">
+          <h5>BOTOL - B5</h5>
+          <h6>Rp 5000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B6.jpg" alt="">
+          <h5>BOTOL - B6</h5>
+          <h6>Rp 3000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B7.jpg" alt="">
+          <h5>BOTOL - B7</h5>
+          <h6>Rp 3250/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B8.jpg" alt="">
+          <h5>BOTOL - B1</h5>
+          <h6>Rp 3000/kg</h6>
         </div>
       </div>
     </div>

@@ -124,7 +124,7 @@ nav li a:hover{
 .sampah-container{
     padding: 70px 5%;
     padding-top: 2%;
-    height: 850px;
+    height: 1700px;
     background-color: #efefef;
 }
 
@@ -144,7 +144,7 @@ nav li a:hover{
 }
 
 .sampah{
-    padding: 50px 5% ;
+    padding: 30px 1% ;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
     align-items: center;
@@ -162,7 +162,7 @@ nav li a:hover{
 }
 
 .box img{
-    width: 80%;
+    width: 60%;
     height: auto;
 }
 
@@ -172,6 +172,7 @@ nav li a:hover{
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
     color: #303030;
+    font-size: 16px;
 }
 
 .box h6{
@@ -180,3 +181,4 @@ nav li a:hover{
     letter-spacing: 1px;
     color: #b92323;
 }
+
