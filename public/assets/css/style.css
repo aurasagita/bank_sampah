@@ -187,3 +187,21 @@ nav li a:hover{
     color: #b92323;
 }
 
+.temukan-kami-container{
+    padding-top: 3%;
+}
+
+.temukan-kami-container h3{
+    font-weight: bolder;
+    color: #07AA14;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.temukan-kami-container h3::after{
+    content: "";
+    border-bottom: 5px solid #07AA14;
+    width: 90px;
+    display: block;
+    margin: 15px auto;
+}
