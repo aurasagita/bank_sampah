@@ -21,7 +21,7 @@
 <body>
   <!-- Navbar -->
   <section id="beranda">
-    <nav class="navbar">
+    <nav class="navbar fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="assets/dist/img/logo.png" alt="logo" width="80">
@@ -41,6 +41,9 @@
             </li>
             <li class="nav-item">
               <a href="#">Temukan Kami</a>
+            </li>
+            <li class="nav-item">
+              <a href="#">Login</a>
             </li>
           </ul>
         </div>
@@ -270,6 +273,7 @@
       </div>
     </div>
   </section>
+  
 
   
 

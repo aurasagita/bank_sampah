@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: #ffffff;
+    padding-top: 101px;
 }
 
 nav{
@@ -35,6 +36,10 @@ nav li a:hover{
     background-color: #FFFF;
     color: #07AA14;
     transition: 1s;
+}
+
+.nav-item a img{
+    height: 40px;
 }
 
 .c-item {
