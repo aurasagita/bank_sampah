@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: #ffffff;
+    padding-top: 101px;
 }
 
 nav{
@@ -37,6 +38,10 @@ nav li a:hover{
     transition: 1s;
 }
 
+.nav-item a img{
+    height: 40px;
+}
+
 .c-item {
     height: 700px;
 }
@@ -63,8 +68,6 @@ nav li a:hover{
     float: left;
     margin:0 3% 5% 5%;
 }
-
-
 
 .judul-isi{
     font-family: 'Poppins', sans-serif;
@@ -124,7 +127,7 @@ nav li a:hover{
 .sampah-container{
     padding: 70px 5%;
     padding-top: 2%;
-    height: 850px;
+    height: 1700px;
     background-color: #efefef;
 }
 
@@ -144,7 +147,7 @@ nav li a:hover{
 }
 
 .sampah{
-    padding: 50px 5% ;
+    padding: 30px 1% ;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
     align-items: center;
@@ -162,7 +165,7 @@ nav li a:hover{
 }
 
 .box img{
-    width: 80%;
+    width: 60%;
     height: auto;
 }
 
@@ -172,6 +175,7 @@ nav li a:hover{
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
     color: #303030;
+    font-size: 16px;
 }
 
 .box h6{
@@ -179,4 +183,32 @@ nav li a:hover{
     font-size: 14px;
     letter-spacing: 1px;
     color: #b92323;
+}
+
+.temukan-kami-container{
+    padding-top: 3%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.temukan-kami-container h3{
+    font-weight: bolder;
+    color: #07AA14;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.temukan-kami-container h3::after{
+    content: "";
+    border-bottom: 5px solid #07AA14;
+    width: 90px;
+    display: block;
+    margin: 15px auto;
+}
+
+.daftar-nasabah h3{
+    padding-top: 10%;
 }

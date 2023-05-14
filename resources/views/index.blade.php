@@ -21,7 +21,7 @@
 <body>
   <!-- Navbar -->
   <section id="beranda">
-    <nav class="navbar">
+    <nav class="navbar fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="assets/dist/img/logo.png" alt="logo" width="80">
@@ -37,10 +37,13 @@
               <a href="#layanan">Layanan</a>
             </li>
             <li class="nav-item">
-              <a href="#">Sampah</a>
+              <a href="#sampah">Sampah</a>
             </li>
             <li class="nav-item">
-              <a href="#">Temukan Kami</a>
+              <a href="#temukan-kami">Temukan Kami</a>
+            </li>
+            <li class="nav-item">
+              <a href="#">Login</a>
             </li>
           </ul>
         </div>
@@ -80,7 +83,7 @@
 
   <!--Layanan-->
   <section id="layanan">
-    <div class="layanan-container">
+    <div class="layanan-container" id="layanan">
       <div class="icons">
         <img src="assets/dist/img/edit.svg" alt="">
         <div class="info">
@@ -119,44 +122,193 @@
       <div class="sampah">
         <div class="box">
           <img src="assets/dist/img/K1.jpg" alt="">
-          <h5>KERTAS</h5>
-          <h6>Rp 1500/kg</h6>
+          <h5>KERTAS - K1</h5>
+          <h6>Rp 1250/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K2.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K2</h5>
           <h6>Rp 2000/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K3.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K3</h5>
           <h6>Rp 1000/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K4.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K4</h5>
           <h6>Rp 1250/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K5.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K5</h5>
           <h6>Rp 2250/kg</h6>
         </div>
         <div class="box">
           <img src="assets/dist/img/K6.jpg" alt="">
-          <h5>KERTAS</h5>
+          <h5>KERTAS - K6</h5>
           <h6>Rp 3000/kg</h6>
         </div>
         <div class="box">
-          <img src="assets/dist/img/K8.jpg" alt="">
-          <h5>KERTAS</h5>
+          <img src="assets/dist/img/A1.jpg" alt="">
+          <h5>LOGAM - A1</h5>
+          <h6>Rp 6000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/A2.jpg" alt="">
+          <h5>LOGAM - A2</h5>
+          <h6>Rp 5000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/A3.jpg" alt="">
+          <h5>LOGAM - A3</h5>
+          <h6>Rp 4000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/A6.jpg" alt="">
+          <h5>LOGAM - A6</h5>
+          <h6>Rp 3500/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/BS1.jpg" alt="">
+          <h5>LOGAM - BS1</h5>
+          <h6>Rp 6000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/BS2.jpg" alt="">
+          <h5>LOGAM - BS2</h5>
+          <h6>Rp 5000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P01.jpg" alt="">
+          <h5>PLASTIK - P1</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P09.jpg" alt="">
+          <h5>PLASTIK - P9</h5>
+          <h6>Rp 2250/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P12.jpg" alt="">
+          <h5>PLASTIK - P12</h5>
+          <h6>Rp 1500/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P14.jpg" alt="">
+          <h5>PLASTIK - P14</h5>
+          <h6>Rp 1750/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P19.jpg" alt="">
+          <h5>PLASTIK - P19</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P20.jpg" alt="">
+          <h5>PLASTIK - P20</h5>
+          <h6>Rp 2500/pcs</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P22.jpg" alt="">
+          <h5>PLASTIK - P22</h5>
+          <h6>Rp 2000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P26.jpg" alt="">
+          <h5>PLASTIK - P26</h5>
           <h6>Rp 1250/kg</h6>
         </div>
         <div class="box">
-          <img src="assets/dist/img/K7.jpg" alt="">
-          <h5>KERTAS</h5>
-          <h6>Rp 1000/kg</h6>
+          <img src="assets/dist/img/P30.jpg" alt="">
+          <h5>PLASTIK - P30</h5>
+          <h6>Rp 2000/kg</h6>
         </div>
+        <div class="box">
+          <img src="assets/dist/img/P36.jpg" alt="">
+          <h5>PLASTIK - P36</h5>
+          <h6>Rp 1750/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/P37.jpg" alt="">
+          <h5>PLASTIK - P37</h5>
+          <h6>Rp 3500/pcs</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B1.jpg" alt="">
+          <h5>BOTOL - B1</h5>
+          <h6>Rp 4000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B2.jpg" alt="">
+          <h5>BOTOL - B2</h5>
+          <h6>Rp 3750/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B4.jpg" alt="">
+          <h5>BOTOL - B4</h5>
+          <h6>Rp 2500/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B5.jpg" alt="">
+          <h5>BOTOL - B5</h5>
+          <h6>Rp 5000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B6.jpg" alt="">
+          <h5>BOTOL - B6</h5>
+          <h6>Rp 3000/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B7.jpg" alt="">
+          <h5>BOTOL - B7</h5>
+          <h6>Rp 3250/kg</h6>
+        </div>
+        <div class="box">
+          <img src="assets/dist/img/B8.jpg" alt="">
+          <h5>BOTOL - B1</h5>
+          <h6>Rp 3000/kg</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Temukan Kami -->
+  <section id="temukan-kami">
+    <div class="temukan-kami-container">
+      <h3>Temukan Kami</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.0337594699236!2d112.61688607530391!3d-7.9954506797507525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7882a9d385ba91%3A0x667db69be1ab50c9!2sBank%20Sampah%20Malang!5e0!3m2!1sen!2sid!4v1684058288621!5m2!1sen!2sid" 
+      width="1100" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="daftar-nasabah">
+        <h3>Daftar Menjadi Nasabah Kami</h3>
+        <div class="form-group">
+              <label>Nama</label>
+              <input class="form-control @error('nama') is-invalid @enderror" value="{{ isset($nsb)? $nsb->nama :old('nama') }}" name="nama" type="text"/>
+              @error('nama')
+                <span class="error invalid-feedback">{{ $message }} </span>
+              @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Alamat</label>
+                <input class="form-control @error('alamat') is-invalid @enderror" value="{{ isset($nsb)? $nsb->alamat :old('alamat') }}" name="alamat" type="text"/>
+                @error('alamat')
+                  <span class="error invalid-feedback">{{ $message }} </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Nomor HP</label>
+                <input class="form-control @error('phone') is-invalid @enderror" value="{{ isset($nsb)? $nsb->phone :old('phone') }}" name="phone" type="text"/>
+                @error('phone')
+                  <span class="error invalid-feedback">{{ $message }} </span>
+                @enderror
+            </div>
+            
+            <div class="form-group">
+              <button class="btn btn-sm btn-primary">Simpan</button>
+            </div>
       </div>
     </div>
   </section>
