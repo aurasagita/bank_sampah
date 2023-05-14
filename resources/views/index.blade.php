@@ -40,7 +40,7 @@
               <a href="#sampah">Sampah</a>
             </li>
             <li class="nav-item">
-              <a href="#">Temukan Kami</a>
+              <a href="#temukan-kami">Temukan Kami</a>
             </li>
             <li class="nav-item">
               <a href="#">Login</a>
@@ -83,7 +83,7 @@
 
   <!--Layanan-->
   <section id="layanan">
-    <div class="layanan-container">
+    <div class="layanan-container" id="layanan">
       <div class="icons">
         <img src="assets/dist/img/edit.svg" alt="">
         <div class="info">
@@ -278,6 +278,38 @@
   <section id="temukan-kami">
     <div class="temukan-kami-container">
       <h3>Temukan Kami</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.0337594699236!2d112.61688607530391!3d-7.9954506797507525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7882a9d385ba91%3A0x667db69be1ab50c9!2sBank%20Sampah%20Malang!5e0!3m2!1sen!2sid!4v1684058288621!5m2!1sen!2sid" 
+      width="1100" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="daftar-nasabah">
+        <h3>Daftar Menjadi Nasabah Kami</h3>
+        <div class="form-group">
+              <label>Nama</label>
+              <input class="form-control @error('nama') is-invalid @enderror" value="{{ isset($nsb)? $nsb->nama :old('nama') }}" name="nama" type="text"/>
+              @error('nama')
+                <span class="error invalid-feedback">{{ $message }} </span>
+              @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Alamat</label>
+                <input class="form-control @error('alamat') is-invalid @enderror" value="{{ isset($nsb)? $nsb->alamat :old('alamat') }}" name="alamat" type="text"/>
+                @error('alamat')
+                  <span class="error invalid-feedback">{{ $message }} </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Nomor HP</label>
+                <input class="form-control @error('phone') is-invalid @enderror" value="{{ isset($nsb)? $nsb->phone :old('phone') }}" name="phone" type="text"/>
+                @error('phone')
+                  <span class="error invalid-feedback">{{ $message }} </span>
+                @enderror
+            </div>
+            
+            <div class="form-group">
+              <button class="btn btn-sm btn-primary">Simpan</button>
+            </div>
+      </div>
     </div>
   </section>
 

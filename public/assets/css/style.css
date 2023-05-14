@@ -69,8 +69,6 @@ nav li a:hover{
     margin:0 3% 5% 5%;
 }
 
-
-
 .judul-isi{
     font-family: 'Poppins', sans-serif;
     margin-bottom: 10px;
@@ -189,6 +187,10 @@ nav li a:hover{
 
 .temukan-kami-container{
     padding-top: 3%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .temukan-kami-container h3{
@@ -196,6 +198,7 @@ nav li a:hover{
     color: #07AA14;
     font-family: 'Poppins', sans-serif;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .temukan-kami-container h3::after{
@@ -204,4 +207,8 @@ nav li a:hover{
     width: 90px;
     display: block;
     margin: 15px auto;
+}
+
+.daftar-nasabah h3{
+    padding-top: 10%;
 }
