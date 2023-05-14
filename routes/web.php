@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\SampahController;
 use App\Http\Controllers\SopirController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,12 +25,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+Route::get('/logout',[LoginController::class,'logout']);
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id');
+    Route::resource('/nasabah', NasabahController::class)->parameter('nasabah', 'id');
+    Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
+    Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');;
+});
+
 Route::get('/index', [IndexController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id');
-Route::resource('/nasabah', NasabahController::class)->parameter('nasabah', 'id');
-Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
-Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');;
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
