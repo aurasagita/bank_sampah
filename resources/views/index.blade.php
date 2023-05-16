@@ -43,7 +43,7 @@
               <a href="#temukan-kami">Temukan Kami</a>
             </li>
             <li class="nav-item">
-              <a href="#">Login</a>
+              <a href="/bank_sampah/public/login">Login</a>
             </li>
           </ul>
         </div>
