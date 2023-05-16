@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/index2.html"><b>Admin</b>Bank Sampah Malang</a>
+    <a href="/index2.html"><b>Login </b>Bank Sampah Malang</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
