@@ -13,7 +13,7 @@ class SopirModel extends Model
         'id_sopir', 'nama', 'alamat', 'phone'
     ];
 
-    public function jadwal_sopir(){
+    public function jadwal(){
         return $this->hasMany(JadwalModel::class);
     }
 }
