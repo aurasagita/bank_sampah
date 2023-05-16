@@ -13,7 +13,7 @@ class NasabahModel extends Model
         'id_nasabah', 'nama', 'alamat', 'phone'
     ];
 
-    public function jadwal_nasabah() {
-        return $this->hasMany(JadwalModel::class, 'id_nasabah', 'id_nasabah');
+    public function jadwal() {
+        return $this->belongsTo(JadwalModel::class, 'id_nasabah', 'id_nasabah');
     }
 }

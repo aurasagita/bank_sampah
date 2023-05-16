@@ -34,16 +34,13 @@
               <a href="#tentang-kami">Tentang Kami</a>
             </li>
             <li class="nav-item">
-              <a href="#layanan">Layanan</a>
-            </li>
-            <li class="nav-item">
               <a href="#sampah">Sampah</a>
             </li>
             <li class="nav-item">
               <a href="#temukan-kami">Temukan Kami</a>
             </li>
             <li class="nav-item">
-              <a href="/bank_sampah/public/login">Login</a>
+              <a href="/bank_sampah/public/login" target="_blank">Login</a>
             </li>
           </ul>
         </div>
@@ -79,10 +76,6 @@
       <br> <br> Seiring perjalanan waktu BSM menjadi mitra Kota Malang dalam hal membina, melatih, mendampingi dalam pengolahan sampah 3R (reduce, reuse and recycle) masyarakat Kota Malang yang mandiri.</p>
       <div class="clearfix"></div>
     </div>
-  </section>
-
-  <!--Layanan-->
-  <section id="layanan">
     <div class="layanan-container" id="layanan">
       <div class="icons">
         <img src="assets/dist/img/edit.svg" alt="">
@@ -112,7 +105,7 @@
           <span>Kami bayar sampah sesuai yang disetorkan</span>
         </div>
       </div>
-  </div>
+    </div>
   </section>
 
   <!-- Sampah -->
