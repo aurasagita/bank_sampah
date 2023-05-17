@@ -24,7 +24,7 @@
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>No</th>
+                  <th>#</th>
                   <th>Jenis Sampah</th>
                   <th>Harga </th>
                   <th>Aksi</th>

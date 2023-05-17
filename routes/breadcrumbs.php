@@ -20,6 +20,10 @@ Breadcrumbs::for('jadwal',function($trail){
     $trail->parent('dashboard');
     $trail->push('jadwal', route('jadwal.index'));
 });
+Breadcrumbs::for('transaksi', function($trail){
+    $trail->parent('dashboard');
+    $trail->push('transaksi', route('transaksi.index'));
+});
 Breadcrumbs::for('laporan',function($trail){
     $trail->parent('dashboard');
     $trail->push('laporan', route('laporan.index'));
