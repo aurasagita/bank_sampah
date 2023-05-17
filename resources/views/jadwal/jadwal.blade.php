@@ -45,11 +45,13 @@
                       <td>
                         <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 
-                        <form method="POST" action="{{url('/jadwal/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
+                        <form class="d-inline-block" method="POST" action="{{url('/jadwal/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
+
+                        <a href="{{url('/jadwal/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block">Detail</a>
                       </td>
                     </tr>
                   @endforeach
