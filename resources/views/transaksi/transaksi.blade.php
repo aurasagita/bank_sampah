@@ -35,8 +35,8 @@
                   @foreach ($trs as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
-                      <td>{{$k->id_jadwal}}</td>
-                      <td>{{$k->jenis_sampah}}</td>
+                      <td>{{$k->jadwal->id_jadwal}}</td>
+                      <td>{{$k->sampah->jenis_sampah}}</td>
                       <td>{{$k->berat}}</td>
                       <td>{{$k->harga}}</td>
                       <td>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TransaksiModel;
 use App\Http\Controllers\Controller;
+use App\Models\JadwalModel;
+use App\Models\SampahModel;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -27,7 +29,10 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $jadwal = JadwalModel::all();
+        $sampah = SampahModel::all();
+        return view('transaksi.create_transaksi',['jdw'=>$jadwal],['smp'=>$sampah])
+        ->with('url_form', url('/transaksi'));
     }
 
     /**
@@ -38,7 +43,18 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_jadwal' => 'required',
+            'jenis_sampah'=>'required',
+            'berat'=>'required',
+            'harga'=>'required'
+        ]);
+
+        TransaksiModel::insert($request->except(['_token']));
+
+        //$data = JadwalModel::create($request->except(['_token']));
+        return redirect('transaksi')
+            ->with('success', 'Transaksi Berhasil Ditambahkan');
     }
 
     /**
