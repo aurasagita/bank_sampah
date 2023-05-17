@@ -129,6 +129,8 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        
+        JadwalModel::where('id', '=', $id)->delete();
+        return redirect('jadwal')
+            ->with('success', 'Jadwal Berhasil Dihapus');
     }
 }
