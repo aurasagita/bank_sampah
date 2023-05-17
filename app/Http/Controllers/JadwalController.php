@@ -67,7 +67,8 @@ class JadwalController extends Controller
      */
     public function show($id)
     {
-        
+        $jadwal = JadwalModel::where('id', $id)->get();
+        return view('jadwal.detail_jadwal', ['jdw' => $jadwal[0]]);
     }
 
     /**
@@ -108,17 +109,6 @@ class JadwalController extends Controller
         $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
         return redirect('jadwal')->with('success', 'Data Berhasil Diedit');
-        /*$request->validate([
-            'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal'.$id,
-            'id_nasabah'=>'required',
-            'id_sopir'=>'required',
-            'tanggal_pengambilan'=>'required|date',
-            'konfirmasi'=>'required|string'
-        ]);
-
-        $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
-        return redirect('jadwal')
-            ->with('success', 'Data Berhasil Diedit');*/
     }
 
     /**

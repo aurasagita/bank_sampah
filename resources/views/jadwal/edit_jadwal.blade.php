@@ -42,23 +42,7 @@
                     @endforeach
                   </select>
                 </div>
-
-                <!--<div class="form-group">
-                  <label>Id Nasabah</label>
-                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_nasabah : old('id_nasabah') }}" name="id_nasabah" type="text"/>
-                  @error('id_nasabah')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
                 
-                <div class="form-group">
-                  <label>Id Sopir</label>
-                  <input class="form-control @error('id_sopir') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_sopir : old('id_sopir') }}" name="id_sopir" type="text"/>
-                  @error('id_sopir')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
-                -->
                 <div class="form-group">
                   <label>Tanggal Pengambilan</label>
                   <input class="form-control @error('tanggal_pengambilan') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_pengambilan : old('tanggal_pengambilan') }}" name="tanggal_pengambilan" type="date"/>
