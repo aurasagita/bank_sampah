@@ -28,6 +28,7 @@
                   <th>Jenis Sampah</th>
                   <th>Berat</th>
                   <th>Harga</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>

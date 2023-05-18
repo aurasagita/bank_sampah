@@ -29,7 +29,7 @@
                   <label for="Jenis Sampah">Jenis Sampah</label>
                   <select name="jenis_sampah" class="form-control @error('jenis_sampah') is-invalid @enderror">
                     @foreach($smp as $smp)
-                    <option value="{{$smp->id}}">{{$smp->jenis_sampah}}</option>
+                    <option value="{{$smp->id}}">{{$smp->jenis_sampah}} ({{($smp->harga)}}/kg)</option>
                     @endforeach
                   </select>
                 </div>

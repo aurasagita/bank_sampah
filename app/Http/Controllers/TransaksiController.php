@@ -63,9 +63,10 @@ class TransaksiController extends Controller
      * @param  \App\Models\TransaksiModel  $transaksiModel
      * @return \Illuminate\Http\Response
      */
-    public function show(TransaksiModel $transaksiModel)
+    public function show($id)
     {
-        //
+        $transaksi = TransaksiModel::where('id', $id)->get();
+        return view('transaksi.detail_transaksi', ['trs' => $transaksi[0]]);
     }
 
     /**

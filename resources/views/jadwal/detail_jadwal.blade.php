@@ -6,7 +6,7 @@
     <!--Default box-->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">DATA JADWAL</h3>
+            <h3 class="card-title">DETAIL JADWAL</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widge="collapse" title="Collapse">
@@ -35,7 +35,7 @@
                 <li class="list-group-item"><b>Tanggal Pengambilan : </b>{{$jdw->tanggal_pengambilan}}</li>
                 <li class="list-group-item"><b>Konfirmasi :  </b>{{$jdw->konfirmasi}}</li>
             </ul>
-            <a class="btn btn-success mt-3" href="{{ url('/nasabah') }}">Kembali</a>
+            <a class="btn btn-success mt-3" href="{{ url('/jadwal') }}">Kembali</a>
         </div>
         
     </div>
