@@ -17,7 +17,7 @@
                   <label for="Id Jadwal">Id Jadwal</label>
                   <select name="id_jadwal" class="form-control @error('id_jadwal') is-invalid @enderror">
                     @foreach($jdw as $jdw)
-                    <option value="{{$jdw->id}}">{{$jdw->id_jadwal}}</option>
+                    <option value="{{$jdw->id}}" {{ old('id_jadwal', $trs->id_jadwal) == $jdw->id ? 'selected' : null }}>{{$jdw->id_jadwal}}</option>
                     @endforeach
                   </select>
                   @error('id_jadwal')
@@ -29,14 +29,14 @@
                   <label for="Jenis Sampah">Jenis Sampah</label>
                   <select name="jenis_sampah" class="form-control @error('jenis_sampah') is-invalid @enderror">
                     @foreach($smp as $smp)
-                    <option value="{{$smp->id}}">{{$smp->jenis_sampah}}</option>
+                    <option value="{{$smp->id}}" {{ old('jenis_sampah', $trs->jenis_sampah) == $smp->id ? 'selected' : null }}>{{$smp->jenis_sampah}}</option>
                     @endforeach
                   </select>
                 </div>
 
                 <div class="form-group">
                   <label>Berat</label>
-                  <input class="form-control @error('berat') is-invalid @enderror" name="berat" type="text"/>
+                  <input class="form-control @error('berat') is-invalid @enderror" name="berat" type="text" value="{{isset($trs)? $trs->berat : old('berat') }}"/>
                   @error('berat')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
@@ -44,7 +44,7 @@
 
                 <div class="form-group">
                   <label>Harga</label>
-                  <input class="form-control @error('harga') is-invalid @enderror" name="harga" type="text"/>
+                  <input class="form-control @error('harga') is-invalid @enderror" name="harga" type="text" value="{{isset($trs)? $trs->harga : old('harga') }}"/>
                   @error('harga')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror

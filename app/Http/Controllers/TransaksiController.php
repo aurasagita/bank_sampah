@@ -74,9 +74,16 @@ class TransaksiController extends Controller
      * @param  \App\Models\TransaksiModel  $transaksiModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(TransaksiModel $transaksiModel)
+    public function edit($id)
     {
-        //
+        $transaksi = TransaksiModel::find($id);
+        $jadwal = JadwalModel::all();
+        $sampah = SampahModel::all();
+        return view('transaksi.edit_transaksi', compact('id'))
+        ->with('url_form', url('/transaksi/' . $id))
+        ->with('jdw', $jadwal)
+        ->with('trs', $transaksi)
+        ->with('smp', $sampah);
     }
 
     /**
@@ -86,9 +93,18 @@ class TransaksiController extends Controller
      * @param  \App\Models\TransaksiModel  $transaksiModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TransaksiModel $transaksiModel)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_jadwal' => 'required',
+            'jenis_sampah'=>'required',
+            'berat'=>'required',
+            'harga'=>'required'
+        ]);
+
+        $data = TransaksiModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+
+        return redirect('transaksi')->with('success', 'Data Berhasil Diedit');
     }
 
     /**
@@ -97,8 +113,10 @@ class TransaksiController extends Controller
      * @param  \App\Models\TransaksiModel  $transaksiModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TransaksiModel $transaksiModel)
+    public function destroy($id)
     {
-        //
+        TransaksiModel::where('id', '=', $id)->delete();
+        return redirect('transaksi')
+            ->with('success', 'Transaski Berhasil Dihapus');
     }
 }
