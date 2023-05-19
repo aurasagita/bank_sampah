@@ -16,11 +16,15 @@ class JadwalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jdw = JadwalModel::with('jadwal')->get();
-        //$jdw = DB::table('jadwal')->paginate(5);
-        return view('jadwal.jadwal',['jadwal' => $jdw]);
+        if($request->has('search')){
+            $jadwal = jadwalModel::where('id_jadwal','LIKE','%'.$request->search.'%')->paginate(5);
+        }else{
+            $jadwal = jadwalModel::paginate(5);
+        }
+       
+        return view('jadwal.jadwal')->with('jadwal',$jadwal);
     }
 
     /**
