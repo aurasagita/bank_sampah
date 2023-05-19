@@ -44,7 +44,7 @@
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>No. Telp</th>
-                        <th>Action</th>
+                        <th style="width: 150px">Action</th>
                     </tr>
                 </thead>
                 
@@ -58,22 +58,16 @@
                                 <td>{{$m->alamat}}</td>
                                 <td>{{$m->phone}}</td>
                                 <td>
-                                    <div class="action_button" style="display : flex;">
-                                        <div class="pr-1">
-                                            <a href="{{url('/nasabah/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
-                                        </div>
-                                        <div class="pr-1">
-                                            <form method="POST" action="{{url('/nasabah/'.$m->id)}}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger ms-5">Hapus</button>
-                                            </form>
-                                        </div>
-                                        <div class="pr-1">
-                                            <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary">Detail</a>
-                                        </div>
-                                    </div>
-                                </td>
+                                    <a href="{{url('/nasabah/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+            
+                                    <form  class="d-inline-block " method="POST" action="{{url('/nasabah/'.$m->id)}}" onsubmit="return confirm('Yakin hapus data?')">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
+                                    </form>
+                                    <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
+                                  </td>
+
                             </tr>
                         @endforeach
                     @else
