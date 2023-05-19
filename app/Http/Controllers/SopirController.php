@@ -14,10 +14,15 @@ class SopirController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sopir = SopirModel::all();
-        return view('sopir.sopir')->with('spr', $sopir);
+        if($request->has('search')){
+            $sopir = SopirModel::where('nama','LIKE','%'.$request->search.'%')->paginate(5);
+        }else{
+            $sopir = SopirModel::paginate(5);
+        }
+       
+        return view('sopir.sopir')->with('sopir',$sopir);
     }
 
     /**

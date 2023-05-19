@@ -28,4 +28,8 @@ class JadwalModel extends Model
     public function sopir(){
         return $this->belongsTo(SopirModel::class, 'id_sopir', 'id');
     }
+
+    public function transaksi(){
+        return $this->hasMany(TransaksiModel::class);
+    }
 }

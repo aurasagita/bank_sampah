@@ -14,9 +14,9 @@
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('sampah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" method="get" action="{{ url('searchJdw') }}" class="col-md-4" style="padding: 0">
+              <form class="form" method="get" action="{{ url('sampah') }}" class="col-md-4" style="padding: 0">
                 <div class="form-group w-100 mb-3">
-                    <input type="text" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
+                    <input type="search" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
                     <button type="submit" class="btn btn-primary mb-1">Cari</button>
                 </div>
               </form>
@@ -24,7 +24,7 @@
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>No</th>
+                  <th>#</th>
                   <th>Jenis Sampah</th>
                   <th>Harga </th>
                   <th>Aksi</th>
@@ -36,14 +36,14 @@
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->jenis_sampah}}</td>
-                      <td>{{$k->harga}}</td>
+                      <td>Rp{{$k->harga}},00</td>
                       <td>
-                        <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 
                         <form class="d-inline-block" method="POST" action="{{url('/sampah/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                          <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
                         </form>
                       </td>
                     </tr>
@@ -55,7 +55,8 @@
                 @endif
               </tbody>
             </table>
-            <br/>
+            {{$sampah->links()}}
+           
           
           </div>
         </div>

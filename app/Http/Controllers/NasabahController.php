@@ -14,10 +14,15 @@ class NasabahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $nasabah = NasabahModel::with('jadwal')->get();
-        return view('nasabah.nasabah')->with('nsb', $nasabah);
+        if($request->has('search')){
+            $nasabah = NasabahModel::where('nama','LIKE','%'.$request->search.'%')->paginate(5);
+        }else{
+            $nasabah = NasabahModel::paginate(5);
+        }
+       
+        return view('nasabah.nasabah')->with('nasabah',$nasabah);
     }
 
     /**

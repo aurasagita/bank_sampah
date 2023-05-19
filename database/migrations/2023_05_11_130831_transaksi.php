@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->string('id_jadwal', 10)->unique();
+            $table->string('id_jadwal', 10)->nullable();
             $table->string('jenis_sampah',30)->nullable();
             $table->integer('berat')->nullable();
             $table->integer('harga')->nullable();

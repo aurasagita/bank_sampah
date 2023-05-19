@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('id_nasabah')->references('id')->on('nasabah')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_sopir')->references('id')->on('sopir')->onDelete('cascade')->onUpdate('cascade');
             $table->date('tanggal_pengambilan')->nullable();
-            $table->string('konfirmasi')->nullable();
+            $table->string('konfirmasi',255)->nullable();
             $table->timestamps();
         });
     }
