@@ -38,12 +38,12 @@
                       <td>{{$k->jenis_sampah}}</td>
                       <td>{{$k->harga}}</td>
                       <td>
-                        <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 
                         <form class="d-inline-block" method="POST" action="{{url('/sampah/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                          <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
                         </form>
                       </td>
                     </tr>
