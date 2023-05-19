@@ -36,7 +36,7 @@
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->jenis_sampah}}</td>
-                      <td>{{$k->harga}}</td>
+                      <td>Rp{{$k->harga}},00</td>
                       <td>
                         <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 
