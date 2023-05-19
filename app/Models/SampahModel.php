@@ -13,4 +13,8 @@ class SampahModel extends Model
         'jenis_sampah',
         'harga'
     ];
+
+    public function transaksi(){
+        return $this->hasMany(TransaksiModel::class);
+    }
 }

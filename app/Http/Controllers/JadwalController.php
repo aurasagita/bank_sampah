@@ -67,7 +67,8 @@ class JadwalController extends Controller
      */
     public function show($id)
     {
-        
+        $jadwal = JadwalModel::where('id', $id)->get();
+        return view('jadwal.detail_jadwal', ['jdw' => $jadwal[0]]);
     }
 
     /**
@@ -79,9 +80,13 @@ class JadwalController extends Controller
     public function edit($id)
     {
         $jadwal = JadwalModel::find($id);
-        return view('jadwal.create_jadwal')
+        $nasabah = NasabahModel::all();
+        $sopir = SopirModel::all();
+        return view('jadwal.edit_jadwal', compact('id'))
+        ->with('url_form', url('/jadwal/' . $id))
         ->with('jdw', $jadwal)
-        ->with('url_form',url('/jadwal/' . $id));
+        ->with('nasabah', $nasabah)
+        ->with('sopir', $sopir);
     }
 
     /**
@@ -94,15 +99,16 @@ class JadwalController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal'.$id,
-            'nama' => 'required|string|max:25',
-            'tanggal_mulai' => 'required|string|max:25',
-            'tanggal_akhir' => 'required|string|max:25',
+            'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal,'.$id,
+            'id_nasabah'=>'required',
+            'id_sopir'=>'required',
+            'tanggal_pengambilan'=>'required|date',
+            'konfirmasi'=>'required|string'
         ]);
 
         $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
-        return redirect('jadwal')
-            ->with('success', 'Data Berhasil Diedit');
+
+        return redirect('jadwal')->with('success', 'Data Berhasil Diedit');
     }
 
     /**
@@ -111,8 +117,10 @@ class JadwalController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JadwalModel $jadwal)
+    public function destroy($id)
     {
-        //
+        JadwalModel::where('id', '=', $id)->delete();
+        return redirect('jadwal')
+            ->with('success', 'Jadwal Berhasil Dihapus');
     }
 }

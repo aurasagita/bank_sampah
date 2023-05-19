@@ -6,16 +6,21 @@
     <div >
         {{Breadcrumbs::render('nasabah')}}
       </div>
-    <!-- Default Box-->
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title"> Data Nasabah </h3>
-            <br>
-        </div>
-        <div class="card-body">
-            <a href="{{url('/nasabah/create')}}" class="btn btn-sm btn-success my-2">
-                Tambah Data
-            </a>
+        <div class="card-header border-0">
+          <div class="d-flex justify-content-between">
+           <h3 class="card-title"><b>Daftar Nasabah</b></h3>
+          </div>
+          <div class="card-body">
+            <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
+              <a href="{{url('nasabah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
+              <form class="form" method="get" action="{{ url('searchNsb') }}" class="col-md-4" style="padding: 0">
+                <div class="form-group w-100 mb-3">
+                    <input type="text" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
+                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                </div>
+              </form>
+            </div>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>

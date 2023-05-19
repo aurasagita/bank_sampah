@@ -7,6 +7,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\SampahController;
 use App\Http\Controllers\SopirController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/nasabah', NasabahController::class)->parameter('nasabah', 'id');
     Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
     Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');;
+    Route::resource('/transaksi', TransaksiController::class)->parameter('sopir', 'id');;
 });
 
 Route::get('/index', [IndexController::class, 'index']);
