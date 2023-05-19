@@ -18,33 +18,38 @@
 
 </head>
 <body>
-  <section class="login d-flex">
-    <div class="login-left w-50">
-      <div class="row justify-content-center align-items-center h-100">
-        <div class="col-6">
-          <div class="header">
-            <h1>Login Bank Sampah</h1>
-          </div>
-            <div class="login-form">
-              <form action="{{url('/login')}}" method="post">
-                @csrf
-                <label for="email" class="form-label">Email</label>
-                <input name="email" type="text" class="form-control" placeholder="Enter your email">
-                <label for="password" class="form-label">Password</label>
-                <input name="password" type="password" class="form-control" placeholder="Enter your password">
-                <button type="submit" class="signin">Sign In</button>
-                <div class="text-center">
-                  <span class="d-inline">Don't have an account? <a href="{{url('/register')}}" class="d-inline text-decoration-none">Register</a></span>
-                </div>
+  <div class="login">
+    <section class="login d-flex">
+      <div class="login-left w-50">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-7">
+            <div class="header">
+              <h1>Sign In <br><span> Bank Sampah </span></h1>
             </div>
+              <div class="login-form">
+                <form action="{{url('/login')}}" method="post">
+                  @csrf
+                  <label for="email" class="form-label">Email</label>
+                  <input name="email" type="text" class="form-control" placeholder="Enter your email">
+                  <label for="password" class="form-label">Password</label>
+                  <input name="password" type="password" class="form-control" placeholder="Enter your password">
+                  <div class="button-center">
+                    <button type="submit" class="signin">Sign In</button>
+                  </div>
+                  <div class="text-center">
+                    <span class="d-inline">Don't have an account? <a href="{{url('/register')}}" class="d-inline text-decoration-none">Register</a></span>
+                  </div>
+              </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="login-right">
-      <div class="row justify-content-center align-items-center h-100">
-        <img src="assets/dist/img/login3.png" alt="">
+      <div class="login-right">
+        <div class="row justify-content-center align-items-center h-100">
+          <img src="assets/dist/img/login3.png" alt="">
+        </div>
       </div>
-    </div>
-  </section> 
+    </section> 
+  </div>
+  
 </body>
 </html>

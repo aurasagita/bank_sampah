@@ -7,9 +7,21 @@ body {
     font-style: normal;
     font-weight: bolder;
     color: #FFFFFF;
-    font-size: 36px;
-    line-height: 54px;
-    margin-bottom: 20px;
+    font-size: 45px;
+    line-height: 65px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.header span{
+    font-size: 30px;
+    border: 1px solid #fff;
+    padding: 6px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    color: #07AA14;
+    justify-content: center;
 }
 
 .login-left{
@@ -44,7 +56,7 @@ body {
 .login-form .signin{
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 30%;
     height: 40px;
     background: #fff;
     border-radius: 10px;
@@ -52,6 +64,20 @@ body {
     margin: 30px 0;
     border: none;
 }
+
+.button-center{
+    text-align: center;
+    position: relative;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+button:hover, button:focus, button:active{
+    box-shadow: 0 0 10px rgba(254, 254, 254, 0.5);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
 
 .login-form span{
     font-family: 'Poppins';
@@ -71,4 +97,5 @@ body {
 }
 
 .login-right img{
+    padding-left: 60px;
 }
