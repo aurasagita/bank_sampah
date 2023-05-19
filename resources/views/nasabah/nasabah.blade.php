@@ -15,14 +15,14 @@
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('nasabah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
               <form action="" method="GET" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" name="search" type="search" name="query" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             </div>
-            {{-- @if ($nsb->count())
+            {{-- @if ($nasabah->count())
                 <h1>Hasil Pencarian untuk "{{ $query }}"</h1>
                 <ul>
-                @foreach ($nsb as $post)
+                @foreach ($nasabah as $post)
                     <li>
                         <a href="{{ route('nasabah', $post->id) }}">
                             {{ $post->id_nasabah }}
@@ -49,8 +49,8 @@
                 </thead>
                 
                 <tbody>
-                    @if($nsb->count() > 0)
-                        @foreach($nsb as $i => $m)
+                    @if($nasabah->count() > 0)
+                        @foreach($nasabah as $i => $m)
                             <tr>
                                 <td>{{++$i}}</td>
                                 <td>{{$m->id_nasabah}}</td>
@@ -77,6 +77,7 @@
                     @endif
                 </tbody>
             </table>
+            {{$nasabah->links()}}
         </div>
     </div>
 </section>

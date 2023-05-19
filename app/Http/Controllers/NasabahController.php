@@ -14,19 +14,15 @@ class NasabahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if(\Illuminate\Support\Facades\Request::get('query') !== null) {
-            $query = \Illuminate\Support\Facades\Request::get('query');
-            $nasabah = NasabahModel::where('id_nasabah', 'LIKE', '%'.$query.'%')
-            ->orWhere('nama', 'LIKE', '%'.$query.'%')
-            ->orWhere('alamat', 'LIKE', '%'.$query.'%')
-            ->orWhere('phone', 'LIKE', '%'.$query.'%');
-        } else {
-            $nasabah = NasabahModel::with('jadwal')->get();
+        if($request->has('search')){
+            $nasabah = NasabahModel::where('nama','LIKE','%'.$request->search.'%')->paginate(5);
+        }else{
+            $nasabah = NasabahModel::paginate(5);
         }
-        //$nasabah = NasabahModel::with('jadwal')->get();
-        return view('nasabah.nasabah')->with('nsb', $nasabah);
+       
+        return view('nasabah.nasabah')->with('nasabah',$nasabah);
     }
 
     /**
