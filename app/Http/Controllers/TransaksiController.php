@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\JadwalModel;
 use App\Models\SampahModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransaksiController extends Controller
 {
@@ -15,11 +16,26 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $trs = TransaksiModel::with('transaksi')->get();
-        //$jdw = DB::table('jadwal')->paginate(5);
-        return view('transaksi.transaksi',['trs' => $trs]);
+        if($request->has('search')){
+            $transaksi = TransaksiModel::where('id_jadwal','LIKE','%'.$request->search.'%')->paginate(5);
+        }else{
+            $transaksi = TransaksiModel::paginate(5);
+        }
+       
+        return view('transaksi.transaksi')->with('transaksi', $transaksi);
+    }
+    public function grafik(){
+        $harga = TransaksiModel::select(DB::raw("CAST(SUM(harga)as int) as harga"))
+        ->GroupBy(DB::raw("Month(created_at)"))
+        ->pluck('harga');
+       
+        $bulan = TransaksiModel::select(DB::raw("MONTHNAME(created_at) as bulan"))
+        ->GroupBy(DB::raw("MONTHNAME(created_at)"))
+        ->pluck('bulan');
+       
+        return view('laporan.penjualan_grafik',compact('harga','bulan'));
     }
 
     /**

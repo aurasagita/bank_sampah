@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('jenis_sampah',30)->nullable();
             $table->integer('berat')->nullable();
             $table->integer('harga')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
+          
         });
     }
 

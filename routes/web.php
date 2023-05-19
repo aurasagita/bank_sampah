@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
     Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');;
     Route::resource('/transaksi', TransaksiController::class)->parameter('sopir', 'id');;
+    Route::get('/grafik_penjualan',[TransaksiController::class,'grafik']);
 });
 
 Route::get('/index', [IndexController::class, 'index']);
