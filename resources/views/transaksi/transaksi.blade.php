@@ -39,7 +39,7 @@
                       <td>{{$k->jadwal->id_jadwal}}</td>
                       <td>{{$k->sampah->jenis_sampah}}</td>
                       <td>{{$k->berat}}</td>
-                      <td>{{$k->harga}}</td>
+                      <td>Rp{{$k->harga}},00</td>
                       <td>
                         <a href="{{url('/transaksi/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 

@@ -16,7 +16,16 @@ class NasabahController extends Controller
      */
     public function index()
     {
-        $nasabah = NasabahModel::with('jadwal')->get();
+        if(\Illuminate\Support\Facades\Request::get('query') !== null) {
+            $query = \Illuminate\Support\Facades\Request::get('query');
+            $nasabah = NasabahModel::where('id_nasabah', 'LIKE', '%'.$query.'%')
+            ->orWhere('nama', 'LIKE', '%'.$query.'%')
+            ->orWhere('alamat', 'LIKE', '%'.$query.'%')
+            ->orWhere('phone', 'LIKE', '%'.$query.'%');
+        } else {
+            $nasabah = NasabahModel::with('jadwal')->get();
+        }
+        //$nasabah = NasabahModel::with('jadwal')->get();
         return view('nasabah.nasabah')->with('nsb', $nasabah);
     }
 
