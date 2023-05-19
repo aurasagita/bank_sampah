@@ -14,13 +14,28 @@
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('nasabah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" method="get" action="{{ url('searchNsb') }}" class="col-md-4" style="padding: 0">
-                <div class="form-group w-100 mb-3">
-                    <input type="text" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
-                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
-                </div>
-              </form>
+              <form action="" method="GET" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
             </div>
+            {{-- @if ($nsb->count())
+                <h1>Hasil Pencarian untuk "{{ $query }}"</h1>
+                <ul>
+                @foreach ($nsb as $post)
+                    <li>
+                        <a href="{{ route('nasabah', $post->id) }}">
+                            {{ $post->id_nasabah }}
+                            {{ $post->nama }}
+                            {{ $post->alamat }}
+                            {{ $post->phone }}
+                        </a>
+                    </li>
+                @endforeach
+                </ul>
+            @else
+                <p>Tidak ada hasil pencarian untuk "{{ $query }}".</p>
+            @endif --}}
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
