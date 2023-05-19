@@ -12,9 +12,14 @@ class SampahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sampah = SampahModel::all();
+        if($request->has('search')){
+            $sampah = SampahModel::where('jenis_sampah','LIKE','%'.$request->search.'%')->paginate(5);
+        }else{
+            $sampah = SampahModel::paginate(5);
+        }
+       
         return view('sampah.sampah')->with('sampah',$sampah);
     }
 
