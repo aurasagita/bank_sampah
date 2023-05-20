@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\NasabahController;
+use App\Http\Controllers\PageNasabahController;
 use App\Http\Controllers\SampahController;
 use App\Http\Controllers\SopirController;
 use App\Http\Controllers\TransaksiController;
@@ -40,7 +41,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
 });
 
 Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
-    
+    Route::resource('/pagenasabah', PageNasabahController::class)->parameter('pagenasabah', 'id');
 });
 
 Route::group(['middleware' => ['auth', 'role:sopir']], function(){
