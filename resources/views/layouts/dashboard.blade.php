@@ -118,38 +118,47 @@
                               </div>
                             </form>
 
-                        <div class= "card-body">
-                            <table class="table table-striped" id="table1">
-                                <thead>
+                            <div class="card-body">
+                             
+                                <table class="table table-bordered table-striped">
+                                  <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Id Jadwal</th>
-                                        <th>Jenis Sampah</th>
-                                        <th>Berat</th>
-                                        <th>Harga</th>
-                                        <th class="text-center">Action</th>
+                                      <th>#</th>
+                                      <th>Id Jadwal</th>
+                                      <th>Jenis Sampah</th>
+                                      <th>Berat</th>
+                                      <th>Harga</th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @if ($transaksi ->count() > 0)
+                                      @foreach ($transaksi as $i => $k)
+                                        <tr>
+                                          <td>{{++$i}}</td>
+                                          <td>{{$k->jadwal->id_jadwal}}</td>
+                                          <td>{{$k->sampah->jenis_sampah}}</td>
+                                          <td>{{$k->berat}}</td>
+                                          <td>Rp{{$k->harga}},00</td>
+                                          <td>
+                                           
+                                            <a href="{{url('/transaksi/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block">Detail</a>
+                                          </td>
+                                        </tr>
+                                      @endforeach
+                                    @else
+                                      <tr>
+                                        <td colspan="6" class="text-center">Data tidak ada</td>
                                       </tr>
-                                </thead>
-                                    <tbody>
-                                    @foreach ($results as $results)
-                                    <tr>
-                                    <td>{{$results->id}}</td>
-                                    <td>{{$results->id_jadwal}}</td>
-                                    <td>{{$results->jenis_sampah}}</td>
-                                    <td>{{$results->berat}}</td>
-                                    <td>Rp{{$results->harga}},00</td>
-                                    <td>
-                                    <a href="{{url('/transaksi/'. $results->id)}}"class="btn btn-sm btn-primary d-inline-block">Detail</a>
-                                    </td>
-                                        @endforeach
-                                </tbody>
-                            </table>
+                                    @endif
+                                  </tbody>
+                                </table>
+                               
+                              </div>
+                            </div>
                         </div>
-                    </div>
-                        
-                </div>
             </section>
-                    </div>
+                 
                     
 
         @endsection

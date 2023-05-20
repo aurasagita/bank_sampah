@@ -19,12 +19,8 @@ class DashboardController extends Controller
 
         
         
-        $results = DB::table('transaksi')
-        ->select(['id','id_jadwal','jenis_sampah', 'berat', 'harga'])
-        ->get();
-
-    
-    return view('layouts.dashboard', compact('results'));
+      $transaksi = TransaksiModel::with('transaksi')->get();
+      return view('layouts.dashboard',['transaksi'=> $transaksi]);
 }
 
 
