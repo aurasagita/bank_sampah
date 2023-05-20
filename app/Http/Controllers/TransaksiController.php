@@ -17,26 +17,24 @@ class TransaksiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        if($request->has('search')){
-            $transaksi = TransaksiModel::where('id_jadwal','LIKE','%'.$request->search.'%')->paginate(5);
-        }else{
-            $transaksi = TransaksiModel::paginate(5);
+    {$cari = request('cari');
+        $transaksi = TransaksiModel::query();
+        if ($cari) {
+           
+            $transaksi->where(function ($query) use ($cari) {
+                $query->where('id_jadwal', 'LIKE', '%' . $cari . '%');
+                    
+            })->orWhereHas('jadwal', function ($query) use ($cari) {
+                $query->where('id_jadwal', 'LIKE', '%' . $cari . '%');
+                  
+            });
         }
-       
-        return view('transaksi.transaksi')->with('transaksi', $transaksi);
+    
+        $transaksi = $transaksi->get();
+        return view('transaksi.transaksi', compact('transaksi'));
+    
     }
-    public function grafik(){
-        $harga = TransaksiModel::select(DB::raw("CAST(SUM(harga)as int) as harga"))
-        ->GroupBy(DB::raw("Month(created_at)"))
-        ->pluck('harga');
-       
-        $bulan = TransaksiModel::select(DB::raw("MONTHNAME(created_at) as bulan"))
-        ->GroupBy(DB::raw("MONTHNAME(created_at)"))
-        ->pluck('bulan');
-       
-        return view('laporan.penjualan_grafik',compact('harga','bulan'));
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -135,5 +133,22 @@ class TransaksiController extends Controller
         TransaksiModel::where('id', '=', $id)->delete();
         return redirect('transaksi')
             ->with('success', 'Transaski Berhasil Dihapus');
+    }
+    public function grafik(Request $request){
+
+        $harga = TransaksiModel::select(DB::raw("CAST(SUM(harga)as int) as harga"))
+        ->whereYear("created_at",date('Y'))
+        ->GroupBy(DB::raw("Month(created_at)"))
+        ->pluck('harga');
+       
+        $bulan = TransaksiModel::select(DB::raw("MONTHNAME(created_at) as bulan"))
+        ->whereYear("created_at",date('Y'))
+        ->GroupBy(DB::raw("MONTHNAME(created_at)"))
+        ->pluck('bulan');
+       
+        return view('laporan.penjualan_grafik',compact('harga','bulan'));
+    }
+    public function cetak_pdf(){
+        
     }
 }

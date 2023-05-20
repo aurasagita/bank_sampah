@@ -13,9 +13,9 @@
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('transaksi/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" name="search" method="get" action="{{ url('transaksi') }}" class="col-md-4" style="padding: 0">
+              <form class="form" method="GET" action="{{ url('transaksi') }}" class="col-md-4" style="padding: 0">
                 <div class="form-group w-100 mb-3">
-                    <input type="text" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
+                    <input type="search" name="cari" class="form-control w-75 d-inline"  placeholder="Masukkan keyword">
                     <button type="submit" class="btn btn-primary mb-1">Cari</button>
                 </div>
               </form>
@@ -55,12 +55,12 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="5" class="text-center">Data tidak ada</td>
+                    <td colspan="6" class="text-center">Data tidak ada</td>
                   </tr>
                 @endif
               </tbody>
             </table>
-            {{$transaksi->links()}}
+           
           </div>
         </div>
     </div>
