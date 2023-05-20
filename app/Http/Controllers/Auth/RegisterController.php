@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\NasabahModel;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -51,8 +54,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email_register' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password_register' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
 
@@ -62,12 +65,36 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(array $data):User
     {
+        NasabahModel::create([
+            'nama' => $data['name'],
+            'alamat' => $data['alamat'],
+            'phone' => $data['phone']
+        ]);
+
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+            'email' => $data['email_register'],
+            'role' => 'nasabah',
+            'password' => Hash::make($data['password_register']),
+        ]); 
+    }
+
+    protected function store(Request $request)
+    {
+        $validator = self::validator($request->except(['_token']));
+
+        // Jika validasi gagal, kembalikan pesan error
+        if ($validator->fails()) {
+            return redirect('register')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        self::create($request->except(['_token']));
+
+        return redirect('/login')
+            ->with('success', 'Registered Successfully');
     }
 }
