@@ -29,7 +29,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/logout',[LoginController::class,'logout']);
 
-Route::middleware(['auth'])->group(function(){
+Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id');
     Route::resource('/nasabah', NasabahController::class)->parameter('nasabah', 'id');
@@ -37,6 +37,14 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');
     Route::resource('/transaksi', TransaksiController::class)->parameter('transaksi', 'id');
     Route::get('/grafik_penjualan',[TransaksiController::class,'grafik']);
+});
+
+Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
+    
+});
+
+Route::group(['middleware' => ['auth', 'role:sopir']], function(){
+    
 });
 
 Route::get('/index', [IndexController::class, 'index']);

@@ -57,7 +57,7 @@
       </div>
       <div class="login-right">
         <div class="row justify-content-center align-items-center h-100">
-          <img src="assets/dist/img/login3.png" alt="">
+          <img src="assets/dist/img/login5.png" alt="">
         </div>
       </div>
     </section> 
@@ -67,7 +67,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fw-bold mb-0 fs-2" id="exampleModalLabel">Register</h1>
+              <h1 class="modal-title fw-bold mb-0 fs-2" id="exampleModalLabel">Register Bank Sampah</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ url('register') }}" method="post">
