@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
 });
 
 Route::group(['middleware' => ['auth', 'role:sopir']], function(){
-    Route::get('/jadwalsopir', [PageSopirController::class, 'index'])->name('jadwalsopir');
+    Route::resource('/jadwalsopir', PageSopirController::class)->parameter('jadwalsopir', 'id');
 });
 
 Route::get('/index', [IndexController::class, 'index']);
