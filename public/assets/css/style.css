@@ -218,10 +218,6 @@ nav li a:hover{
     background-color:#efefef;
 }
 
-.cpr{
-    font-family: 'Poppins', sans-serif;
-}
-
 .copyright{
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
 }

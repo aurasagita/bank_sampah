@@ -1,3 +1,3 @@
 <footer class="main-footer">
-    Copyright <strong>&copy;Bank Sampah Malang.</strong>
+    Copyright &copy;2023 <strong>Bank Sampah Malang.</strong>
   </footer>

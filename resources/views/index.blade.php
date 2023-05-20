@@ -292,8 +292,8 @@
         </a>
       </section>
     </div>
-    <div class="cpr text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      ©2023 Copyright: <span class="copyright">Bank Sampah Malang</span>
+    <div class="copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      Copyright ©2023 <strong>Bank Sampah Malang.</strong>
     </div>
   </footer>
   
