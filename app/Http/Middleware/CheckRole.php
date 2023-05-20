@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class CheckRole
 {
@@ -14,17 +16,18 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        $roles = array_slice(func_get_args(), 2);
-
-        foreach ($roles as $role) {
-            $user = \Auth::user()->role;
-            if($user == $role) {
-                return $next($request);
-            }
+        if(in_array($request->user()->role, $roles)){
+            return $next($request);
         }
 
-        return redirect('/');
+        if(Auth::user()->role == 'admin'){
+            return Redirect::to('dashboard');
+        } elseif(Auth::user()->role == 'nasabah'){ 
+            return Redirect::to('dashboard');
+        } elseif(Auth::user()->role == 'sopir'){
+            return Redirect::to('dashboard');
+        }
     }
 }

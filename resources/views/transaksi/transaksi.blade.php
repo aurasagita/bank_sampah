@@ -13,7 +13,7 @@
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('transaksi/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" method="get" action="{{ url('searchJdw') }}" class="col-md-4" style="padding: 0">
+              <form class="form" name="search" method="get" action="{{ url('transaksi') }}" class="col-md-4" style="padding: 0">
                 <div class="form-group w-100 mb-3">
                     <input type="text" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
                     <button type="submit" class="btn btn-primary mb-1">Cari</button>
@@ -32,8 +32,8 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($trs ->count() > 0)
-                  @foreach ($trs as $i => $k)
+                @if ($transaksi ->count() > 0)
+                  @foreach ($transaksi as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->jadwal->id_jadwal}}</td>
@@ -60,6 +60,7 @@
                 @endif
               </tbody>
             </table>
+            {{$transaksi->links()}}
           </div>
         </div>
     </div>
