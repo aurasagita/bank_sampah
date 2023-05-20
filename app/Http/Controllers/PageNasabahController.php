@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalModel;
 use Illuminate\Http\Request;
 
 class PageNasabahController extends Controller
@@ -13,7 +14,26 @@ class PageNasabahController extends Controller
      */
     public function index()
     {
-        //
+        $keyword = request('keyword');
+       
+        $nasabah = JadwalModel::query();
+
+    if ($keyword) {
+       
+
+        $nasabah->where(function ($query) use ($keyword) {
+            $query->where('id_jadwal', 'LIKE', '%' . $keyword . '%');
+             
+        })->orWhereHas('jadwal', function ($query) use ($keyword) {
+            $query->where('id_jadwal', 'LIKE', '%' . $keyword . '%');
+                
+        });
+    }
+
+
+    $nasabah = $nasabah->get();
+
+    return view('pagenasabah.pagenasabah', compact('nasabah'));
     }
 
     /**
