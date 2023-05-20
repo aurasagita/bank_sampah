@@ -191,6 +191,7 @@ nav li a:hover{
     justify-content: center;
     display: flex;
     flex-direction: column;
+    padding-bottom: 5%;
 }
 
 .temukan-kami-container h3{
@@ -211,4 +212,12 @@ nav li a:hover{
 
 .daftar-nasabah h3{
     padding-top: 10%;
+}
+
+.bg{
+    background-color:#efefef;
+}
+
+.copyright{
+    font-family: 'Poppins', sans-serif;
 }
