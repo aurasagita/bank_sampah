@@ -274,8 +274,28 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.0337594699236!2d112.61688607530391!3d-7.9954506797507525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7882a9d385ba91%3A0x667db69be1ab50c9!2sBank%20Sampah%20Malang!5e0!3m2!1sen!2sid!4v1684058288621!5m2!1sen!2sid" 
       width="1100" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+    <div class="clearfix"></div>
   </section>
 
+  <!-- Footer -->
+  <footer class="bg text-center text-white">
+    <div class="container p-4 pb-0">
+      <section class="mb-4">
+        <a class="btn btn-outline-success btn-floating m-1" href="https://wa.me/6285755252327" role="button">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a class="btn btn-outline-success btn-floating m-1" href="mailto:nadacika17@gmail.com" role="button">
+          <i class="far fa-envelope"></i>
+        </a>
+        <a class="btn btn-outline-success btn-floating m-1" href="tel:+6285755252327" role="button">
+          <i class="fas fa-phone"></i>
+        </a>
+      </section>
+    </div>
+    <div class="cpr text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      ©2023 Copyright: <span class="copyright">Bank Sampah Malang</span>
+    </div>
+  </footer>
   
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
