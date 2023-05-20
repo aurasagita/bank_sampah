@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CetakLaporan;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\JadwalController;
@@ -38,7 +39,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
     Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');
     Route::resource('/transaksi', TransaksiController::class)->parameter('transaksi', 'id');
+    Route::get('/laporan',[CetakLaporan::class,'index']);
     Route::get('/grafik_penjualan',[TransaksiController::class,'grafik']);
+    Route::get('/cetakTanggal/{tanggal_awal}/{tanggal_akhir}',[CetakLaporan::class,'cetakTanggal']);
 });
 
 Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
