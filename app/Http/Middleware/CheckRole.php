@@ -27,7 +27,7 @@ class CheckRole
         } elseif(Auth::user()->role == 'nasabah'){ 
             return Redirect::to('pagenasabah');
         } elseif(Auth::user()->role == 'sopir'){
-            return Redirect::to('dashboard');
+            return Redirect::to('jadwalsopir');
         }
     }
 }
