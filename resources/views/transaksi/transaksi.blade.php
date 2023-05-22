@@ -28,7 +28,7 @@
                   <th>Jenis Sampah</th>
                   <th>Berat</th>
                   <th>Harga</th>
-                  <th>Action</th>
+                  <th style="width: 150px">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,15 +41,15 @@
                       <td>{{$k->berat}}</td>
                       <td>Rp{{$k->harga}},00</td>
                       <td>
-                        <a href="{{url('/transaksi/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{{url('/transaksi/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 
                         <form class="d-inline-block" method="POST" action="{{url('/transaksi/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                          <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
                         </form>
 
-                        <a href="{{url('/transaksi/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block">Detail</a>
+                        <a href="{{url('/transaksi/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>
                       </td>
                     </tr>
                   @endforeach

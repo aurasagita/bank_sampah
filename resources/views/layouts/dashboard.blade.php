@@ -41,30 +41,30 @@
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-xl-3 col-md-4 mb-2">
+                      <div class="col-xl-3 col-md-4 mb-2">
                             <div class="card border-left-info shadow h-100 py-2 bg-success">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
+
                                             <p>Nasabah</p>
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Nasabah</div>
+                                            <div class="h5 mb-0 font-weight-bold">{{ $hitungNasabah }} Nasabah</div>
                                             <a href="{{ url('/nasabah') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
-                                        <div class="col-auto">
+                                             <div class="col-auto">
                                             <i class="fas fa-users fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <div></div>
+                    </div>
                     <div class="col-xl-3 col-md-4 mb-2">
                         <div class="card border-left-info shadow h-100 py-2 bg-success">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p>Sopir</p>
-                                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Sopir </div>
+                                      <p>Sopir</p>
+                                      <div class="h5 mb-0 font-weight-bold">{{ $hitungSopir }} Sopir</div>
                                         <a href="{{ url('/sopir') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                     <div class="col-auto">
@@ -73,15 +73,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-4 mb-2">
+                </div>
+                <div class="col-xl-3 col-md-4 mb-2">
                                 <div class="card border-left-info shadow h-100 py-2 bg-success">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <p>Sampah</p>
-                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Sampah</div>
-                                                <a href="{{ url('/komplain') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                              <p>Sampah</p>
+                                              <div class="h5 mb-0 font-weight-bold">{{ $hitungSampah }} Sampah</div>
+                                                <a href="{{ url('/sampah') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-book fa-2x"></i>
@@ -95,8 +95,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <p>Jadwal</p>
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Jadwal</div>
+                                          <p>Jadwal</p>
+                                          <div class="h5 mb-0 font-weight-bold">{{ $hitungJadwal }} Jadwal</div>
                                             <a href="{{ url('/jadwal') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                         <div class="col-auto">
