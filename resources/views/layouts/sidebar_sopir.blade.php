@@ -23,22 +23,15 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-success elevation-4">
+  <aside class="main-sidebar sidebar-light-success">
     <!-- Brand Logo -->
     <div class="nav-item">
-   
       <!-- Brand Logo -->
       <a href="../../index3.html" class="brand-link">
         <img src="{{asset('assets/dist/img/logo.png')}}" class="img-fluid" alt="AdminLTE Logo" style="width: 100px" width="100px" alt="User Image">
-      
       </a>
-  
     </div>
-    <!-- Sidebar -->
-    @include('layouts.sidebar')
-    <!-- /.sidebar -->
-    </aside>
-
+  </aside>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
