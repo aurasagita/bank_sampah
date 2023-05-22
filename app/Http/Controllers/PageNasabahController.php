@@ -28,7 +28,10 @@ class PageNasabahController extends Controller
      */
     public function create()
     {
-        
+        $user = Auth::user();
+        $jadwalUser = JadwalModel::where('id_nasabah', $user->id)->first();
+        return view('pagenasabah.create_jadwal', compact('jadwalUser'))
+        ->with('url_form', url('/jadwalnasabah'));
     }
 
     /**
@@ -39,7 +42,17 @@ class PageNasabahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_nasabah'=>'required',
+            'id_sopir'=>'required',
+            'tanggal_pengambilan'=>'required|date',
+            'konfirmasi'=>'required|string'
+        ]);
+
+        JadwalModel::insert($request->except(['_token']));
+        return redirect('jadwal')
+            ->with('success', 'Jadwal Berhasil Ditambahkan');
+        //return redirect('jadwalnasabah')->with('success', 'Jadwal Berhasil Ditambahkan');
     }
 
     /**
