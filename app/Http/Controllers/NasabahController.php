@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\NasabahModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class NasabahController extends Controller
 {
@@ -57,7 +58,7 @@ class NasabahController extends Controller
         User::create([
             'name' => $request->input('nama'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password')),
             'role' => 'nasabah',
         ]);
         NasabahModel::create([
@@ -66,7 +67,7 @@ class NasabahController extends Controller
             'alamat' => $request->input('alamat'),
             'phone' => $request->input('phone'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password')),
         ]);
 
         return redirect('nasabah')->with('success', 'Nasabah Berhasil Ditambahkan');

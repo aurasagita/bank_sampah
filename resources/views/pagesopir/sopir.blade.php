@@ -6,7 +6,7 @@
   </div>
     <div class="card">
         <div class="card-header border-0">
-          <div class="d-flex justify-content-between"><h3 class="card-title"><b>Daftar jadwal_user</b></h3></div>
+          <div class="d-flex justify-content-between"><h3 class="card-title"><b>Daftar Jadwal Sopir</b></h3></div>
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -33,6 +33,7 @@
                       <td>{{$k->konfirmasi}}</td>
                      <td><div class="pr-1">
                         <a href="{{url('/jadwalsopir/'. $k->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
+                        <a href="{{url('/jadwalsopir/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                     </div></td>
                     </tr>
                   @endforeach
