@@ -73,7 +73,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{url('/grafik_penjualan')}}" class="nav-link {{request()->is('laporan')?'active' : ''}}">
+          <a href="{{url('/laporan')}}" class="nav-link {{request()->is('laporan')?'active' : ''}}">
             <i class="nav-icon fa fa-sticky-note"></i>
             <p>
               Laporan

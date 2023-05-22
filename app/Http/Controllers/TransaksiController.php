@@ -8,6 +8,7 @@ use App\Models\JadwalModel;
 use App\Models\SampahModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class TransaksiController extends Controller
 {
@@ -148,7 +149,7 @@ class TransaksiController extends Controller
        
         return view('laporan.penjualan_grafik',compact('harga','bulan'));
     }
-    public function cetak_pdf(){
-        
-    }
+  
+
+  
 }
