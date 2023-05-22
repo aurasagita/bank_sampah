@@ -50,22 +50,23 @@ class NasabahController extends Controller
             'nama'=>'required|string',
             'alamat'=>'required|string|max:255',
             'phone'=>'required|digits_between:5, 15',
-            'email'=>'required|string|unique:email',
+            'email'=>'required|string|unique:users,email',
             'password' => 'required|string|min:4'
         ]);
 
         User::create([
-            ['name' => $request->input('name')],
-            ['email' => $request->input('email')],
-            ['password' => $request->input('password')],
+            'name' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+            'role' => 'nasabah',
         ]);
         NasabahModel::create([
-            ['id_nasabah' => $request->input('id_nasabah')],
-            ['nama' => $request->input('nama')],
-            ['alamat' => $request->input('alamat')],
-            ['phone' => $request->input('phone')],
-            ['email' => $request->input('email')],
-            ['password' => $request->input('password')],
+            'id_nasabah' => $request->input('id_nasabah'),
+            'nama' => $request->input('nama'),
+            'alamat' => $request->input('alamat'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
         ]);
 
         return redirect('nasabah')->with('success', 'Nasabah Berhasil Ditambahkan');
