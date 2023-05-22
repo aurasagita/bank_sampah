@@ -45,6 +45,22 @@
                   <span class="error invalid-feedback">{{ $message }} </span>
                 @enderror
             </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input class="form-control @error('email') is-invalid @enderror" value="{{ isset($spr)? $spr->email :old('email') }}" name="email" type="text"/>
+              @error('email')
+                <span class="error invalid-feedback">{{ $message }} </span>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label>Password</label>
+              <input class="form-control @error('password') is-invalid @enderror" value="{{ isset($spr)? $spr->password :old('password') }}" name="password" type="text"/>
+              @error('password')
+                <span class="error invalid-feedback">{{ $message }} </span>
+              @enderror
+            </div>
             
             <div class="form-group">
               <button class="btn btn-sm btn-primary">Simpan</button>
