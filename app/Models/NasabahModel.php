@@ -10,7 +10,7 @@ class NasabahModel extends Model
     use HasFactory;
     protected $table = 'nasabah';
     protected $fillable = [
-        'id_nasabah', 'nama', 'alamat', 'phone'
+        'id_nasabah', 'nama', 'alamat', 'phone','email','password'
     ];
 
     public function jadwal() {

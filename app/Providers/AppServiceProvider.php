@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\JadwalModel;
+use App\Models\NasabahModel;
+use App\Models\SampahModel;
+use App\Models\SopirModel;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +30,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+        view::share('hitungNasabah', NasabahModel::count());
+
+        View::share('hitungSopir', SopirModel::count());
+        View::share('hitungSampah', SampahModel::count());
+
+        View::share('hitungJadwal', JadwalModel::count());
     }
 }

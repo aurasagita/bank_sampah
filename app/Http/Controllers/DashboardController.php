@@ -17,8 +17,6 @@ class DashboardController extends Controller
 {
     public function index(Request $request) {
 
-        
-        
       $transaksi = TransaksiModel::with('transaksi')->get();
       return view('layouts.dashboard',['transaksi'=> $transaksi]);
 }

@@ -1,5 +1,4 @@
-@extends('layouts.template')
-
+@extends('layouts.sidebar_sopir')
 @section('content')
 <section class="content">
   <div >
@@ -7,10 +6,7 @@
   </div>
     <div class="card">
         <div class="card-header border-0">
-          <div class="d-flex justify-content-between">
-           <h3 class="card-title"><b>Daftar jadwal_user</b></h3>
-          </div>
-         
+          <div class="d-flex justify-content-between"><h3 class="card-title"><b>Daftar jadwal_user</b></h3></div>
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -50,7 +46,6 @@
             
           </div>
         </div>
-    </div>
 </section>
     
 @endsection
