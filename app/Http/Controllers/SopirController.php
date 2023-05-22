@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Sopir;
 use App\Http\Controllers\Controller;
+use App\Models\NasabahModel;
 use App\Models\SopirModel;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SopirController extends Controller
 {
@@ -48,10 +51,26 @@ class SopirController extends Controller
             'id_sopir'=>'required|string|max:10|unique:sopir,id_sopir',
             'nama'=>'required|string|max:50',
             'alamat'=>'required|string|max:255',
-            'phone'=>'required|digits_between:5, 15'
+            'phone'=>'required|digits_between:5, 15',
+            'email'=>'required|string|unique:users,email',
+            'password' => 'required|string|min:4'
         ]);
 
-        $data = SopirModel::create($request->except(['_token']));
+        User::create([
+            'name' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'role' => 'sopir',
+        ]);
+        SopirModel::create([
+            'id_sopir' => $request->input('id_sopir'),
+            'nama' => $request->input('nama'),
+            'alamat' => $request->input('alamat'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+
         return redirect('sopir')->with('success', 'Sopir Berhasil Ditambahkan');
     }
 
