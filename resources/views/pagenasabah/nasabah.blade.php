@@ -25,7 +25,7 @@
                 <tr>
                   <th>#</th>
                   <th>Id Jadwal</th>
-                  <th>Id Sopir</th>
+                  <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -37,7 +37,7 @@
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->id_jadwal}}</td>
-                      <td>{{$k->sopir->id_sopir}}</td>
+                      <td>{{$k->sopir->nama}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>
                       <td><div class="pr-1">
