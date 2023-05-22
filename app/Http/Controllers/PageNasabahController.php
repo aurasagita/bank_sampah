@@ -63,7 +63,8 @@ class PageNasabahController extends Controller
      */
     public function show($id)
     {
-        //
+        $jadwal = JadwalModel::where('id', $id)->get();
+        return view('pagenasabah.detail_jadwal', ['jadwal' => $jadwal[0]]);
     }
 
     /**
