@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\JadwalModel;
+use App\Models\NasabahModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageNasabahController extends Controller
 {
@@ -14,26 +16,9 @@ class PageNasabahController extends Controller
      */
     public function index()
     {
-        $keyword = request('keyword');
-       
-        $nasabah = JadwalModel::query();
-
-    if ($keyword) {
-       
-
-        $nasabah->where(function ($query) use ($keyword) {
-            $query->where('id_jadwal', 'LIKE', '%' . $keyword . '%');
-             
-        })->orWhereHas('jadwal', function ($query) use ($keyword) {
-            $query->where('id_jadwal', 'LIKE', '%' . $keyword . '%');
-                
-        });
-    }
-
-
-    $nasabah = $nasabah->get();
-
-    return view('pagenasabah.pagenasabah', compact('nasabah'));
+        $user = Auth::user();
+        $jadwalUser = JadwalModel::where('id_nasabah', $user->id)->get();
+        return view('pagenasabah.nasabah', compact('jadwalUser'));
     }
 
     /**
@@ -43,7 +28,7 @@ class PageNasabahController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

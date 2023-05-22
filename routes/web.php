@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
 });
 
 Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
-    Route::resource('/pagenasabah', PageNasabahController::class)->parameter('pagenasabah', 'id');
+    Route::resource('/jadwalnasabah', PageNasabahController::class)->parameter('pagenasabah', 'id');
 });
 
 Route::group(['middleware' => ['auth', 'role:sopir']], function(){
