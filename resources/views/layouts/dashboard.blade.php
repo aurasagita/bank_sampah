@@ -49,7 +49,7 @@
 
                                             <p>Nasabah</p>
                                             <div class="h5 mb-0 font-weight-bold">{{ $hitungNasabah }} Nasabah</div>
-                                            <a href="{{ url('dashboard/nasabah') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="{{ url('/nasabah') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                              <div class="col-auto">
                                             <i class="fas fa-users fa-2x"></i>
@@ -81,7 +81,7 @@
                                             <div class="col mr-2">
                                               <p>Sampah</p>
                                               <div class="h5 mb-0 font-weight-bold">{{ $hitungSampah }} Sampah</div>
-                                                <a href="{{ url('/komplain') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                <a href="{{ url('/sampah') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-book fa-2x"></i>
