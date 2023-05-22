@@ -22,19 +22,19 @@ class UserSeeder extends Seeder
                'email' => 'admin1@gmail.com',
                'password' => Hash::make('1234'),
                 'role' => 'admin'
+            ],
+            [
+                'name' => 'Nasabah',
+                'email' => 'nasabah1@gmail.com',
+                'password' => Hash::make('1234'),
+                'role' => 'nasabah'
+            ],
+            [
+               'name' => 'Sopir',
+               'email' => 'sopir1@gmail.com',
+               'password' => Hash::make('1234'),
+               'role' => 'sopir'
             ]
-            // [
-               // 'name' => 'Nasabah',
-               // 'email' => 'nasabah1@gmail.com',
-               // 'password' => Hash::make('1234'),
-                //'role' => 'nasabah'
-            // ],
-           //  [
-               // 'name' => 'Sopir',
-               // 'email' => 'sopir1@gmail.com',
-               // 'password' => Hash::make('1234'),
-               // 'role' => 'sopir'
-            // ],
         ]);
     }
 }
