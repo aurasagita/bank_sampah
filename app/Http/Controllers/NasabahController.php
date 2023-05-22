@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Nasabah;
 use App\Http\Controllers\Controller;
 use App\Models\NasabahModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NasabahController extends Controller
@@ -46,12 +47,27 @@ class NasabahController extends Controller
     {
         $request->validate([
             'id_nasabah'=>'required|string|max:10|unique:nasabah,id_nasabah',
-            'nama'=>'required|string|max:50',
+            'nama'=>'required|string',
             'alamat'=>'required|string|max:255',
-            'phone'=>'required|digits_between:5, 15'
+            'phone'=>'required|digits_between:5, 15',
+            'email'=>'required|string|unique:email',
+            'password' => 'required|string|min:4'
         ]);
 
-        $data = NasabahModel::create($request->except(['_token']));
+        User::create([
+            ['name' => $request->input('name')],
+            ['email' => $request->input('email')],
+            ['password' => $request->input('password')],
+        ]);
+        NasabahModel::create([
+            ['id_nasabah' => $request->input('id_nasabah')],
+            ['nama' => $request->input('nama')],
+            ['alamat' => $request->input('alamat')],
+            ['phone' => $request->input('phone')],
+            ['email' => $request->input('email')],
+            ['password' => $request->input('password')],
+        ]);
+
         return redirect('nasabah')->with('success', 'Nasabah Berhasil Ditambahkan');
     }
 
