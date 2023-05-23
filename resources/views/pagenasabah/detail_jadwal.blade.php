@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.sidebar_sopir')
 
 @section('content')
 <section class="content">
@@ -21,7 +21,6 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>Id Jadwal    : </b>{{$jadwal->id_jadwal}}</li>
                 <br>
-
                     <li class="list-group-item"><b>Nama Sopir</b>     : {{$jadwal->sopir->nama}}</li>
                     <li class="list-group-item"><b>Nomor HP Sopir </b>         : {{$jadwal->sopir->phone}}</li>
                 <br>

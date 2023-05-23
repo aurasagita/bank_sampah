@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.sidebar_sopir')
 
 @section('content')
 <section class="content">
@@ -13,12 +13,7 @@
           <br>
           <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('jadwalnasabah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" method="get" action="{{ url('sampah') }}" class="col-md-4" style="padding: 0">
-                <div class="form-group w-100 mb-3">
-                    <input type="search" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
-                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
-                </div>
-              </form>
+             
             </div>
             <table class="table table-bordered table-striped">
               <thead>
