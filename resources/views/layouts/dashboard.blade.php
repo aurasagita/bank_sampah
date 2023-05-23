@@ -121,6 +121,7 @@
                                       <th>Jenis Sampah</th>
                                       <th>Berat</th>
                                       <th>Harga</th>
+                                      <th>Tanggal Input</th>
                                       <th>Action</th>
                                     </tr>
                                   </thead>
@@ -133,6 +134,7 @@
                                           <td>{{$k->sampah->jenis_sampah}}</td>
                                           <td>{{$k->berat}}</td>
                                           <td>Rp{{$k->harga}},00</td>
+                                          <td>{{$k->created_at}}</td>
                                           <td>
                                            
                                             <a href="{{url('/transaksi/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block">Detail</a>

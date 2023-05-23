@@ -19,7 +19,7 @@
                     <option value="Menunggu Pick Up" {{ old('kofnirmasi', $jdw->konfirmasi) == 'Menunggu Pick Up' ? 'selected' : '' }}>Menunggu Pick Up</option>
                     <option value="Pick Up" {{ old('konfirmasi', $jdw->konfirmasi) == 'Pick Up' ? 'selected' : '' }}>Pick Up</option>
                   </select>
-                  
+
                   @error('konfirmasi')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
