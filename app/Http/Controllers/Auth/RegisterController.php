@@ -94,7 +94,7 @@ class RegisterController extends Controller
 
         self::create($request->except(['_token']));
 
-        return redirect('/login')
+        return redirect('/dashboard')
             ->with('success', 'Registered Successfully');
     }
 }

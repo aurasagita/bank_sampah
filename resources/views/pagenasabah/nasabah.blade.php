@@ -3,7 +3,7 @@
 @section('content')
 <section class="content">
   <div >
-    {{Breadcrumbs::render('jadwal')}}
+    {{Breadcrumbs::render('jadwalnasabah')}}
   </div>
     <div class="card">
         <div class="card-header border-0">
