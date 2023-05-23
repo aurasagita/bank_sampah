@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/jadwalnasabah';
 
     /**
      * Create a new controller instance.
@@ -94,7 +94,7 @@ class RegisterController extends Controller
 
         self::create($request->except(['_token']));
 
-        return redirect('/dashboard')
+        return redirect('/login')
             ->with('success', 'Registered Successfully');
     }
 }
