@@ -29,6 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 Route::get('/logout',[LoginController::class,'logout']);
 

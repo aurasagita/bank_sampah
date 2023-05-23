@@ -41,71 +41,64 @@
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                      <div class="col-xl-3 col-md-4 mb-2">
-                            <div class="card border-left-info shadow h-100 py-2 bg-success">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-
-                                            <p>Nasabah</p>
-                                            <div class="h5 mb-0 font-weight-bold">{{ $hitungNasabah }} Nasabah</div>
-                                            <a href="{{ url('/nasabah') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
-                                        </div>
-                                             <div class="col-auto">
-                                            <i class="fas fa-users fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="col-xl-3 col-md-4 mb-2">
-                        <div class="card border-left-info shadow h-100 py-2 bg-success">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                      <p>Sopir</p>
-                                      <div class="h5 mb-0 font-weight-bold">{{ $hitungSopir }} Sopir</div>
-                                        <a href="{{ url('/sopir') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users fa-2x"></i>
-                                    </div>
-                                </div>
-                            </div>
+                      <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                          <div class="inner">
+                            <h3>{{ $hitungNasabah }}</h3>
+                            <p>Nasabah</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-users fa-2x"></i>
+                          </div>
+                          <a href="{{ url('/nasabah') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                </div>
-                <div class="col-xl-3 col-md-4 mb-2">
-                                <div class="card border-left-info shadow h-100 py-2 bg-success">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                              <p>Sampah</p>
-                                              <div class="h5 mb-0 font-weight-bold">{{ $hitungSampah }} Sampah</div>
-                                                <a href="{{ url('/sampah') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-book fa-2x"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                      </div>
+                      <!-- ./col -->
+                      <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                          <div class="inner">
+                            <h3>{{ $hitungSopir }}</h3>
+                            <p>Sopir</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fa fa-truck"></i>
+                          </div>
+                          <a href="{{ url('/sopir') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                        <div class="col-xl-3 col-md-4 mb-2">
-                            <div class="card border-left-info shadow h-100 py-2 bg-success">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                          <p>Jadwal</p>
-                                          <div class="h5 mb-0 font-weight-bold">{{ $hitungJadwal }} Jadwal</div>
-                                            <a href="{{ url('/jadwal') }}" class="small-box-footer h5 mb-0 font-weight-bold">More info <i class="fas fa-arrow-circle-right"></i></a>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-bars fa-2x"></i>  
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                      </div>
+                      <!-- ./col -->
+                      <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                          <div class="inner">
+                            <h3>{{ $hitungSampah }}</h3>
+            
+                            <p>Sampah</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fa fa-trash"></i>
+                          </div>
+                          <a href="{{ url('/sampah') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
+                      </div>
+                      <!-- ./col -->
+                      <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                          <div class="inner">
+                            <h3>{{ $hitungJadwal }}</h3>
+            
+                            <p>Jadwal</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <a href="{{ url('/jadwal') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                      </div>
+                      <!-- ./col -->
                     </div>
 
                     <div class="card">
@@ -159,7 +152,4 @@
                             </div>
                         </div>
             </section>
-                 
-                    
-
         @endsection

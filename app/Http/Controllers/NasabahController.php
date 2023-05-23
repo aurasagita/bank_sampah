@@ -19,9 +19,9 @@ class NasabahController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $nasabah = NasabahModel::where('nama','LIKE','%'.$request->search.'%')->paginate(5);
+            $nasabah = NasabahModel::where('nama','LIKE','%'.$request->search.'%')->paginate(25);
         }else{
-            $nasabah = NasabahModel::paginate(5);
+            $nasabah = NasabahModel::paginate(25);
         }
        
         return view('nasabah.nasabah')->with('nasabah',$nasabah);
@@ -66,8 +66,6 @@ class NasabahController extends Controller
             'nama' => $request->input('nama'),
             'alamat' => $request->input('alamat'),
             'phone' => $request->input('phone'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
         ]);
 
         return redirect('nasabah')->with('success', 'Nasabah Berhasil Ditambahkan');
