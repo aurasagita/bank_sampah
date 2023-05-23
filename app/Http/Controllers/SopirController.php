@@ -67,8 +67,6 @@ class SopirController extends Controller
             'nama' => $request->input('nama'),
             'alamat' => $request->input('alamat'),
             'phone' => $request->input('phone'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
         ]);
 
         return redirect('sopir')->with('success', 'Sopir Berhasil Ditambahkan');

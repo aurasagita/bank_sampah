@@ -66,8 +66,6 @@ class NasabahController extends Controller
             'nama' => $request->input('nama'),
             'alamat' => $request->input('alamat'),
             'phone' => $request->input('phone'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
         ]);
 
         return redirect('nasabah')->with('success', 'Nasabah Berhasil Ditambahkan');
