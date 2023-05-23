@@ -25,7 +25,7 @@
       </li>
      
       <li class="nav-item d-none d-sm-inline-block">
-        <button class="btn btn-success btn-sm"> <a href="{{url('/logout')}}" class="nav-link  text-white"><h5>logout</h5></a></button>
+        <button class="btn btn-success btn-sm"> <a href="{{url('/logout')}}" class="nav-link  text-white"><h5>Logout</h5></a></button>
        
       </li>
     </ul>
