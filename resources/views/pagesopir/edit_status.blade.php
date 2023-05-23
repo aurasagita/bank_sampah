@@ -1,4 +1,4 @@
-@extends ('layouts.template')
+@extends ('layouts.sidebar_sopir')
 
 @section('content')
 <section class="content">
