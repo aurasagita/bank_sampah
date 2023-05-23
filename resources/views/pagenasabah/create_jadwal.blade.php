@@ -1,8 +1,10 @@
-@extends ('layouts.template')
+@extends ('layouts.sidebar_sopir')
 
 @section('content')
 <section class="content">
-
+  <div >
+    {{Breadcrumbs::render('jadwal')}}
+  </div>
     <!-- Default Box-->
     <div class="card">
         <div class="card-header">
