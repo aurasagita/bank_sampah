@@ -3,7 +3,7 @@
 @section('content')
 <section class="content">
   <div >
-    {{Breadcrumbs::render('jadwal')}}
+    {{Breadcrumbs::render('jadwalnasabah')}}
   </div>
     <div class="card">
         <div class="card-header border-0">
@@ -12,7 +12,7 @@
           </div>
           <br>
           <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
-              <a href="{{url('jadwalnasabah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
+              <a href="{{url('jadwalnasabah/create')}}" class="btn -btn sm btn-success my-2">Buat Jadwal</a>
              
             </div>
             <table class="table table-bordered table-striped">

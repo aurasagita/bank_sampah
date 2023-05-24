@@ -1,9 +1,7 @@
 @extends('layouts.sidebar_sopir')
 @section('content')
 <section class="content">
-  <div >
-    {{Breadcrumbs::render('jadwal')}}
-  </div>
+ 
     <div class="card">
         <div class="card-header border-0">
           <div class="d-flex justify-content-between"><h3 class="card-title"><b>Daftar Jadwal Sopir</b></h3></div>
