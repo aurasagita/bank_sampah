@@ -19,8 +19,8 @@
 
                 <div class="form-group">
                   <label>Id Nasabah</label>
-                  <input class="form-control @error('id_nasabah') is-invalid @enderror" placeholder="{{$jadwalUser->nasabah->id_nasabah}}" type="text" readonly>
-                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{$jadwalUser->nasabah->id}}" name="id_nasabah" type="hidden">
+                  <input class="form-control @error('id_nasabah') is-invalid @enderror" placeholder="{{$jadwalUser->id_nasabah}}" type="text" readonly>
+                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{$jadwalUser->id}}" name="id_nasabah" type="hidden">
                   @error('id_nasabah')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
