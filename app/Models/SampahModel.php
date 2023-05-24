@@ -14,7 +14,7 @@ class SampahModel extends Model
         'harga'
     ];
 
-    public function transaksi(){
-        return $this->hasMany(TransaksiModel::class);
+    public function transaksibaru(){
+        return $this->hasMany(TransaksiBaruModel::class);
     }
 }

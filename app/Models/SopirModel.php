@@ -14,6 +14,6 @@ class SopirModel extends Model
     ];
 
     public function jadwal(){
-        return $this->hasMany(JadwalModel::class);
+        return $this->hasMany(TransaksiBaruModel::class);
     }
 }

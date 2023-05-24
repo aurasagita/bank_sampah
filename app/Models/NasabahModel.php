@@ -14,9 +14,7 @@ class NasabahModel extends Model
     ];
 
     public function jadwal() {
-        return $this->belongsTo(JadwalModel::class, 'id_nasabah', 'id_nasabah');
+        return $this->belongsTo(TransaksiBaruModel::class, 'id_nasabah', 'id_nasabah');
     }
-    public function nasabah(){
-        return $this->belongsTo(NasabahModel::class, 'id_nasabah', 'id');
-    }
+    
 }
