@@ -25,7 +25,7 @@
                 <tr>
                   <th>#</th>
                   <th>Id Jadwal</th>
-                  <th>Id Nasabah</th>
+                  <th>Nama Nasabah</th>
                   <th>Id Sopir</th>
                   <th>Tanggal Ambil</th>
                   <th>Konfirmasi</th>
@@ -38,7 +38,7 @@
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->id_jadwal}}</td>
-                      <td>{{$k->nasabah->id_nasabah}}</td>
+                      <td>{{$k->nasabah->nama}}</td>
                       <td>{{$k->sopir->id_sopir}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>
