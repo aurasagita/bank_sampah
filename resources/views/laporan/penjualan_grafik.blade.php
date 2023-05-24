@@ -40,7 +40,7 @@
 
         tooltip: {
             headerFormat: '<b>{series.name}</b><br />',
-            pointFormat: 'x = {point.x}, y = {point.y}'
+            pointFormat: 'bulan = {point.x}, pendapatan = {point.y}'
         },
 
         series: [{

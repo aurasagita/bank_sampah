@@ -25,10 +25,13 @@
                 <tr>
                   <th>#</th>
                   <th>Id Jadwal</th>
-                  <th>Id Nasabah</th>
+                  <th>Nama Nasabah</th>
                   <th>Id Sopir</th>
                   <th>Tanggal Ambil</th>
                   <th>Konfirmasi</th>
+                  <th>Jenis Sampah</th>
+                  <th>Berat</th>
+                  <th>Harga</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -37,11 +40,19 @@
                   @foreach ($jadwal as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
-                      <td>{{$k->id_jadwal}}</td>
+<<<<<<< HEAD
+                      <td>{{$k->id_transaksibaru}}</td>
                       <td>{{$k->nasabah->id_nasabah}}</td>
+=======
+                      <td>{{$k->id_jadwal}}</td>
+                      <td>{{$k->nasabah->nama}}</td>
+>>>>>>> 6ca8b12bbc3c25f234558c27a8347910b4a40b35
                       <td>{{$k->sopir->id_sopir}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>
+                      <td>{{$k->sampah->jenis_sampah}}</td>
+                      <td>{{$k->berat}}</td>
+                      <td>Rp{{$k->harga}},00</td>
                       <td>
                         <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 

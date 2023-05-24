@@ -10,13 +10,13 @@
             <br>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{$url_form }}">
+            <form method="POST" action="{{$url_form}}">
                 @csrf
                 {!! (isset($jdw))? method_field('PUT'):''!!}
                 <div class="form-group">
                   <label>Id Jadwal</label>
-                  <input class="form-control @error('id_jadwal') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_jadwal : old('id_jadwal') }}" name="id_jadwal" type="text" />
-                  @error('id_jadwal')
+                  <input class="form-control @error('id_transaksibaru') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_transaksibaru : old('id_transaksibaru') }}" name="id_transaksibaru" type="text" />
+                  @error('id_transaksibaru')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
@@ -73,6 +73,30 @@
                   </select>
                   
                   @error('konfirmasi')
+                    <span class="error invalid-feedback">{{ $message }} </span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="Jenis Sampah">Jenis Sampah</label>
+                  <select name="jenis_sampah" class="form-control @error('jenis_sampah') is-invalid @enderror">
+                    @foreach($sampah as $sampah)
+                    <option value="{{$sampah->id}}">{{$sampah->jenis_sampah}} ({{($sampah->harga)}}/kg)</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Berat</label>
+                  <input class="form-control @error('berat') is-invalid @enderror" value="{{isset($jdw)? $jdw->berat : old('berat') }}" name="berat" type="text"/>
+                  @error('berat')
+                    <span class="error invalid-feedback">{{ $message }} </span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
+                  <label>Harga</label>
+                  <input class="form-control @error('harga') is-invalid @enderror" value="{{isset($jdw)? $jdw->harga : old('harga') }}" name="harga" type="text"/>
+                  @error('harga')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>

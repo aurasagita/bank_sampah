@@ -29,7 +29,8 @@ class PageNasabahController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $jadwalUser = JadwalModel::where('id_nasabah', $user->id)->first();
+        $jadwalUser = NasabahModel::where('id', $user->id)->first();
+        //$jadwalUser = JadwalModel::where('id_nasabah', $user->id)->first();
         return view('pagenasabah.create_jadwal', compact('jadwalUser'))
         ->with('url_form', url('/jadwalnasabah'));
     }
