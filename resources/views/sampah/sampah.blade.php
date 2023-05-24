@@ -26,7 +26,8 @@
                 <tr>
                   <th>#</th>
                   <th>Jenis Sampah</th>
-                  <th>Harga </th>
+                  <th>Gambar</th>
+                  <th>Harga</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -36,6 +37,9 @@
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->jenis_sampah}}</td>
+                      <td>
+                        <img src="{{ asset('storage/'.$k->foto)}}" alt="" width="150px">
+                      </td>
                       <td>Rp{{$k->harga}},00</td>
                       <td>
                         <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
@@ -56,8 +60,6 @@
               </tbody>
             </table>
             {{$sampah->links()}}
-           
-          
           </div>
         </div>
     </div>

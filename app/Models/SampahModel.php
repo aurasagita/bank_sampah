@@ -11,7 +11,8 @@ class SampahModel extends Model
     protected $table = 'sampah';
     protected $fillable = [
         'jenis_sampah',
-        'harga'
+        'harga',
+        'foto',
     ];
 
     public function transaksi(){

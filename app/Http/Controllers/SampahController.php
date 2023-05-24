@@ -43,17 +43,21 @@ class SampahController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            
             'jenis_sampah'=>'required|string|max:30',
-            'harga'=>'required|integer'
-            
-
-            
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'harga'=>'required|integer',
         ]);
-        $data = SampahModel::create($request->except(['_token']));
+
+        $image_name = $request->file('foto')->store('fotosampah', 'public');
+
+        SampahModel::create([
+            'jenis_sampah' => $request->jenis_sampah,
+            'foto' => $image_name,
+            'harga' => $request->harga,
+        ]);
 
         return redirect('sampah')
-            ->with('success','Mahasiswa berhasil ditambahkan');
+            ->with('success','Sampah berhasil ditambahkan');
     }
 
     /**
@@ -91,13 +95,21 @@ class SampahController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            
             'jenis_sampah'=>'required|string|max:30',
-            'harga'=>'required|integer'    
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'harga'=>'required|integer'
         ]);
-        $data = SampahModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+
+        $image_name = $request->file('foto')->store('fotosampah', 'public');
+
+        SampahModel::where('id', $id)->update([
+            'jenis_sampah' => $request->jenis_sampah,
+            'foto' => $image_name,
+            'harga' => $request->harga,
+        ]);
+
         return redirect('sampah')
-            ->with('success', 'Mahasiswa Berhasil Ditambahkan');
+            ->with('success', 'Mahasiswa Berhasil Diedit');
     }
 
     /**
