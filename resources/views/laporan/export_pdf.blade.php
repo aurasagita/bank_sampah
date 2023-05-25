@@ -64,7 +64,7 @@
                         <td>{{$k->sampah->jenis_sampah}}</td>
                         <td>{{$k->berat}}</td>
                         <td>Rp{{$k->harga}},00</td>
-                        <?php $total += $k->harga * $k->berat; ?>
+                        <?php $total += $k->harga; ?>
                       </tr>
                     @endforeach
                     <td colspan="4"><b>Total</b></td>
