@@ -6,6 +6,8 @@ use App\Models\JadwalModel;
 use App\Models\NasabahModel;
 use App\Models\SampahModel;
 use App\Models\SopirModel;
+use App\Models\TransaksiModel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -37,4 +39,6 @@ class AppServiceProvider extends ServiceProvider
 
         View::share('hitungJadwal', JadwalModel::count());
     }
+
 }
+
