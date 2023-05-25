@@ -12,6 +12,7 @@ use App\Http\Controllers\SampahController;
 use App\Http\Controllers\SopirController;
 use App\Http\Controllers\TransaksibaruController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,7 @@ Route::get('/logout',[LoginController::class,'logout']);
 
 Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    //Route::resource('user', UserController::class);
     Route::resource('/jadwal',TransaksibaruController::class)->parameter('transaksibaru','id');
     Route::resource('/nasabah', NasabahController::class)->parameter('nasabah', 'id');
     Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
