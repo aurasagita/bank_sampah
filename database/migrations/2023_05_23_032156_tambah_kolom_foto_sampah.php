@@ -14,8 +14,18 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::table('nasabah', function(Blueprint $table) {
+            $table->string('email')->after('phone')->nullable();
+            $table->string('password')->after('email')->nullable();
+            $table->string('foto')->after('nama')->nullable();
+        });
+        Schema::table('sopir', function(Blueprint $table) {
+            $table->string('email')->after('phone')->nullable();
+            $table->string('password')->after('email')->nullable();
+            $table->string('foto')->after('nama')->nullable();
+        });
         Schema::table('sampah',function(Blueprint $table){
-            $table->string('gambar')->after('jenis_sampah');
+            $table->string('foto')->after('jenis_sampah')->nullable();
         });
     }
 
