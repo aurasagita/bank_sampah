@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class NasabahSeeder extends Seeder
 {
@@ -22,6 +23,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Salma Annissa A.',
                 'alamat'=>'Jl. M. Sujadi 63A',
                 'phone'=>'087839597241',
+                'email'=>'nasabah1@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:21'
             ],
             [
@@ -30,6 +33,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Tesya Eriana',
                 'alamat'=>'Jl. Ngentrong Etan 16A',
                 'phone'=>'0812144568910',
+                'email'=>'nasabah2@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:22',
             ],
             [
@@ -38,6 +43,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Inthania Nadicika',
                 'alamat'=>'Jl. Kuping Gajah 21',
                 'phone'=>'089982712334',
+                'email'=>'nasabah3@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:23',
             ],
             [
@@ -46,6 +53,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Aura Sagita',
                 'alamat'=>'Jl. Kuping Gajah 22',
                 'phone'=>'087812345678',
+                'email'=>'nasabah4@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:24',
             ],
             [
@@ -54,6 +63,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Mirza Pricillia',
                 'alamat'=>'Jl. Soekarno Hatta 33',
                 'phone'=>'087812345888',
+                'email'=>'nasabah5@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:25',
             ],
             [
@@ -62,6 +73,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Sukma Gladys',
                 'alamat'=>'Jl. Kartini 21',
                 'phone'=>'087813322341',
+                'email'=>'nasabah6@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:27',
             ],
             [
@@ -70,6 +83,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Yisha Zukhrufin',
                 'alamat'=>'Jl. Panglima Soedirman 27',
                 'phone'=>'0878123411244',
+                'email'=>'nasabah7@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:28',
             ],
             [
@@ -78,6 +93,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Prasasty Dara',
                 'alamat'=>'Jl. Kembang Kertas 1B',
                 'phone'=>'0878123422349',
+                'email'=>'nasabah8@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:29',
             ],
             [
@@ -86,6 +103,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Kurniawati',
                 'alamat'=>'Jl. Kembang Kertas 30',
                 'phone'=>'0878123421111',
+                'email'=>'nasabah9@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:30',
             ],
             [
@@ -94,6 +113,8 @@ class NasabahSeeder extends Seeder
                 'nama'=>'Sofiatul Ayu',
                 'alamat'=>'Jl. Kembang Turi 109',
                 'phone'=>'082334556880',
+                'email'=>'nasabah10@gmail.com',
+                'password' => Hash::make('1234'),
                 'created_at'=>'2023-05-12 13:46:30'
             ]
         ]);
