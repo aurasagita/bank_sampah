@@ -20,3 +20,4 @@ class CetakLaporan extends Controller
       return view('laporan.export_pdf', compact('transaksi'));
     }
 }
+
