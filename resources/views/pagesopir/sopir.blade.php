@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header border-0">
           <div class="d-flex justify-content-between"><h3 class="card-title"><b>Daftar Jadwal Sopir</b></h3></div>
-            <table class="table table-bordered table-striped">
+            <br><table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>#</th>
@@ -37,7 +37,7 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="7" class="text-center">Data tidak ada</td>
+                    <td colspan="8" class="text-center">Data tidak ada</td>
                   </tr>
                 @endif
               </tbody>
