@@ -33,6 +33,10 @@ class SampahSeeder extends Seeder
                 'harga' => '3500'
             ],
             [
+                'jenis_sampah' => 'Logam - BS1',
+                'harga' => '6000'
+            ],
+            [
                 'jenis_sampah' => 'Logam - BS2',
                 'harga' => '5000'
             ],

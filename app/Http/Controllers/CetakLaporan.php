@@ -7,6 +7,7 @@ use App\Models\SampahModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CetakLaporan extends Controller
 {
@@ -18,6 +19,6 @@ class CetakLaporan extends Controller
     
       $transaksi = TransaksiBaruModel::whereBetween('created_at',[$tanggal_awal,$tanggal_akhir])->get();
       return view('laporan.export_pdf', compact('transaksi'));
-      
     }
 }
+

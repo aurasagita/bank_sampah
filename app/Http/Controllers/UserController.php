@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JadwalModel;
-use App\Models\NasabahModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class PageNasabahController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +13,7 @@ class PageNasabahController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $jadwalUser = JadwalModel::where('id_nasabah', $user->id)->get();
-        $nasabah = NasabahModel::where('id', $user->id)->first();
-        return view('pagenasabah.nasabah', compact('jadwalUser'), compact('nasabah'));
+        //
     }
 
     /**
@@ -29,11 +23,7 @@ class PageNasabahController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $jadwalUser = NasabahModel::where('id', $user->id)->first();
-        //$jadwalUser = JadwalModel::where('id_nasabah', $user->id)->first();
-        return view('pagenasabah.create_jadwal', compact('jadwalUser'))
-        ->with('url_form', url('/jadwalnasabah'));
+        //
     }
 
     /**
@@ -44,17 +34,7 @@ class PageNasabahController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_nasabah'=>'required',
-            'id_sopir'=>'required',
-            'tanggal_pengambilan'=>'required|date',
-            'konfirmasi'=>'required|string'
-        ]);
-
-        JadwalModel::insert($request->except(['_token']));
-        return redirect('jadwal')
-            ->with('success', 'Jadwal Berhasil Ditambahkan');
-        //return redirect('jadwalnasabah')->with('success', 'Jadwal Berhasil Ditambahkan');
+        //
     }
 
     /**
@@ -65,8 +45,7 @@ class PageNasabahController extends Controller
      */
     public function show($id)
     {
-        $jadwal = JadwalModel::where('id', $id)->get();
-        return view('pagenasabah.detail_jadwal', ['jadwal' => $jadwal[0]]);
+        //
     }
 
     /**
