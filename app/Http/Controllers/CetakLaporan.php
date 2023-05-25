@@ -18,6 +18,5 @@ class CetakLaporan extends Controller
     
       $transaksi = TransaksiModel::whereBetween('created_at',[$tanggal_awal,$tanggal_akhir])->get();
       return view('laporan.export_pdf', compact('transaksi'));
-      $total_harga_transaksi = 0;
     }
 }
