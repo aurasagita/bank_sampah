@@ -58,4 +58,4 @@ Route::group(['middleware' => ['auth', 'role:sopir']], function(){
 
 Route::get('/index', [IndexController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [IndexController::class, 'index'])->name('home');
