@@ -49,10 +49,13 @@
                     <th>Jenis Sampah</th>
                     <th>Berat</th>
                     <th>Harga</th>
-                   
                   </tr>
+
                 </thead>
                 <tbody>
+                  <?php
+                  $total=0;
+                  ?>
                   @if ($transaksi ->count() > 0)
                     @foreach ($transaksi as $i => $k)
                       <tr>
@@ -61,8 +64,11 @@
                         <td>{{$k->sampah->jenis_sampah}}</td>
                         <td>{{$k->berat}}</td>
                         <td>Rp{{$k->harga}},00</td>
+                        <?php $total += $k->harga; ?>
                       </tr>
                     @endforeach
+                    <td colspan="4"><b>Total</b></td>
+                    <td><b>Rp{{$total}},00</b></td>
                   @else
                     <tr>
                       <td colspan="6" class="text-center">Data tidak ada</td>
@@ -72,7 +78,7 @@
               </table>
         </div>
         </div>
-        </div>
+        </div> 
     </div>
 </div>
 <script type="text/javascript">
