@@ -27,8 +27,12 @@
                   <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="" style="pointer-events: none; cursor: default; opacity: 0.5;">
                       <i class="fas fa-edit mr-2"></i> Edit
                   </a>                    
+                  @elseif (Auth::user()->role == "nasabah")
+                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModal-{{ $nasabah->id }}">
+                      <i class="fas fa-edit mr-2"></i> Edit
+                  </a>
                   @else
-                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModal-{{ $jadwalUser->id }}">
+                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModal-{{ $sopir->id }}">
                       <i class="fas fa-edit mr-2"></i> Edit
                   </a>
                   @endif
@@ -101,7 +105,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Nama</b>
                           <span>
-                            {{ auth()->user()->name }}
+                            {{ $sopir->nama }}
                           </span>
                       </div>
                   </li>
@@ -109,7 +113,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Email</b>
                           <span>
-                            {{ auth()->user()->email }}
+                            {{ $sopir->email }}
                           </span>
                       </div>
                   </li>
@@ -117,6 +121,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Alamat</b>
                           <span>
+                            {{ $sopir->alamat }}
                           </span>
                       </div>
                   </li>
@@ -124,6 +129,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Nomor Handphone</b>
                           <span>
+                            {{$sopir->phone}}
                           </span>
                       </div>
                   </li>
@@ -134,7 +140,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Nama</b>
                           <span>
-                            {{ auth()->user()->name }}
+                            {{ $nasabah->nama }}
                           </span>
                       </div>
                   </li>
@@ -142,7 +148,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Email</b>
                           <span>
-                            {{ auth()->user()->email }}
+                            {{ $nasabah->email }}
                           </span>
                       </div>
                   </li>
@@ -157,6 +163,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Nomor Handphone</b>
                           <span>
+                            {{ $nasabah->phone }}
                           </span>
                       </div>
                   </li>
