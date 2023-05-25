@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');
     Route::resource('/transaksi', TransaksiController::class)->parameter('transaksi', 'id');
     Route::get('/laporan',[CetakLaporan::class,'index']);
-    Route::get('/grafik_penjualan',[TransaksiController::class,'grafik']);
+    Route::get('/grafik_penjualan',[TransaksibaruController::class,'grafik']);
     Route::get('/cetakTanggal/{tanggal_awal}/{tanggal_akhir}',[CetakLaporan::class,'cetakTanggal']);
 });
 

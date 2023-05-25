@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>Id Jadwal    : </b>{{$jdw->id_jadwal}}</li>
+                <li class="list-group-item"><b>Id Jadwal    : </b>{{$jdw->id_transaksibaru}}</li>
                 <br>
 
                 <li class="list-group-item"><b>Id Nasabah   : </b>{{$jdw->nasabah->id_nasabah}} </li>
@@ -31,6 +31,11 @@
                     <li class="list-group-item"><b>Nama Sopir</b>     : {{$jdw->sopir->nama}}</li>
                     <li class="list-group-item"><b>Alamat Sopir</b>   : {{$jdw->sopir->alamat}}</li>
                     <li class="list-group-item"><b>Nomor HP Sopir </b>         : {{$jdw->sopir->phone}}</li>
+                <br>
+               
+                    <li class="list-group-item"><b>Jenis Sampah</b>     : {{$jdw->sampah->jenis_sampah}}</li>
+                    <li class="list-group-item"><b>Berat</b>   : {{$jdw->berat}}</li>
+                    <li class="list-group-item"><b>Harga</b>         : {{$jdw->harga}}</li>
                 <br>
                 <li class="list-group-item"><b>Tanggal Pengambilan : </b>{{$jdw->tanggal_pengambilan}}</li>
                 <li class="list-group-item"><b>Konfirmasi :  </b>{{$jdw->konfirmasi}}</li>

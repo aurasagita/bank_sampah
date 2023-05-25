@@ -57,7 +57,7 @@
                     @foreach ($transaksi as $i => $k)
                       <tr>
                         <td>{{++$i}}</td>
-                        <td>{{$k->jadwal->id_jadwal}}</td>
+                        <td>{{$k->id_transaksibaru}}</td>
                         <td>{{$k->sampah->jenis_sampah}}</td>
                         <td>{{$k->berat}}</td>
                         <td>Rp{{$k->harga}},00</td>
