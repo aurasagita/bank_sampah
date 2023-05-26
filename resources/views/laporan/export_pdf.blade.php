@@ -49,7 +49,7 @@
                     <th>Id Nasabah</th>
                     <th>Id Sopir</th>
                     <th>Tanggal Pengambilan</th>
-                    <th>IKonfirmasi</th>
+                    <th>Konfirmasi</th>
                     <th>Jenis Sampah</th>
                     <th>Berat</th>
                     <th>Harga</th>
