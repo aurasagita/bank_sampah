@@ -140,4 +140,18 @@ class TransaksibaruController extends Controller
         return redirect('jadwal')
             ->with('success', 'Jadwal Berhasil Dihapus');
     }
+    public function grafik(Request $request){
+
+        $harga = TransaksiBaruModel::select(DB::raw("CAST(SUM(harga)as int) as harga"))
+        ->whereYear("created_at",date('Y'))
+        ->GroupBy(DB::raw("Month(created_at)"))
+        ->pluck('harga');
+       
+        $bulan = TransaksiBaruModel::select(DB::raw("MONTHNAME(created_at) as bulan"))
+        ->whereYear("created_at",date('Y'))
+        ->GroupBy(DB::raw("MONTHNAME(created_at)"))
+        ->pluck('bulan');
+       
+        return view('laporan.penjualan_grafik',compact('harga','bulan'));
+    }
 }

@@ -40,13 +40,8 @@
                   @foreach ($jadwal as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
-<<<<<<< HEAD
                       <td>{{$k->id_transaksibaru}}</td>
-                      <td>{{$k->nasabah->id_nasabah}}</td>
-=======
-                      <td>{{$k->id_jadwal}}</td>
                       <td>{{$k->nasabah->nama}}</td>
->>>>>>> 6ca8b12bbc3c25f234558c27a8347910b4a40b35
                       <td>{{$k->sopir->id_sopir}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>

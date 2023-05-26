@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('transaksibaru', function (Blueprint $table) {
             $table->id();
-            $table->string('id_transaksibaru', 10)->nullable()->unique();
+            $table->string('id_transaksibaru', 10)->nullable();
             $table->unsignedBigInteger('id_nasabah');
             $table->unsignedBigInteger('id_sopir')->nullable();
             $table->foreign('id_nasabah')->references('id')->on('nasabah')->onDelete('cascade')->onUpdate('cascade');

@@ -13,7 +13,7 @@ class PageSopirController extends Controller
     public function index(){
         $user = Auth::user();
         $jadwalUser = JadwalModel::where('id_sopir', $user->id)->get();
-        $sopir = SopirModel::where('id', $user->id)->first();
+        $sopir = SopirModel::where('email', $user->email)->first();
         return view('pagesopir.sopir', compact('jadwalUser'), compact('sopir'));
     }
     public function store(Request $request)

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SopirSeeder extends Seeder
 {
@@ -22,6 +23,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Ahmad Rifky',
                 'alamat' => 'Jl. KeBayoran No.3',
                 'phone' => '082456332778',
+                'email'=>'sopir1@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '2',
@@ -29,6 +32,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Mahardhika Bredi D.',
                 'alamat' => 'Jl. Mayang Kusuma No.5',
                 'phone' => '085674334534',
+                'email'=>'sopir2@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '3',
@@ -36,6 +41,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Patria Anggara',
                 'alamat' => 'Jl. Pisang Kipas No.6',
                 'phone' => '087654234567',
+                'email'=>'sopir3@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '4',
@@ -43,6 +50,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Muhammad Nadi Rafli',
                 'alamat' => 'Jl. Werkudara No.7',
                 'phone' => '082345654123',
+                'email'=>'sopir4@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '5',
@@ -50,6 +59,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Rambimo Regeng P.',
                 'alamat' => 'Jl. Pattimura No.9',
                 'phone' => '087654345289',
+                'email'=>'sopir5@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '6',
@@ -57,6 +68,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Sabilla Lutfi ',
                 'alamat' => 'Jl. Sayuti Melik no.5',
                 'phone' => '08234678987',
+                'email'=>'sopir6@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '7',
@@ -64,6 +77,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Rizky Angkata P.S',
                 'alamat' => 'Jl. Angkasa Raya No.7',
                 'phone' => '081256776543',
+                'email'=>'sopir7@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '8',
@@ -71,6 +86,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Dhiyauddin Firmansyah',
                 'alamat' => 'Jl. Ahmad Yani No. 8',
                 'phone' => '081567345987',
+                'email'=>'sopir8@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '9',
@@ -78,6 +95,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Ahmad Tito',
                 'alamat' => 'Jl. Simpang Lima No.10',
                 'phone' => '086754342562',
+                'email'=>'sopir9@gmail.com',
+                'password' => Hash::make('1234'),
             ],
             [
                 'id' => '10',
@@ -85,6 +104,8 @@ class SopirSeeder extends Seeder
                 'nama' => 'Fiki Suganda',
                 'alamat' => 'Jl. Ahmad Yani No.12',
                 'phone' => '082123123345',
+                'email'=>'sopir10@gmail.com',
+                'password' => Hash::make('1234'),
             ],
         ]);
     }

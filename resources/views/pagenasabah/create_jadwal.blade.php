@@ -19,17 +19,10 @@
 
                 <div class="form-group">
                   <label>Id Nasabah</label>
-                  <input class="form-control @error('id_nasabah') is-invalid @enderror" placeholder="{{$jadwalUser->id_nasabah}}" type="text" readonly>
-                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{$jadwalUser->id}}" name="id_nasabah" type="hidden">
-                  @error('id_nasabah')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
-
-                <div class="form-group">
-                  <label>Id Sopir</label>
+                  <input class="form-control @error('id_nasabah') is-invalid @enderror" placeholder="{{$nasabah->id_nasabah}}" type="text" readonly>
+                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{$nasabah->id}}" name="id_nasabah" type="hidden">
                   <input class="form-control @error('id_sopir') is-invalid @enderror" value="1" name="id_sopir" type="hidden">
-                  @error('id_sopir')
+                  @error('id_nasabah')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
