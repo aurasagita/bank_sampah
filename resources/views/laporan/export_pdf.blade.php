@@ -46,28 +46,39 @@
                   <tr>
                     <th>#</th>
                     <th>Id Jadwal</th>
+                    <th>Id Nasabah</th>
+                    <th>Id Sopir</th>
+                    <th>Tanggal Pengambilan</th>
+                    <th>IKonfirmasi</th>
                     <th>Jenis Sampah</th>
                     <th>Berat</th>
                     <th>Harga</th>
+                    <th>Jumlah</th>
                   </tr>
 
                 </thead>
                 <tbody>
                   <?php
                   $total=0;
+                  $jumlah=0;
                   ?>
                   @if ($transaksi ->count() > 0)
                     @foreach ($transaksi as $i => $k)
                       <tr>
                         <td>{{++$i}}</td>
                         <td>{{$k->id_transaksibaru}}</td>
-                        <td>{{$k->sampah->jenis_sampah}}</td>
+                        <td>{{$k->id_nasabah}}</td>
+                        <td>{{$k->id_sopir}}</td>
+                        <td>{{$k->tanggal_pengambilan}}</td>
+                        <td>{{$k->konfirmasi}}</td>
+                        <td>{{$k->jenis_sampah}}</td>
                         <td>{{$k->berat}}</td>
                         <td>Rp{{$k->harga}},00</td>
-                        <?php $total += $k->harga; ?>
+                        <td>Rp{{$k->$jumlah = $k->berat * $k->harga}},00</td>
+                        <?php $total += $k->harga * $k->berat; ?>
                       </tr>
                     @endforeach
-                    <td colspan="4"><b>Total</b></td>
+                    <td colspan="9"><b>Total</b></td>
                     <td><b>Rp{{$total}},00</b></td>
                   @else
                     <tr>
