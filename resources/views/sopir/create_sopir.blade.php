@@ -10,7 +10,7 @@
             <br>
         </div>
         <div class="card-body">
-          <form method="POST" action="{{ $url_form }}">
+          <form method="POST" action="{{ $url_form }}" enctype="multipart/form-data">
             @csrf
             {!!(isset($spr))? method_field('PUT') : '' !!}
 
@@ -27,6 +27,14 @@
               <input class="form-control @error('nama') is-invalid @enderror" value="{{ isset($spr)? $spr->nama :old('nama') }}" name="nama" type="text"/>
               @error('nama')
                 <span class="error invalid-feedback">{{ $message }} </span>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label>Foto</label>
+              <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" onchange="previewPhotoCreate()" style="padding: 0; height: 100%;">
+              @error('foto')
+                <span class="invalid-feedback" role="alert">{{ $message }}</span>
               @enderror
             </div>
 

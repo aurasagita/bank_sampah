@@ -8,6 +8,7 @@ use App\Models\NasabahModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class NasabahController extends Controller
 {
@@ -49,11 +50,18 @@ class NasabahController extends Controller
         $request->validate([
             'id_nasabah'=>'required|string|max:10|unique:nasabah,id_nasabah',
             'nama'=>'required|string',
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'alamat'=>'required|string|max:255',
             'phone'=>'required|digits_between:5, 15',
             'email'=>'required|string|unique:users,email',
             'password' => 'required|string|min:4'
         ]);
+
+        if ($request->file('foto')) {
+            $file = $request->file('foto');
+            $filename = 'nasabah-' . 'nama' . '.' . $file->getClientOriginalExtension();
+            $image_name = $file->storeAs('nasabahprofile', $filename, 'public');
+        }
 
         User::create([
             'name' => $request->input('nama'),
@@ -64,8 +72,11 @@ class NasabahController extends Controller
         NasabahModel::create([
             'id_nasabah' => $request->input('id_nasabah'),
             'nama' => $request->input('nama'),
+            'foto' => $image_name,
             'alamat' => $request->input('alamat'),
             'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
         ]);
 
         return redirect('nasabah')->with('success', 'Nasabah Berhasil Ditambahkan');
@@ -108,11 +119,37 @@ class NasabahController extends Controller
         $request->validate([
             'id_nasabah'=>'required|string|max:10|unique:nasabah,id_nasabah,'.$id,
             'nama'=>'required|string|max:50',
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
             'alamat'=>'required|string|max:255',
-            'phone'=>'required|digits_between:5, 15'
+            'phone'=>'required|digits_between:5, 15',
         ]);
 
-        $data = NasabahModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        $nasabah = NasabahModel::find($id);
+
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $fotoName = 'nasabahprofile/'.'nasabah-' . $nasabah->nama . '.' . $foto->getClientOriginalExtension();
+            !is_null($nasabah->foto) && Storage::delete($nasabah->foto);
+
+            $foto->storeAs('nasabahprofile', $fotoName, 'public');
+            $nasabah->foto = $fotoName;
+        }
+
+        NasabahModel::where('id', $id)->update([
+            'id_nasabah' => $request->id_nasabah,
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'phone' => $request->phone,
+        ]);     
+        
+        $nasabah->save();
+
+        if ($request->filled('password')) {
+            $user = User::where('email', $nasabah->email)->first();
+            $nasabah->password = Hash::make($request->input('password'));
+            $user->save();
+        }
+
         return redirect('nasabah')
             ->with('success', 'Nasabah Berhasil Ditambahkan');
     }
@@ -125,7 +162,20 @@ class NasabahController extends Controller
      */
     public function destroy($id)
     {
-           NasabahModel::where('id', '=', $id)->delete();
-           return redirect('nasabah')->with('success', 'Nasabah Berhasil Dihapus');
+        $nasabah = NasabahModel::find($id);
+        $user = User::where('email', $nasabah->email)->first();
+
+        if ($nasabah->foto) {
+            Storage::disk('public')->delete($nasabah->foto);
+        }
+
+        $nasabah->delete();
+
+        if ($user) {
+            $user->delete();
+        }
+
+        return redirect('nasabah')
+            ->with('success', 'Nasabah Berhasil Dihapus');
     }
 }

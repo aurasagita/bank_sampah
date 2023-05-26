@@ -27,6 +27,7 @@
                         <th>#</th>
                         <th>Id Sopir</th>
                         <th>Nama</th>
+                        <th>Foto</th>
                         <th>Alamat</th>
                         <th>No. Telp</th>
                         <th>Action</th>
@@ -40,6 +41,9 @@
                                 <td>{{++$i}}</td>
                                 <td>{{$m->id_sopir}}</td>
                                 <td>{{$m->nama}}</td>
+                                <td>
+                                    <img src="{{asset('storage/sopirprofile/'.$m->foto)}}" alt="" width="80px">
+                                </td>
                                 <td>{{$m->alamat}}</td>
                                 <td>{{$m->phone}}</td>
                                 <td>

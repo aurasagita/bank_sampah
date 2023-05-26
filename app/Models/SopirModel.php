@@ -10,7 +10,7 @@ class SopirModel extends Model
     use HasFactory;
     protected $table = 'sopir';
     protected $fillable = [
-        'id_sopir', 'nama', 'alamat', 'phone'
+        'id_sopir', 'nama', 'alamat', 'phone', 'sopir', 'email', 'password'
     ];
 
     public function jadwal(){

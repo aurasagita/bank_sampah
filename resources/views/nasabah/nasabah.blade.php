@@ -42,6 +42,7 @@
                         <th>#</th>
                         <th>Id Nasabah</th>
                         <th>Nama</th>
+                        <th>Foto</th>
                         <th>Alamat</th>
                         <th>No. Telp</th>
                         <th style="width: 150px">Action</th>
@@ -55,6 +56,9 @@
                                 <td>{{++$i}}</td>
                                 <td>{{$m->id_nasabah}}</td>
                                 <td>{{$m->nama}}</td>
+                                <td>
+                                    <img src="{{asset('storage/nasabahprofile/'.$m->foto)}}" alt="" width="80px">
+                                </td>
                                 <td>{{$m->alamat}}</td>
                                 <td>{{$m->phone}}</td>
                                 <td>
