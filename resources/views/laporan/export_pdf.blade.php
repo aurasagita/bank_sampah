@@ -74,8 +74,8 @@
                         <td>{{$k->jenis_sampah}}</td>
                         <td>{{$k->berat}}</td>
                         <td>Rp{{$k->harga}},00</td>
-                        <td>Rp{{$k->$jumlah = $k->berat * $k->harga}},00</td>
-                        <?php $total += $k->harga * $k->berat; ?>
+                        <td>Rp{{$k->jumlah = $k->berat * $k->harga}},00</td>
+                        <?php $total += $k->jumlah; ?>
                       </tr>
                     @endforeach
                     <td colspan="9"><b>Total</b></td>
