@@ -76,31 +76,30 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
-                <div class="form-group">
-                  <label for="Jenis Sampah">Jenis Sampah</label>
-                  <select name="jenis_sampah" class="form-control @error('jenis_sampah') is-invalid @enderror">
-                    @foreach($sampah as $sampah)
-                    <option value="{{$sampah->id}}">{{$sampah->jenis_sampah}} ({{($sampah->harga)}}/kg)</option>
-                    @endforeach
-                  </select>
+
+                <div id="tambahData">
+                  <div class="form-group">
+                    <label for="Jenis Sampah">Jenis Sampah</label>
+                    <select name="jenis_sampah_0" class="form-control @error('jenis_sampah') is-invalid @enderror">
+                      @foreach($sampah as $s)
+                      <option value="{{$s->id}}">{{$s->jenis_sampah}} ({{($s->harga)}}/kg)</option>
+                      @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Berat</label>
+                    <input class="form-control @error('berat') is-invalid @enderror" name="berat_0" type="text"/>
+                    @error('berat')
+                      <span class="error invalid-feedback">{{ $message }} </span>
+                    @enderror
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label>Berat</label>
-                  <input class="form-control @error('berat') is-invalid @enderror" value="{{isset($jdw)? $jdw->berat : old('berat') }}" name="berat" type="text"/>
-                  @error('berat')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
+                <a class="btn btn-success" onclick="tambahData()">Tambah</a>
 
-                <div class="form-group">
-                  <label>Harga</label>
-                  <input class="form-control @error('harga') is-invalid @enderror" value="{{isset($jdw)? $jdw->harga : old('harga') }}" name="harga" type="text"/>
-                  @error('harga')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
-                <div class="form-group">
+                <div class="form-group mt-3">
+                    <input type="hidden" value="1" id="counter" name="counter">
                     <button class="btn btn-sm btn-primary">Simpan</button>
                   </div>
               </form>
@@ -108,4 +107,30 @@
         </div>
     </div>
 </section>
+<script>
+  var counter = 1; // Menambahkan variabel counter
+
+  function tambahData() {
+    var tempHtml = `
+    <div class="form-group">
+      <label for="Jenis Sampah">Jenis Sampah</label>
+      <select name="jenis_sampah_${counter}" class="form-control @error('jenis_sampah') is-invalid @enderror">
+        @foreach($sampah as $s)
+        <option value="{{$s->id}}">{{$s->jenis_sampah}} ({{($s->harga)}}/kg)</option>
+        @endforeach
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Berat</label>
+      <input class="form-control @error('berat') is-invalid @enderror" name="berat_${counter}" type="text"/>
+    </div>`;
+
+    $('#tambahData').append(tempHtml);
+    counter++; // Meningkatkan counter setelah menambahkan elemen
+
+    $('#counter').val(counter); // Mengisi nilai pada input counter
+  }
+</script>
+
 @endsection

@@ -27,10 +27,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 
 Auth::routes();
 Route::get('/logout',[LoginController::class,'logout']);
@@ -58,4 +58,4 @@ Route::group(['middleware' => ['auth', 'role:sopir']], function(){
 
 Route::get('/index', [IndexController::class, 'index']);
 
-Route::get('/home', [IndexController::class, 'index'])->name('home');
+Route::get('/', [IndexController::class, 'index'])->name('home');

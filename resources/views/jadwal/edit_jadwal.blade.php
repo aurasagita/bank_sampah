@@ -80,13 +80,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Harga</label>
-                  <input class="form-control @error('harga') is-invalid @enderror" value="{{isset($jdw)? $jdw->harga : old('harga') }}" name="harga" type="text"/>
-                  @error('harga')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
-                <div class="form-group">
                     <button class="btn btn-sm btn-primary">Simpan</button>
                   </div>
               </form>

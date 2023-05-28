@@ -41,7 +41,7 @@
               <a href="#temukan-kami">Temukan Kami</a>
             </li>
             <li class="nav-item">
-              <a href="/bank_sampah/public/login" target="_blank">Login</a>
+              <a href="{{ url('/login') }}" target="_blank">Login</a>
             </li>
           </ul>
         </div>
