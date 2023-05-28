@@ -134,19 +134,27 @@ class NasabahController extends Controller
             $foto->storeAs('nasabahprofile', $fotoName, 'public');
             $nasabah->foto = $fotoName;
         }
-
+        
         NasabahModel::where('id', $id)->update([
             'id_nasabah' => $request->id_nasabah,
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'phone' => $request->phone,
-        ]);     
+            'email' => $request->email
+        ]);
+
+        $nsb = User::where('email', $nasabah->email)->first();
+        
+        User::where('email', $nsb->email)->update([
+            'name' => $request->nama,
+            'email' => $request->email,
+        ]);  
         
         $nasabah->save();
 
         if ($request->filled('password')) {
             $user = User::where('email', $nasabah->email)->first();
-            $nasabah->password = Hash::make($request->input('password'));
+            $nasabah->password = Hash::make($request->password);
             $user->save();
         }
 
