@@ -16,5 +16,9 @@ class NasabahModel extends Model
     public function jadwal() {
         return $this->belongsTo(TransaksiBaruModel::class, 'id_nasabah', 'id_nasabah');
     }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'email', 'email');
+    }
     
 }

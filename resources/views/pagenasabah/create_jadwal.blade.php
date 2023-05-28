@@ -17,40 +17,69 @@
                 
                 {!! (isset($jdw))? method_field('PUT'):''!!}
 
+               
                 <div class="form-group">
                   <label>Id Nasabah</label>
                   <input class="form-control @error('id_nasabah') is-invalid @enderror" placeholder="{{$nasabah->id_nasabah}}" type="text" readonly>
-                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{$nasabah->id}}" name="id_nasabah" type="hidden">
-                  <input class="form-control @error('id_sopir') is-invalid @enderror" value="1" name="id_sopir" type="hidden">
+                  <input class="form-control @error('id_nasabah') is-invalid @enderror" value="{{Auth::user()->nasabah->id}}" name="id_nasabah" type="hidden">
                   @error('id_nasabah')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
-                
-                <div class="form-group">
-                  <label>Tanggal Pengambilan</label>
-                  <input class="form-control @error('tanggal_pengambilan') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_pengambilan : old('tanggal_pengambilan') }}" name="tanggal_pengambilan" type="date"/>
-                  @error('tanggal_pengambilan')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
+                <div id="tambahData">
+                  <div class="form-group">
+                    <label for="Jenis Sampah">Jenis Sampah</label>
+                    <select name="jenis_sampah_0" class="form-control @error('jenis_sampah') is-invalid @enderror">
+                      @foreach($sampah as $s)
+                      <option value="{{$s->id}}">{{$s->jenis_sampah}} ({{($s->harga)}}/kg)</option>
+                      @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Berat</label>
+                    <input class="form-control @error('berat') is-invalid @enderror" name="berat_0" type="text"/>
+                    @error('berat')
+                      <span class="error invalid-feedback">{{ $message }} </span>
+                    @enderror
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label>Konfirmasi</label>
-                  <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->konfirmasi : old('konfirmasi') }}" name="konfirmasi" type="text">
-                    <option value="Menunggu Pick Up">Menunggu Pick Up</option>
-                  </select>
-                  
-                  @error('konfirmasi')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
-                <div class="form-group">
+                <a class="btn btn-success" onclick="tambahData()">Tambah</a>
+
+                <div class="form-group mt-3">
+                    <input type="hidden" value="1" id="counter" name="counter">
                     <button class="btn btn-sm btn-primary">Simpan</button>
-                  </div>
+                </div>
               </form>
       
         </div>
     </div>
+    <script>
+      var counter = 1; // Menambahkan variabel counter
+    
+      function tambahData() {
+        var tempHtml = `
+        <div class="form-group">
+          <label for="Jenis Sampah">Jenis Sampah</label>
+          <select name="jenis_sampah_${counter}" class="form-control @error('jenis_sampah') is-invalid @enderror">
+            @foreach($sampah as $s)
+            <option value="{{$s->id}}">{{$s->jenis_sampah}} ({{($s->harga)}}/kg)</option>
+            @endforeach
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label>Berat</label>
+          <input class="form-control @error('berat') is-invalid @enderror" name="berat_${counter}" type="text"/>
+        </div>`;
+    
+        $('#tambahData').append(tempHtml);
+        counter++; // Meningkatkan counter setelah menambahkan elemen
+    
+        $('#counter').val(counter); // Mengisi nilai pada input counter
+      }
+    </script>
 </section>
+
 @endsection

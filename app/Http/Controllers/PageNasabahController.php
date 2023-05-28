@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalModel;
 use App\Models\NasabahModel;
+use App\Models\SampahModel;
+use App\Models\SopirModel;
+use App\Models\TransaksiBaruModel;
+use App\Models\TransaksiModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,9 +21,9 @@ class PageNasabahController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $jadwalUser = JadwalModel::where('id_nasabah', $user->id)->get();
+        $jadwal = TransaksiBaruModel::where('id_nasabah', $user->nasabah->id)->get();
         $nasabah = NasabahModel::where('email', $user->email)->first();
-        return view('pagenasabah.nasabah', compact('jadwalUser'), compact('nasabah'));
+        return view('pagenasabah.nasabah', compact('jadwal'), compact('nasabah'));
     }
 
     /**
@@ -29,10 +33,11 @@ class PageNasabahController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $nasabah = NasabahModel::where('id', $user->id)->first();
+        $nasabah = Auth::user()->nasabah;
+        $sampah = SampahModel::all();
         //$jadwalUser = JadwalModel::where('id_nasabah', $user->id)->first();
-        return view('pagenasabah.create_jadwal', compact('nasabah'))
+       
+        return view('pagenasabah.create_jadwal',['sampah'=>$sampah,'nasabah'=>$nasabah])
         ->with('url_form', url('/jadwalnasabah'));
     }
 
@@ -44,17 +49,24 @@ class PageNasabahController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_nasabah'=>'required',
-            'id_sopir'=>'required',
-            'tanggal_pengambilan'=>'required|date',
-            'konfirmasi'=>'required|string'
-        ]);
+        for($i = 0; $i < $request->counter; $i++){
+            $berat = $request['berat_'.$i];
+            $jenisSampah = SampahModel::find($request['jenis_sampah_'.$i]);
+            $harga = $jenisSampah->harga * $berat;
 
-        JadwalModel::insert($request->except(['_token']));
-        return redirect('jadwal')
+            TransaksiBaruModel::insert([
+                'id_nasabah' => $request->id_nasabah,
+                'jenis_sampah' => $request['jenis_sampah_'.$i],
+                'berat' => $berat,
+                'harga' => $harga,
+            ]);
+            
+        }
+        
+
+        //$data = JadwalModel::create($request->except(['_token']));
+        return redirect('jadwalnasabah')
             ->with('success', 'Jadwal Berhasil Ditambahkan');
-        //return redirect('jadwalnasabah')->with('success', 'Jadwal Berhasil Ditambahkan');
     }
 
     /**
@@ -65,7 +77,7 @@ class PageNasabahController extends Controller
      */
     public function show($id)
     {
-        $jadwal = JadwalModel::where('id', $id)->get();
+        $jadwal = TransaksiBaruModel::where('id', $id)->get();
         return view('pagenasabah.detail_jadwal', ['jadwal' => $jadwal[0]]);
     }
 

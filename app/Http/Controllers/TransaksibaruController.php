@@ -106,7 +106,7 @@ class TransaksibaruController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = TransaksiBaruModel::find($id);
+        $jadwal = TransaksiBaruModel::where('id', $id)->first();
         $sampah = SampahModel::all();
         $nasabah = NasabahModel::all();
         $sopir = SopirModel::all();
@@ -129,7 +129,6 @@ class TransaksibaruController extends Controller
     {
         $request->validate([
             'id_transaksibaru' => 'required|string|max:10'.$id,
-            'id_nasabah'=>'required',
             'id_sopir'=>'required',
             'tanggal_pengambilan'=>'required|date',
             'konfirmasi'=>'required|string',

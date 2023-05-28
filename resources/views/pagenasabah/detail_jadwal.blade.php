@@ -21,10 +21,12 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>Id Jadwal    : </b>{{$jadwal->id_jadwal}}</li>
                 <br>
-                    <li class="list-group-item"><b>Nama Sopir</b>     : {{$jadwal->sopir->nama}}</li>
-                    <li class="list-group-item"><b>Nomor HP Sopir </b>         : {{$jadwal->sopir->phone}}</li>
+                    <li class="list-group-item"><b>Nama Sopir</b>     : {{$jadwal->sopir->nama ?? "Tidak ada sopir"}}</li>
+                    <li class="list-group-item"><b>Nomor HP Sopir </b>         : {{$jadwal->sopir->phone ?? "Tidak ada sopir"}}</li>
                 <br>
                 <li class="list-group-item"><b>Tanggal Pengambilan : </b>{{$jadwal->tanggal_pengambilan}}</li>
+                <li class="list-group-item"><b>Berat : </b>{{$jadwal->berat}}&nbsp; kg</li>
+                <li class="list-group-item"><b>Harga : </b>Rp.&nbsp;{{$jadwal->harga}},00</li>
                 <li class="list-group-item"><b>Konfirmasi :  </b>{{$jadwal->konfirmasi}}</li>
             </ul>
             <a class="btn btn-success mt-3" href="{{ url('/jadwalnasabah') }}">Kembali</a>

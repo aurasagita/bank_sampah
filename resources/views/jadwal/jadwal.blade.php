@@ -42,7 +42,7 @@
                       <td>{{++$i}}</td>
                       <td>{{$k->id_transaksibaru}}</td>
                       <td>{{$k->nasabah->nama}}</td>
-                      <td>{{$k->sopir->id_sopir}}</td>
+                      <td>{{$k->sopir->id_sopir ?? "Sopir tidak ada"}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>
                       <td>{{$k->sampah->jenis_sampah}}</td>
