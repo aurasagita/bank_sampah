@@ -68,9 +68,12 @@ class RegisterController extends Controller
     protected function create(array $data):User
     {
         NasabahModel::create([
+            'id_nasabah' => $data['id_nasabah'],
             'nama' => $data['name'],
             'alamat' => $data['alamat'],
-            'phone' => $data['phone']
+            'email' => $data['email_register'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password_register']),
         ]);
 
         return User::create([
@@ -78,7 +81,8 @@ class RegisterController extends Controller
             'email' => $data['email_register'],
             'role' => 'nasabah',
             'password' => Hash::make($data['password_register']),
-        ]); 
+        ]);
+        
     }
 
     protected function store(Request $request)

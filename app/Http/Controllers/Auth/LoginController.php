@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\NasabahModel;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,10 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('layouts.login');
+        $nasabah = NasabahModel::all();
+        $id_nasabah = $nasabah[count($nasabah)-1]->id+1;
+        return view('layouts.login')
+            ->with('id_nasabah', $id_nasabah);
     }
 
     public function logout(Request $request)

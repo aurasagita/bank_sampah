@@ -14,8 +14,10 @@
                   <div class="profile rounded-circle mr-2">
                       @if (Auth::user()->role == "admin")
                           <img src="assets/dist/img/profile.png" class="" alt="User Image" width="40px">
+                      @elseif(Auth::user()->role == "nasabah")
+                        <img src="{{asset('storage/nasabahprofile/'.$nasabah->foto)}}" class="elevation-2 img-fluid img-thumbnail rounded-circle" width="40px" alt="User Image">
                       @else
-                          <img src="#" class="elevation-2 img-fluid img-thumbnail rounded-circle" width="40px" alt="User Image">
+                          <img src="{{asset('storage/sopirprofile/'.$sopir->foto)}}" class="elevation-2 img-fluid img-thumbnail rounded-circle" width="40px" alt="User Image">
                       @endif
                   </div>
               </div>
@@ -28,15 +30,15 @@
                       <i class="fas fa-edit mr-2"></i> Edit
                   </a>                    
                   @elseif (Auth::user()->role == "nasabah")
-                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModal-{{ $nasabah->id }}">
+                  <a href="{{url('/jadwalnasabah/'. $nasabah->email. '/edit')}}" class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModalNasabah">
                       <i class="fas fa-edit mr-2"></i> Edit
                   </a>
                   @else
-                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModal-{{ $sopir->id }}">
+                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModal-{{ $sopir->email }}">
                       <i class="fas fa-edit mr-2"></i> Edit
                   </a>
                   @endif
-                  <a class="dropdown-item btn btn-warning" href="{{ url('/logout') }}">
+                  <a class="dropdown-item btn btn-success" href="{{ url('/logout') }}">
                       <i class="fas fa-sign-out-alt mr-2"></i> Logout
                   </a>
               </div>              
@@ -45,7 +47,7 @@
   </ul>
   </nav>
   
-  <!-- Modal -->
+  <!-- Modal Detail-->
   <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -53,33 +55,19 @@
                 <h5 class="modal-title" id="detailModalLabel">Detail
                     {{ auth()->user()->name }}
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-center">
                     <div class="image-preview">
                         @if (Auth::user()->role == "admin")
-                            <img src="assets/dist/img/profile.png" class="img-thumbnail rounded-circle" width="100px" alt="User Image">
+                            <img src="assets/dist/img/profile.png" class="rounded-circle" width="100px" alt="User Image">
+                        @elseif(Auth::user()->role == "nasabah")
+                            <img src="{{asset('storage/nasabahprofile/'.$nasabah->foto)}}" class="img-thumbnail" alt="User Image">
                         @else
-                            <img src="#" class="img-thumbnail rounded-circle" width="100px" alt="User Image">
+                            <img src="{{asset('storage/sopirprofile/'.$sopir->foto)}}" class="img-thumbnail" alt="User Image">
                         @endif
                     </div>
                 </div>
-                <p class="text-muted text-center mb-4">
-                    @php
-                        $userLevels = [
-                            0 => 'admin',
-                            1 => 'nasabah',
-                            2 => 'sopir',
-                        ];
-                    @endphp
-                    {{ $userLevels[Auth::user()->role] ?? 'admin' }}
-                </p>
-                @php
-                    
-                @endphp
                 @if (Auth::user()->role == "admin")
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
@@ -156,6 +144,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Alamat</b>
                           <span>
+                            {{ $nasabah->alamat }}
                           </span>
                       </div>
                   </li>
@@ -172,7 +161,85 @@
               
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times"></i></button>            </div>
+                <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>            </div>
         </div>
     </div>
 </div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editModalNasabah" tabindex="-1" role="dialog" aria-labelledby="editModalNasabah-label-{{ $nasabah->id }}" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalNasabah-label"><strong>Edit Nasabah </strong>{{ $nasabah->nama }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="editNasabahForm-{{ $nasabah->email }}" method="POST" action="{{ url('/pagenasabah/nasabah/'. $nasabah->id) }}" enctype="multipart/form-data">
+          @csrf
+          {!!(isset($nasabah))? method_field('PUT') : '' !!}
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <div class="image-preview img-fluid rounded img-thumbnail">
+                  <img id="photo-preview-{{ $nasabah->email }}" src="{{ asset('storage/nasabahprofile' . $nasabah->foto) }}" alt="Foto Profile">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('nama', $nasabah->nama) }}" placeholder="Masukkan Nama">
+                @error('name')
+                  <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="foto">Foto Profile</label>
+                <input type="file" class="form-control @error('foto') is-invalid @enderror" id="photo-{{ $nasabah->email}}" name="foto"  onchange="previewPhotoEdit({{ $nasabah->email }})" style="padding: 0; height: 100%;">
+                @error('foto')
+                  <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="name">Alamat</label>
+                <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat', $nasabah->alamat) }}" placeholder="Masukkan Alamat">
+                @error('alamat')
+                  <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $nasabah->email) }}" placeholder="Masukkan Email">
+                @error('email')
+                  <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="name">Nomor Handphone</label>
+                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone', $nasabah->phone) }}" placeholder="Masukkan Nomor Handphone">
+                @error('phone')
+                  <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Masukkan Password">
+                @error('password')
+                  <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                @enderror
+              </div>
+              
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-sm btn-success">{{ __('Edit') }}</button>
+      </div>
+    </div>                              
+  </div>
+</div>   
+
