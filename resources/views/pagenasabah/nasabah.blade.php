@@ -22,18 +22,22 @@
                   <th>Id Jadwal</th>
                   <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
+                  <th>Berat</th>
+                  <th>Harga</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                @if ($jadwalUser ->count() > 0)
-                  @foreach ($jadwalUser as $i => $k)
+                @if ($jadwal ->count() > 0)
+                  @foreach ($jadwal as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
-                      <td>{{$k->id_jadwal}}</td>
-                      <td>{{$k->sopir->nama}}</td>
+                      <td>{{$k->id_transaksibaru}}</td>
+                      <td>{{$k->sopir->nama ?? "Tidak ada sopir"}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
+                      <td>{{$k->berat}}</td>
+                      <td>Rp{{$k->harga}},00</td>
                       <td>{{$k->konfirmasi}}</td>
                       <td><div class="pr-1">
                         <a href="{{url('/jadwalnasabah/'. $k->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>

@@ -9,6 +9,9 @@ class TransaksiBaruModel extends Model
 {
     use HasFactory;
     protected $table = 'transaksibaru';
+    protected $primaryKey = 'id_transaksibaru';
+    public $incrementing = false;
+
 
     protected $fillable =[
         'id_transaksibaru',
@@ -22,19 +25,25 @@ class TransaksiBaruModel extends Model
     ];
 
 
-    public function transaksibaru(){
-        return $this->belongsTo(TransaksiBaruModel::class);
-    }
+    public function transaksiBaru()
+{
+    return $this->belongsTo(TransaksiBaruModel::class, 'id_transaksibaru', 'id');
+}
 
-    public function nasabah(){
-        return $this->belongsTo(NasabahModel::class, 'id_nasabah', 'id');
-    }
+public function nasabah()
+{
+    return $this->belongsTo(NasabahModel::class, 'id_nasabah', 'id');
+}
 
-    public function sopir(){
-        return $this->belongsTo(SopirModel::class, 'id_sopir', 'id');
-    }
-public function sampah(){
-        return $this->belongsTo(SampahModel::class, 'jenis_sampah', 'id');
-    }
+public function sopir()
+{
+    return $this->belongsTo(SopirModel::class, 'id_sopir', 'id');
+}
+
+public function sampah()
+{
+    return $this->belongsTo(SampahModel::class, 'jenis_sampah', 'id');
+}
+
     
 }

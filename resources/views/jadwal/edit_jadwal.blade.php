@@ -15,7 +15,7 @@
                 {!! (isset($jdw))? method_field('PUT'):''!!}
                 <div class="form-group">
                   <label>Id Jadwal</label>
-                  <input class="form-control @error('id_transaksibaru') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_transaksibaru : old('id_transaksibaru', $jdw->id_transaksibaru) }}" name="id_transaksibaru" type="text" />
+                  <input class="form-control @error('id_transaksibaru') is-invalid @enderror" value="{{isset($jdw)?$jdw->id_transaksibaru : old('id_transaksibaru',$jdw->id_transaksibaru) }}" name="id_transaksibaru" type="text" />
                   @error('id_transaksibaru')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
@@ -23,7 +23,7 @@
 
                 <div class="form-group">
                   <label for="Id Nasabah">Id Nasabah</label>
-                  <select name="id_nasabah" class="form-control @error('id_nasabah')
+                  <select disabled name="id_nasabah" class="form-control @error('id_nasabah')
                     is-invalid @enderror">
                     @foreach($nasabah as $nsb)
                     <option value="{{$nsb->id}}" {{ old('id_nasabah', $jdw->id_nasabah) == $nsb->id ? 'selected' : null }}> 
