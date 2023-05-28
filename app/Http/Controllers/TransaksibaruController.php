@@ -60,11 +60,26 @@ class TransaksibaruController extends Controller
             'id_sopir'=>'required',
             'tanggal_pengambilan'=>'required|date',
             'konfirmasi'=>'required|string',
-            'jenis_sampah'=>'required',
-            'berat'=>'required',
-            'harga'=>'required'
         ]);
-        TransaksiBaruModel::insert($request->except(['_token']));
+        for($i = 0; $i < $request->counter; $i++){
+            $berat = $request['berat_'.$i];
+            $jenisSampah = SampahModel::find($request['jenis_sampah_'.$i]);
+            $harga = $jenisSampah->harga * $berat;
+
+            TransaksiBaruModel::insert(
+                [
+                    'id_transaksibaru' => $request->id_transaksibaru,
+                    'id_nasabah' => $request->id_nasabah,
+                    'id_sopir' => $request->id_sopir,
+                    'tanggal_pengambilan' => $request->tanggal_pengambilan,
+                    'konfirmasi' => $request->konfirmasi,
+                    'jenis_sampah' => $request['jenis_sampah_'.$i],
+                    'berat' => $berat,
+                    'harga' => $harga,
+                ]
+            );
+        }
+        
 
         //$data = JadwalModel::create($request->except(['_token']));
         return redirect('jadwal')
@@ -113,16 +128,18 @@ class TransaksibaruController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_transaksibaru' => 'required|string|max:10|unique:transaksibaru,id_transaksibaru,'.$id,
+            'id_transaksibaru' => 'required|string|max:10'.$id,
             'id_nasabah'=>'required',
             'id_sopir'=>'required',
             'tanggal_pengambilan'=>'required|date',
             'konfirmasi'=>'required|string',
-            'jenis_sampah'=>'required',
-            'berat'=>'required',
-            'harga'=>'required'
         ]);
 
+        $berat = $request->berat;
+        $jenisSampah = SampahModel::find($request->jenis_sampah);
+        $harga = $jenisSampah->harga * $berat;
+
+        $request['harga'] = $harga;
         $data = TransaksiBaruModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
         return redirect('jadwal')->with('success', 'Data Berhasil Diedit');

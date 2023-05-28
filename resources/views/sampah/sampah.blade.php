@@ -3,6 +3,11 @@
 @section('content')
 
 <section class="content">
+  @if ($message = Session::get('success'))
+              <div class="alert alert-success">
+              <p>{{ $message }}</p>
+              </div>
+              @endif
   <div >
     {{Breadcrumbs::render('sampah')}}
   </div>
@@ -20,6 +25,7 @@
                     <button type="submit" class="btn btn-primary mb-1">Cari</button>
                 </div>
               </form>
+              
             </div>
             <table class="table table-bordered table-striped">
               <thead>
