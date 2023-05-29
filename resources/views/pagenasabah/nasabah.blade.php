@@ -26,7 +26,6 @@
                   <th>Tanggal Ambil</th>
                   <th>Berat</th>
                   <th>Harga</th>
-                  <th>jumlah</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -45,15 +44,14 @@
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->berat}}</td>
                       <td>Rp{{$k->harga}},00</td>
-                      <td>Rp{{$k->jumlah = $k->berat * $k->harga}},00</td>
                       <td>{{$k->konfirmasi}}</td>
-                      <?php $total += $k->jumlah; ?>
+                      <?php $total += $k->harga; ?>
                       <td><div class="pr-1">
                         <a href="{{url('/jadwalnasabah/'. $k->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
                     </div></td>
                     </tr>
                   @endforeach
-                  <td colspan="6"><b>Total</b></td>
+                  <td colspan="5"><b>Total</b></td>
                     <td><b>Rp {{$total}},00</b></td>
                     <td></td>
                     <td></td>
@@ -77,8 +75,8 @@
                     
                       <div class="tab-content">
                         <div class="tab-pane fade show active" id="saldo">
-                          <div class="row">
-                            <div class="col-lg-12 col-2">
+                          <div class="row justify-content-end">
+                            <div class="col-lg-2 col-2">
                               <div class="small-box bg-success">
                                 <div class="inner text-center">
                                   <p style="font-weight: bold; text-decoration: underline">{{$nasabah->nama}}</p>
