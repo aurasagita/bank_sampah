@@ -15,29 +15,24 @@
                       @if (Auth::user()->role == "admin")
                           <img src="assets/dist/img/profile.png" class="" alt="User Image" width="40px">
                       @elseif(Auth::user()->role == "nasabah")
-                        <img src="{{asset('storage/nasabahprofile/'.$nasabah->foto)}}" class="elevation-2 img-fluid img-thumbnail rounded-circle" width="40px" alt="User Image">
+                        @if (empty($nasabah->foto))
+                            <img src="assets/dist/img/profile.png" class="" alt="User Image" width="40px">
+                        @else
+                            <img src="{{asset('storage/nasabahprofile/'.$nasabah->foto)}}" class="elevation-2 img-fluid img-thumbnail rounded-circle" width="40px" alt="User Image">
+                        @endif
                       @else
+                        @if (empty($sopir->foto))
+                            <img src="assets/dist/img/profile.png" class="" alt="User Image" width="40px">
+                        @else
                           <img src="{{asset('storage/sopirprofile/'.$sopir->foto)}}" class="elevation-2 img-fluid img-thumbnail rounded-circle" width="40px" alt="User Image">
-                      @endif
+                        @endif
+                     @endif
                   </div>
               </div>
               <div class="dropdown-menu dropdown-menu-right fade" style="min-width: 0; border: none; padding: 0;">
                   <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#detailModal">
                       <i class="fas fa-info-circle mr-2"></i> Detail
                   </a>
-                  @if (Auth::user()->role == "admin")
-                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="" style="pointer-events: none; cursor: default; opacity: 0.5;">
-                      <i class="fas fa-edit mr-2"></i> Edit
-                  </a>                    
-                  @elseif (Auth::user()->role == "nasabah")
-                  <a href="{{url('/jadwalnasabah/'. $nasabah->email. '/edit')}}" class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModalNasabah">
-                      <i class="fas fa-edit mr-2"></i> Edit
-                  </a>
-                  @else
-                  <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModal-{{ $sopir->email }}">
-                      <i class="fas fa-edit mr-2"></i> Edit
-                  </a>
-                  @endif
                   <a class="dropdown-item btn btn-success" href="{{ url('/logout') }}">
                       <i class="fas fa-sign-out-alt mr-2"></i> Logout
                   </a>
@@ -62,9 +57,17 @@
                         @if (Auth::user()->role == "admin")
                             <img src="assets/dist/img/profile.png" class="rounded-circle" width="100px" alt="User Image">
                         @elseif(Auth::user()->role == "nasabah")
-                            <img src="{{asset('storage/nasabahprofile/'.$nasabah->foto)}}" class="img-thumbnail" alt="User Image">
+                            @if (empty($nasabah->foto))
+                                <img src="assets/dist/img/profile.png" class="" alt="User Image" width="100px">
+                            @else
+                                <img src="{{asset('storage/nasabahprofile/'.$nasabah->foto)}}" class="img-thumbnail" alt="User Image">
+                            @endif
                         @else
-                            <img src="{{asset('storage/sopirprofile/'.$sopir->foto)}}" class="img-thumbnail" alt="User Image">
+                            @if (empty($sopir->foto))
+                                <img src="assets/dist/img/profile.png" class="" alt="User Image" width="40px">
+                            @else
+                                <img src="{{asset('storage/sopirprofile/'.$sopir->foto)}}" class="elevation-2 img-fluid img-thumbnail rounded-circle" width="40px" alt="User Image">
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -121,7 +124,7 @@
                           </span>
                       </div>
                   </li>
-              </ul>
+                </ul>
                 @else
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
@@ -161,10 +164,10 @@
               
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>            </div>
+                <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal">Tutup</button>            
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Edit -->
 

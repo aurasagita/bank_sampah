@@ -53,7 +53,7 @@
                     <th>Jenis Sampah</th>
                     <th>Berat</th>
                     <th>Harga</th>
-                    <th>Jumlah</th>
+                   
                   </tr>
 
                 </thead>
@@ -74,11 +74,11 @@
                         <td>{{$k->jenis_sampah}}</td>
                         <td>{{$k->berat}}</td>
                         <td>Rp{{$k->harga}},00</td>
-                        <td>Rp{{$k->jumlah = $k->berat * $k->harga}},00</td>
-                        <?php $total += $k->jumlah; ?>
+                     
+                        <?php $total += $k->harga; ?>
                       </tr>
                     @endforeach
-                    <td colspan="9"><b>Total</b></td>
+                    <td colspan="8"><b>Total</b></td>
                     <td><b>Rp{{$total}},00</b></td>
                   @else
                     <tr>
