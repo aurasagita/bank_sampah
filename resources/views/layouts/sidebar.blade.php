@@ -51,14 +51,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{url('/transaksi')}}" class="nav-link {{request()->is('transaksi')?'active' : ''}}">
-            <i class="nav-icon fa fa-calendar"></i>
-            <p>
-              Transaksi
-            </p>
-          </a>
-        </li>
+        
         <li class="nav-item">
           <a href="{{url('/laporan')}}" class="nav-link {{request()->is('laporan')?'active' : ''}}">
             <i class="nav-icon fa fa-sticky-note"></i>
