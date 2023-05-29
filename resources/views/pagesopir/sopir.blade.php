@@ -28,7 +28,7 @@
                       <td>{{$k->nasabah->alamat}}</td>
                       <td>{{$k->konfirmasi}}</td>
                      <td><div class="pr-1">
-                        <a href="{{url('/jadwalsopir/'. $k->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
+                        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalSopir{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
                         <a href="{{url('/jadwalsopir/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                     </div></td>
                     </tr>
@@ -40,10 +40,94 @@
                 @endif
               </tbody>
             </table>
-            
           </div>
         </div>
-        
 </section>
+
+@foreach ($jadwalUser as $jadwal)
+<!-- Modal Detail-->
+<div class="modal fade" id="detailModalSopir{{$jadwal->id}}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{$jadwal->id}}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="detailModalLabel {{$jadwal->id}}">Detail Jadwal Id
+                {{ $jadwal->id_transaksibaru }}
+              </h5>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Id Jadwal</b>
+                  <span>
+                    {{ $jadwal->id_transaksibaru }}
+                    </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Nama Nasabah</b>
+                  <span>
+                    {{ $jadwal->nasabah->nama }}
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Tanggal Ambil</b>
+                  <span>
+                    {{ $jadwal->tanggal_pengambilan }}
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Alamat Pengambilan</b>
+                  <span>
+                    {{ $jadwal->nasabah->alamat }}
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Jenis Sampah</b>
+                  <span>
+                    {{ $jadwal->sampah->jenis_sampah }}
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Berat</b>
+                  <span>
+                    {{ $jadwal->berat }}kg
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Harga</b>
+                  <span>
+                    Rp{{ $jadwal->harga }},00
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Konfirmasi</b>
+                  <span>
+                    {{ $jadwal->konfirmasi }}
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal">Tutup</button>            
+          </div>
+      </div>
+  </div>
+</div>
+@endforeach
     
 @endsection
