@@ -18,6 +18,7 @@ class DashboardController extends Controller
     public function index(Request $request) {
 
       $transaksi = TransaksiModel::with('transaksi')->orderBy('created_at', 'desc')->get();
+      //$trs = TransaksiModel::with('transaksi')->first();
       return view('layouts.dashboard',['transaksi'=> $transaksi]);
 }
 
