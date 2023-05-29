@@ -96,7 +96,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Nama</b>
                           <span>
-                            {{ $sopir->nama }}
+                            {{ Auth::user()->sopir->nama }}
                           </span>
                       </div>
                   </li>
@@ -104,7 +104,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Email</b>
                           <span>
-                            {{ $sopir->email }}
+                            {{ Auth::user()->sopir->email }}
                           </span>
                       </div>
                   </li>
@@ -112,7 +112,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Alamat</b>
                           <span>
-                            {{ $sopir->alamat }}
+                            {{ Auth::user()->sopir->alamat }}
                           </span>
                       </div>
                   </li>
@@ -120,7 +120,7 @@
                       <div class="d-flex justify-content-between align-items-center">
                           <b>Nomor Handphone</b>
                           <span>
-                            {{$sopir->phone}}
+                            {{Auth::user()->sopir->phone}}
                           </span>
                       </div>
                   </li>

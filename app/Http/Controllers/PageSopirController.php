@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalModel;
 use App\Models\NasabahModel;
+use App\Models\SampahModel;
 use App\Models\SopirModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
@@ -44,14 +45,19 @@ class PageSopirController extends Controller
     }
     public function edit($id)
     {
-        $jadwal = JadwalModel::find($id);
+        // $user = Auth::user();
+        // $sopir = SopirModel::where('email', $user->email)->first();
+
+        $jadwal = TransaksiBaruModel::where('id', $id)->first();
+        $sampah = SampahModel::all();
         $nasabah = NasabahModel::all();
-        $sopir = SopirModel::all();
+        $spr = SopirModel::all();
         return view('pagesopir.edit_status', compact('id'))
             ->with('url_form', url('/jadwalsopir/' . $id))
             ->with('jdw', $jadwal)
             ->with('nasabah', $nasabah)
-            ->with('sopir', $sopir);
+            ->with('sampah', $sampah)
+            ->with('sopir', $spr);
     }
 
     /**
