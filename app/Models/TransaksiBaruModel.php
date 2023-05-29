@@ -26,24 +26,22 @@ class TransaksiBaruModel extends Model
 
 
     public function transaksiBaru()
-{
-    return $this->belongsTo(TransaksiBaruModel::class, 'id_transaksibaru', 'id');
-}
+    {
+        return $this->belongsTo(TransaksiBaruModel::class, 'id_transaksibaru', 'id');
+    }
 
-public function nasabah()
-{
-    return $this->belongsTo(NasabahModel::class, 'id_nasabah', 'id');
-}
+    public function nasabah()
+    {
+        return $this->belongsTo(NasabahModel::class, 'id_nasabah', 'id');
+    }
 
-public function sopir()
-{
-    return $this->belongsTo(SopirModel::class, 'id_sopir', 'id');
-}
+    public function sopir()
+    {
+        return $this->belongsTo(SopirModel::class, 'id_sopir', 'id');
+    }
 
-public function sampah()
-{
-    return $this->belongsTo(SampahModel::class, 'jenis_sampah', 'id');
-}
-
-    
+    public function sampah()
+    {
+        return $this->belongsTo(SampahModel::class, 'jenis_sampah', 'id');
+    }  
 }

@@ -118,11 +118,11 @@
                                     <tr>
                                       <th>#</th>
                                       <th>Id Jadwal</th>
+                                      <th>Nama Nasabah</th>
+                                      <th>Id Sopir</th>
+                                      <th>Tanggal Ambil</th>
                                       <th>Jenis Sampah</th>
-                                      <th>Berat</th>
-                                      <th>Harga</th>
-                                      <th>Tanggal Input</th>
-                                      <th>Action</th>
+                                      <th>Konfirmasi</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -130,15 +130,12 @@
                                       @foreach ($transaksi as $i => $k)
                                         <tr>
                                           <td>{{++$i}}</td>
-                                          <td>{{$k->jadwal->id_jadwal}}</td>
+                                          <td>{{$k->id_transaksibaru}}</td>
+                                          <td>{{$k->nasabah->nama}}</td>
+                                          <td>{{$k->sopir->id_sopir ?? "Sopir tidak ada"}}</td>
+                                          <td>{{$k->tanggal_pengambilan}}</td>
                                           <td>{{$k->sampah->jenis_sampah}}</td>
-                                          <td>{{$k->berat}}</td>
-                                          <td>Rp{{$k->harga}},00</td>
-                                          <td>{{$k->created_at}}</td>
-                                          <td>
-                                           
-                                            <a href="{{url('/transaksi/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block">Detail</a>
-                                          </td>
+                                          <td>{{$k->konfirmasi}}</td>
                                         </tr>
                                       @endforeach
                                     @else

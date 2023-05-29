@@ -11,7 +11,6 @@
                   <th>#</th>
                   <th>Id Jadwal</th>
                   <th>Nama Nasabah</th>
-                  <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
                   <th>Alamat Pengambilan</th>
                   <th>Konfirmasi</th>
@@ -23,9 +22,8 @@
                   @foreach ($jadwalUser as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
-                      <td>{{$k->id_jadwal}}</td>
+                      <td>{{$k->id_transaksibaru}}</td>
                       <td>{{$k->nasabah->nama}}</td>
-                      <td>{{$k->sopir->nama}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->nasabah->alamat}}</td>
                       <td>{{$k->konfirmasi}}</td>
@@ -37,7 +35,7 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="8" class="text-center">Data tidak ada</td>
+                    <td colspan="7" class="text-center">Data tidak ada</td>
                   </tr>
                 @endif
               </tbody>

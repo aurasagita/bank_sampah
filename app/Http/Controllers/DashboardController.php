@@ -11,15 +11,19 @@ use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Database\Data;
-
+use App\Models\TransaksiBaruModel;
 
 class DashboardController extends Controller
 {
     public function index(Request $request) {
 
-      $transaksi = TransaksiModel::with('transaksi')->orderBy('created_at', 'desc')->get();
-      //$trs = TransaksiModel::with('transaksi')->first();
-      return view('layouts.dashboard',['transaksi'=> $transaksi]);
+    if($request->has('search')){
+        $transaksi = TransaksiBaruModel::where('id_transaksibaru','LIKE','%'.$request->search.'%')->paginate(25);
+    }else{
+        $transaksi = TransaksiBaruModel::orderBy('created_at', 'desc')->paginate(25);
+    }
+   
+    return view('layouts.dashboard')->with('transaksi',$transaksi);
 }
 
 

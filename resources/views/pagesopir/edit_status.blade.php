@@ -15,11 +15,10 @@
                 {!! (isset($jdw))? method_field('PUT'):''!!}
                 <div class="form-group">
                   <label>Konfirmasi</label>
-                  <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_jadwal : old('id_jadwal', $jdw->konfirmasi) }}" name="konfirmasi" type="text">
-                    <option value="Menunggu Pick Up" {{ old('kofnirmasi', $jdw->konfirmasi) == 'Menunggu Pick Up' ? 'selected' : '' }}>Menunggu Pick Up</option>
-                    <option value="Pick Up" {{ old('konfirmasi', $jdw->konfirmasi) == 'Pick Up' ? 'selected' : '' }}>Pick Up</option>
+                  <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_transaksibaru : old('id_transaksibaru', $jdw->konfirmasi) }}" name="konfirmasi" type="text">
+                    <option value="Selesai" {{ old('konfirmasi', $jdw->konfirmasi) == 'Selesai' ? 'selected' : '' }}>Selesai</option>
                   </select>
-
+                  
                   @error('konfirmasi')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror

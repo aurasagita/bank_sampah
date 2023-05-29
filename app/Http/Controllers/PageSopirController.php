@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\JadwalModel;
 use App\Models\NasabahModel;
 use App\Models\SopirModel;
+use App\Models\TransaksiBaruModel;
+use App\Models\TransaksiModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,10 +14,11 @@ class PageSopirController extends Controller
 {
     public function index(){
         $user = Auth::user();
-        $jadwalUser = JadwalModel::where('id_sopir', $user->id)->get();
         $sopir = SopirModel::where('email', $user->email)->first();
+        $jadwalUser = TransaksiBaruModel::where('id_sopir', $user->sopir->id)->get();
         return view('pagesopir.sopir', compact('jadwalUser'), compact('sopir'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -34,8 +37,10 @@ class PageSopirController extends Controller
     }
      public function show($id)
     {
-        $jadwal = JadwalModel::where('id', $id)->get();
-        return view('pagesopir.detail_jadwal', ['jadwal' => $jadwal[0]]);
+        $user = Auth::user();
+        $sopir = SopirModel::where('email', $user->email)->first();
+        $jadwal = TransaksiBaruModel::where('id', $id)->get();
+        return view('pagesopir.detail_jadwal', ['jadwal' => $jadwal[0]], compact('sopir'));
     }
     public function edit($id)
     {
@@ -43,10 +48,10 @@ class PageSopirController extends Controller
         $nasabah = NasabahModel::all();
         $sopir = SopirModel::all();
         return view('pagesopir.edit_status', compact('id'))
-        ->with('url_form', url('/jadwalsopir/' . $id))
-        ->with('jdw', $jadwal)
-        ->with('nasabah', $nasabah)
-        ->with('sopir', $sopir);
+            ->with('url_form', url('/jadwalsopir/' . $id))
+            ->with('jdw', $jadwal)
+            ->with('nasabah', $nasabah)
+            ->with('sopir', $sopir);
     }
 
     /**
@@ -59,11 +64,10 @@ class PageSopirController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-           
             'konfirmasi'=>'required|string'
         ]);
 
-        $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        $data = TransaksiBaruModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
         return redirect('jadwalsopir')->with('success', 'Data Berhasil Diedit');
     }

@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>Id Jadwal    : </b>{{$jadwal->id_jadwal}}</li>
+                <li class="list-group-item"><b>Id Transaksi    : </b>{{$jadwal->id_transaksibaru}}</li>
                 <br>
                 <li class="list-group-item"><b>Nama Nasabah</b>     : {{$jadwal->nasabah->nama}}</li>
                 <li class="list-group-item"><b>Alamat Nasabah</b>   : {{$jadwal->nasabah->alamat}}</li>

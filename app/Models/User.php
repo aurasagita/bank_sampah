@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(NasabahModel::class, 'email', 'email');
     }
+    public function sopir()
+    {
+        return $this->hasOne(SopirModel::class, 'email', 'email');
+    }
 }
