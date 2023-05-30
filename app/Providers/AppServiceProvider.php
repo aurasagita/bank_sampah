@@ -6,6 +6,7 @@ use App\Models\JadwalModel;
 use App\Models\NasabahModel;
 use App\Models\SampahModel;
 use App\Models\SopirModel;
+use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -37,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('hitungSopir', SopirModel::count());
         View::share('hitungSampah', SampahModel::count());
 
-        View::share('hitungJadwal', JadwalModel::count());
+        View::share('hitungJadwal', TransaksiBaruModel::count());
     }
 
 }

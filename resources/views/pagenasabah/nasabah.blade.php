@@ -5,8 +5,53 @@
   <div >
     {{Breadcrumbs::render('jadwalnasabah')}}
   </div>
-   
+  <?php
+                  
+  $total = 0;
+  $jumlah = 0;
+
+  if ($jadwal->count() > 0) {
+      foreach ($jadwal as $i => $k) {
+          // Calculate the total
+          $total += $k->harga;
+      }
+  }
+  ?>
     <div class="card">
+      <div class="container-fluid">
+        <ul class="nav nav-tabs justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#saldo">Saldo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#transaksi">Transaksi</a>
+          </li>
+          <!-- Add more tab links as needed -->
+        </ul>
+      
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="saldo">
+            <div class="row justify-content-end">
+              <div class="col-lg-12 col-3">
+                <div class="small-box bg-success">
+                  <div class="inner text-center">
+                    <h5><b>Anda telah ikut serta melestarikan lingkungan dengan menyumbang sampah senilai Rp {{$total}},00</b></h5>
+                  </div>
+                  <div class="icon" style="display: flex; align-items: center; justify-content: center; height: 50%; margin top">
+                    <i class='fas fa-money-bill-alt' style='font-size:24px'></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="tab-pane fade" id="transaksi">
+            <!-- Content for the 'Transaksi' tab -->
+            <!-- Add your transaction details here -->
+          </div>
+          <!-- Add more tab panes as needed -->
+        </div>
+      </div>
         <div class="card-header border-0">
           <div class="d-flex justify-content-between">
            <h3 class="card-title"><b>Riwayat Transaksi </b></h3>
@@ -31,10 +76,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php
-                  $total=0;
-                  $jumlah=0;
-                  ?>
+                
                 @if ($jadwal ->count() > 0)
                   @foreach ($jadwal as $i => $k)
                     <tr>
@@ -45,7 +87,6 @@
                       <td>{{$k->berat}}</td>
                       <td>Rp{{$k->harga}},00</td>
                       <td>{{$k->konfirmasi}}</td>
-                      <?php $total += $k->harga; ?>
                       <td><div class="pr-1">
                         <a href="{{url('/jadwalnasabah/'. $k->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
                     </div></td>
@@ -62,41 +103,5 @@
                         @endif
                       </tbody>
                     </table>
-                    <div class="container-fluid">
-                      <ul class="nav nav-tabs justify-content-end">
-                        <li class="nav-item">
-                          <a class="nav-link active" data-toggle="tab" href="#saldo">Saldo</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" data-toggle="tab" href="#transaksi">Transaksi</a>
-                        </li>
-                        <!-- Add more tab links as needed -->
-                      </ul>
-                    
-                      <div class="tab-content">
-                        <div class="tab-pane fade show active" id="saldo">
-                          <div class="row justify-content-end">
-                            <div class="col-lg-2 col-2">
-                              <div class="small-box bg-success">
-                                <div class="inner text-center">
-                                  <p style="font-weight: bold; text-decoration: underline">{{$nasabah->nama}}</p>
-                                  <h5><b>Rp {{$total}},00</b></h5>
-                                  <p>Saldo Nasabah</p>
-                                </div>
-                                <div class="icon">
-                                  <i class="fas fa-money-bill-alt fa-6x"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    
-                        <div class="tab-pane fade" id="transaksi">
-                          <!-- Content for the 'Transaksi' tab -->
-                          <!-- Add your transaction details here -->
-                        </div>
-                        <!-- Add more tab panes as needed -->
-                      </div>
-                    </div>
                         </section>
                      @endsection
