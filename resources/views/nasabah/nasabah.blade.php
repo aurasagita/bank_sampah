@@ -19,23 +19,6 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             </div>
-            {{-- @if ($nasabah->count())
-                <h1>Hasil Pencarian untuk "{{ $query }}"</h1>
-                <ul>
-                @foreach ($nasabah as $post)
-                    <li>
-                        <a href="{{ route('nasabah', $post->id) }}">
-                            {{ $post->id_nasabah }}
-                            {{ $post->nama }}
-                            {{ $post->alamat }}
-                            {{ $post->phone }}
-                        </a>
-                    </li>
-                @endforeach
-                </ul>
-            @else
-                <p>Tidak ada hasil pencarian untuk "{{ $query }}".</p>
-            @endif --}}
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -76,7 +59,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="6" class="text-center">Data tidak ada</td>
+                            <td colspan="7" class="text-center">Data tidak ada</td>
                         </tr>
                     @endif
                 </tbody>
