@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\JadwalModel;
 use App\Models\NasabahModel;
 use App\Models\SampahModel;
 use App\Models\SopirModel;
-use App\Models\TransaksiModel;
+use App\Models\TransaksiBaruModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
@@ -37,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('hitungSopir', SopirModel::count());
         View::share('hitungSampah', SampahModel::count());
 
-        View::share('hitungJadwal', JadwalModel::count());
+        View::share('hitungJadwal', TransaksiBaruModel::count());
     }
 
 }
