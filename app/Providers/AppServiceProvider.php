@@ -6,6 +6,10 @@ use App\Models\NasabahModel;
 use App\Models\SampahModel;
 use App\Models\SopirModel;
 use App\Models\TransaksiBaruModel;
+<<<<<<< HEAD
+=======
+use App\Models\TransaksiModel;
+>>>>>>> dbb7d73385966a513d7098b30ca918f3e56dc4df
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
