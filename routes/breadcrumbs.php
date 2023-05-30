@@ -23,12 +23,9 @@ Breadcrumbs::for('jadwal',function($trail){
 });
 Breadcrumbs::for('transaksi', function($trail){
     $trail->parent('dashboard');
-    $trail->push('Transaksi', route('transaksi.index'));
+    $trail->push('Laporan', route('transaksi.index'));
 });
-Breadcrumbs::for('laporan',function($trail){
-    $trail->parent('dashboard');
-    $trail->push('Laporan', route('laporan.index'));
-});
+
 Breadcrumbs::for('jadwalnasabah',function(
     $trail){
     $trail->parent('dashboard');

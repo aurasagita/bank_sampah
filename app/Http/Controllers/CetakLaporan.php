@@ -14,6 +14,7 @@ class CetakLaporan extends Controller
     public function index(){
         return view('laporan.laporan');
     }
+    
     public function cetakTanggal($tanggal_awal, $tanggal_akhir){
        // dd("Tanggal Awal : ".$tanggal_awal, "Tanggal Akhir".$tanggal_akhir);
     
