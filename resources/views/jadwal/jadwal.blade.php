@@ -30,7 +30,7 @@
                   <th>Tanggal Ambil</th>
                   <th>Jenis Sampah</th>
                   <th>Berat</th>
-                  <th>Harga</th>
+                  <th>Total</th>
                   <th>Konfirmasi</th>
                   <th>Action</th>
                 </tr>
