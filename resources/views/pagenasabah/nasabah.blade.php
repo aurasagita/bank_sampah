@@ -5,8 +5,34 @@
   <div >
     {{Breadcrumbs::render('jadwalnasabah')}}
   </div>
-   
+  <?php
+                  
+  $total = 0;
+  $jumlah = 0;
+
+  if ($jadwal->count() > 0) {
+      foreach ($jadwal as $i => $k) {
+          // Calculate the total
+          $total += $k->harga;
+      }
+  }
+  
+  ?>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="saldo">
+      <div class="row justify-content-end">
+        <div class="col-lg-12 col-3">
+          <div class="small-box bg-success">
+            <div class="inner text-center">
+              <h5>Anda telah ikut serta melestarikan lingkungan dengan menyumbang sampah senilai <b>Rp {{$total}},00</b></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="card">
+      <div class="container-fluid">
         <div class="card-header border-0">
           <div class="d-flex justify-content-between">
            <h3 class="card-title"><b>Riwayat Transaksi </b></h3>
@@ -26,16 +52,11 @@
                   <th>Tanggal Ambil</th>
                   <th>Berat</th>
                   <th>Harga</th>
-                  <th>jumlah</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <?php
-                  $total=0;
-                  $jumlah=0;
-                  ?>
                 @if ($jadwal ->count() > 0)
                   @foreach ($jadwal as $i => $k)
                     <tr>
@@ -45,60 +66,101 @@
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->berat}}</td>
                       <td>Rp{{$k->harga}},00</td>
-                      <td>Rp{{$k->jumlah = $k->berat * $k->harga}},00</td>
                       <td>{{$k->konfirmasi}}</td>
-                      <?php $total += $k->jumlah; ?>
-                      <td><div class="pr-1">
-                        <a href="{{url('/jadwalnasabah/'. $k->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
-                    </div></td>
+                      <td>
+                        <div class="pr-1">
+                          <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalTransaksi{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
+                        </div>
+                      </td>
                     </tr>
                   @endforeach
-                  <td colspan="6"><b>Total</b></td>
-                    <td><b>Rp {{$total}},00</b></td>
-                    <td></td>
-                    <td></td>
                 @else
                   <tr>
                     <td colspan="6" class="text-center">Data tidak ada</td>
-                          </tr>
-                        @endif
-                      </tbody>
-                    </table>
-                    <div class="container-fluid">
-                      <ul class="nav nav-tabs justify-content-end">
-                        <li class="nav-item">
-                          <a class="nav-link active" data-toggle="tab" href="#saldo">Saldo</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" data-toggle="tab" href="#transaksi">Transaksi</a>
-                        </li>
-                        <!-- Add more tab links as needed -->
-                      </ul>
+                  </tr>
+                @endif
+              </tbody>
+            </table>
+          </div>
+    </div>
+</section>
+
+@foreach ($jadwal as $jadwal)
+<!-- Modal Detail-->
+<div class="modal fade" id="detailModalTransaksi{{$jadwal->id}}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{$jadwal->id}}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="detailModalLabel {{$jadwal->id}}">Detail Transaksi Id
+                {{ $jadwal->id_transaksibaru }}
+              </h5>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Id Jadwal</b>
+                  <span>
+                    {{ $jadwal->id_transaksibaru }}
+                    </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Nama Sopir</b>
+                  <span>
+                    {{ $jadwal->sopir->nama }}
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Tanggal Ambil</b>
+                  <span>
+                    {{ $jadwal->tanggal_pengambilan }}
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Jenis Sampah</b>
+                  <span>
+                    {{ $jadwal->sampah->jenis_sampah }}
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Berat</b>
+                  <span>
+                    {{ $jadwal->berat }}kg
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Harga</b>
+                  <span>
+                    Rp{{ $jadwal->harga }},00
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <b>Status</b>
+                  <span>
+                    {{ $jadwal->konfirmasi }}
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal">Tutup</button>            
+          </div>
+      </div>
+  </div>
+</div>
+@endforeach
                     
-                      <div class="tab-content">
-                        <div class="tab-pane fade show active" id="saldo">
-                          <div class="row">
-                            <div class="col-lg-12 col-2">
-                              <div class="small-box bg-success">
-                                <div class="inner text-center">
-                                  <p style="font-weight: bold; text-decoration: underline">{{$nasabah->nama}}</p>
-                                  <h5><b>Rp {{$total}},00</b></h5>
-                                  <p>Saldo Nasabah</p>
-                                </div>
-                                <div class="icon">
-                                  <i class="fas fa-money-bill-alt fa-6x"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    
-                        <div class="tab-pane fade" id="transaksi">
-                          <!-- Content for the 'Transaksi' tab -->
-                          <!-- Add your transaction details here -->
-                        </div>
-                        <!-- Add more tab panes as needed -->
-                      </div>
-                    </div>
-                        </section>
-                     @endsection
+@endsection

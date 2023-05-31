@@ -92,6 +92,7 @@ class NasabahController extends Controller
     {
         $nasabah = NasabahModel::where('id', $id)->get();
         return view('nasabah.detail_nasabah', ['nasabah' => $nasabah[0]]);
+        
     }
 
     /**
@@ -186,4 +187,23 @@ class NasabahController extends Controller
         return redirect('nasabah')
             ->with('success', 'Nasabah Berhasil Dihapus');
     }
+
+    public function saldo()
+    {
+        $jadwal = NasabahModel::all();
+    
+        $total = 0;
+        $jumlah = 0;
+    
+        if ($jadwal->count() > 0) {
+            foreach ($jadwal as $i => $k) {
+                // Calculate the total
+                $total += $k->harga;
+            }
+        }
+    
+        return view('nasabah.blade', compact('jadwal', 'total'));
+    }
+    
+
 }
