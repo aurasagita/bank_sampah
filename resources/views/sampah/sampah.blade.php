@@ -22,7 +22,7 @@
               <form class="form" method="get" action="{{ url('sampah') }}" class="col-md-4" style="padding: 0">
                 <div class="form-group w-100 mb-3">
                     <input type="search" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
-                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
                 </div>
               </form>
               

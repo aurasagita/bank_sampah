@@ -15,8 +15,8 @@
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('nasabah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
               <form action="" method="GET" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" name="search" type="search" name="query" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" name="search" type="search" name="query" placeholder="Masukkan Keyword" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
             </form>
             </div>
             <table class="table table-striped table-bordered">
