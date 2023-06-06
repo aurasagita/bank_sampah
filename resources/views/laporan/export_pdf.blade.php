@@ -11,7 +11,7 @@
 <body>
     <style type="text/css">
        table{
-        margin-top: 7%;
+        margin-top: 0%;
         margin-bottom: 10%;
         border-collapse: collapse;
         width: 100%;
@@ -21,19 +21,12 @@
         padding: 8px;
         font-size: 9pt;
        }
-       .tanggal{
-            margin-left: 370px;
-        }
-        .jab{
-            margin-left: 370px;
-            margin-top: -20px;
-        }
-        .ketua{
-            margin-left: 370px;
-        }
+       .title {
+        margin-top : 50px;
+       }
     </style>
      <center>
-        <h5>CETAK LAPORAN TRANSAKSI</h4><br><br>
+        <h5 class="title">CETAK LAPORAN TRANSAKSI</h4><br><br>
     </center>
     <div class="container mt-2">
         <div class="row justify-content-center align-items-center">
@@ -41,7 +34,7 @@
        
         <div class="card-body">
            
-            <table class="table table-bordered table-striped">
+            <table class="table table-sm">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -52,7 +45,7 @@
                     <th>Konfirmasi</th>
                     <th>Jenis Sampah</th>
                     <th>Berat</th>
-                    <th>Harga</th>
+                    <th>Total</th>
                    
                   </tr>
 
@@ -67,8 +60,8 @@
                       <tr>
                         <td>{{++$i}}</td>
                         <td>{{$k->id_transaksibaru}}</td>
-                        <td>{{$k->id_nasabah}}</td>
-                        <td>{{$k->id_sopir}}</td>
+                        <td>{{$k->nasabah->nama}}</td>
+                        <td>{{$k->sopir->nama}}</td>
                         <td>{{$k->tanggal_pengambilan}}</td>
                         <td>{{$k->konfirmasi}}</td>
                         <td>{{$k->jenis_sampah}}</td>
@@ -78,11 +71,11 @@
                         <?php $total += $k->harga; ?>
                       </tr>
                     @endforeach
-                    <td colspan="8"><b>Total</b></td>
+                    <td colspan="8"><b>Total Pemasukan</b></td>
                     <td><b>Rp{{$total}},00</b></td>
                   @else
                     <tr>
-                      <td colspan="6" class="text-center">Data tidak ada</td>
+                      <td colspan="9" class="text-center">Data tidak ada</td>
                     </tr>
                   @endif
                 </tbody>
