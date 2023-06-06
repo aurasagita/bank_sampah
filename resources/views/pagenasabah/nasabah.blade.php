@@ -51,7 +51,7 @@
                   <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
                   <th>Berat</th>
-                  <th>Harga</th>
+                  <th>Total</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -91,7 +91,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="detailModalLabel {{$jadwal->id}}">Detail Transaksi Id
+              <h5 class="modal-title" id="detailModalLabel {{$jadwal->id}}">Detail Transaksi
                 {{ $jadwal->id_transaksibaru }}
               </h5>
           </div>
@@ -103,14 +103,6 @@
                   <span>
                     {{ $jadwal->id_transaksibaru }}
                     </span>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="d-flex justify-content-between align-items-center">
-                  <b>Nama Sopir</b>
-                  <span>
-                    {{ $jadwal->sopir->nama }}
-                  </span>
                 </div>
               </li>
               <li class="list-group-item">
@@ -139,7 +131,7 @@
               </li>
               <li class="list-group-item">
                 <div class="d-flex justify-content-between align-items-center">
-                  <b>Harga</b>
+                  <b>Total</b>
                   <span>
                     Rp{{ $jadwal->harga }},00
                   </span>
