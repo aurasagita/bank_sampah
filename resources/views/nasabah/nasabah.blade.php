@@ -25,7 +25,7 @@
                         <th>#</th>
                         <th>Id Nasabah</th>
                         <th>Nama</th>
-                        <th>Foto</th>
+                        {{-- <th>Foto</th> --}}
                         <th>Alamat</th>
                         <th>No. Telp</th>
                         <th style="width: 150px">Action</th>
@@ -39,18 +39,18 @@
                                 <td>{{++$i}}</td>
                                 <td>{{$m->id_nasabah}}</td>
                                 <td>{{$m->nama}}</td>
-                                <td>
+                                {{-- <td>
                                     <img src="{{asset('storage/nasabahprofile/'.$m->foto)}}" alt="" width="80px">
-                                </td>
+                                </td> --}}
                                 <td>{{$m->alamat}}</td>
                                 <td>{{$m->phone}}</td>
                                 <td>
                                     <a href="{{url('/nasabah/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
             
-                                    <form  class="d-inline-block " method="POST" action="{{url('/nasabah/'.$m->id)}}" onsubmit="return confirm('Yakin hapus data?')">
+                                    <form  class="delete d-inline-block " method="POST" action="{{url('/nasabah/'.$m->id)}}" class="delete">
                                       @csrf
                                       @method('DELETE')
-                                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
+                                      <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
                                     </form>
                                     <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
                                   </td>
@@ -68,4 +68,28 @@
         </div>
     </div>
 </section>
+
+@push('js')
+<script>
+    $('.delete').submit(function () {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+        return false;
+    });
+</script>
+@endpush
+
 @endsection
+

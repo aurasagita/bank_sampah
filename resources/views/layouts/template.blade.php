@@ -11,7 +11,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome-free/css/all.min.css')}}">
-  
+  <!-- Bootstrap 4 -->
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+   <!-- SweetAlert2 -->
+   <link rel="stylesheet" href="{{asset('/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+   <!-- SweetAlert2 -->
+   <script src="{{asset('/assets/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
 </head>
@@ -75,6 +80,15 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 
+@if(session('success'))
+    <script>
+        Swal.fire(
+            'Berhasil!',
+            '{{session('success')}}',
+            'success'
+        )
+    </script>
+@endif
 @stack('js')
 </body>
 </html>

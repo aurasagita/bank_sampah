@@ -29,7 +29,7 @@
                       <td>{{$k->konfirmasi}}</td>
                      <td><div class="pr-1">
                         <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalSopir{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
-                        <a href="{{url('/jadwalsopir/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                        <a href="{{url('/jadwalsopir/'. $k->id.'/edit')}}" class="edit btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                     </div></td>
                     </tr>
                   @endforeach
@@ -129,5 +129,18 @@
   </div>
 </div>
 @endforeach
-    
+
+@push('js')
+<script>
+    $('.edit').submit(function () {
+      Swal.fire({
+      icon: 'success',
+      title: 'Status Berhasil Diubah',
+      showConfirmButton: false,
+      timer: 1500 
+      })
+    });
+</script>
+@endpush
+
 @endsection

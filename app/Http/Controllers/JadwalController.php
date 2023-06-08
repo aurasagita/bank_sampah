@@ -112,7 +112,7 @@ class JadwalController extends Controller
 
         $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
-        return redirect('jadwal')->with('success', 'Data Berhasil Diedit');
+        return redirect('jadwal')->with('success', 'Jadwal Berhasil Diubah');
     }
 
     /**

@@ -50,19 +50,19 @@ class SopirController extends Controller
         $request->validate([
             'id_sopir'=>'required|string|max:10|unique:sopir,id_sopir',
             'nama'=>'required|string|max:50',
-            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            // 'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'alamat'=>'required|string|max:255',
             'phone'=>'required|digits_between:5, 15',
             'email'=>'required|string|unique:users,email',
             'password' => 'required|string|min:4'
         ]);
 
-        if ($request->file('foto')) {
-            $file = $request->file('foto');
-            $extension = $file->getClientOriginalExtension();
-            $filename = 'sopir-' . 'nama' . '.' . $extension;
-            $image_name = $file->storeAs('sopirprofile', $filename, 'public');
-        }
+        // if ($request->file('foto')) {
+        //     $file = $request->file('foto');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = 'sopir-' . 'nama' . '.' . $extension;
+        //     $image_name = $file->storeAs('sopirprofile', $filename, 'public');
+        // }
 
         User::create([
             'name' => $request->input('nama'),
@@ -73,7 +73,7 @@ class SopirController extends Controller
         SopirModel::create([
             'id_sopir' => $request->input('id_sopir'),
             'nama' => $request->input('nama'),
-            'foto' => $image_name,
+            // 'foto' => $image_name,
             'alamat' => $request->input('alamat'),
             'phone' => $request->input('phone'),
             'email' => $request->input('email'),
@@ -120,21 +120,21 @@ class SopirController extends Controller
         $request->validate([
             'id_sopir'=>'required|string|max:10|unique:sopir,id_sopir,'.$id,
             'nama'=>'required|string|max:50',
-            'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
+            // 'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
             'alamat'=>'required|string|max:255',
             'phone'=>'required|digits_between:5, 15'
         ]);
 
         $sopir = SopirModel::find($id);
 
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $fotoName = 'sopirprofile/'.'sopir-' . $sopir->nama . '.' . $foto->getClientOriginalExtension();
-            !is_null($sopir->foto) && Storage::delete($sopir->foto);
+        // if ($request->hasFile('foto')) {
+        //     $foto = $request->file('foto');
+        //     $fotoName = 'sopirprofile/'.'sopir-' . $sopir->nama . '.' . $foto->getClientOriginalExtension();
+        //     !is_null($sopir->foto) && Storage::delete($sopir->foto);
 
-            $foto->storeAs('sopirprofile', $fotoName, 'public');
-            $sopir->foto = $fotoName;
-        }
+        //     $foto->storeAs('sopirprofile', $fotoName, 'public');
+        //     $sopir->foto = $fotoName;
+        // }
 
         SopirModel::where('id', $id)->update([
             'id_sopir' => $request->id_sopir,
@@ -154,7 +154,7 @@ class SopirController extends Controller
         }
 
         return redirect('sopir')
-            ->with('success', 'Sopir Berhasil Ditambahkan');
+            ->with('success', 'Sopir Berhasil Diubah');
     }
 
     /**

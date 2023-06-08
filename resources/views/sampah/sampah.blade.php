@@ -3,11 +3,6 @@
 @section('content')
 
 <section class="content">
-  @if ($message = Session::get('success'))
-              <div class="alert alert-success">
-              <p>{{ $message }}</p>
-              </div>
-              @endif
   <div >
     {{Breadcrumbs::render('sampah')}}
   </div>
@@ -50,10 +45,10 @@
                       <td>
                         <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 
-                        <form class="d-inline-block" method="POST" action="{{url('/sampah/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
+                        <form class="delete d-inline-block" method="POST" action="{{url('/sampah/'.$k->id)}}">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
+                          <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
                         </form>
                       </td>
                     </tr>
@@ -70,5 +65,27 @@
         </div>
     </div>
 </section>
-    
+
+@push('js')
+<script>
+    $('.delete').submit(function () {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+        return false;
+    });
+</script>
+@endpush
+
 @endsection

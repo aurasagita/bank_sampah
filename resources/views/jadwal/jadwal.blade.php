@@ -51,10 +51,10 @@
                       <td>
                         <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 
-                        <form class="d-inline-block" method="POST" action="{{url('/jadwal/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
+                        <form class="delete d-inline-block" method="POST" action="{{url('/jadwal/'.$k->id)}}">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
+                          <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
                         </form>
 
                         <a href="{{url('/jadwal/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>
@@ -74,4 +74,26 @@
     </div>
 </section>
     
+@push('js')
+<script>
+    $('.delete').submit(function () {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+        return false;
+    });
+</script>
+@endpush
+
 @endsection

@@ -27,7 +27,7 @@
                         <th>#</th>
                         <th>Id Sopir</th>
                         <th>Nama</th>
-                        <th>Foto</th>
+                        {{-- <th>Foto</th> --}}
                         <th>Alamat</th>
                         <th>No. Telp</th>
                         <th>Action</th>
@@ -41,9 +41,9 @@
                                 <td>{{++$i}}</td>
                                 <td>{{$m->id_sopir}}</td>
                                 <td>{{$m->nama}}</td>
-                                <td>
+                                {{-- <td>
                                     <img src="{{asset('storage/sopirprofile/'.$m->foto)}}" alt="" width="80px">
-                                </td>
+                                </td> --}}
                                 <td>{{$m->alamat}}</td>
                                 <td>{{$m->phone}}</td>
                                 <td>
@@ -52,10 +52,10 @@
                                             <a href="{{url('/sopir/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                         </div>
                                         <div class="pr-1">
-                                            <form method="POST" action="{{url('/sopir/'.$m->id)}}">
+                                            <form class="delete d-inline-block " method="POST" action="{{url('/sopir/'.$m->id)}}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger ms-5"><i class="fas fa-solid fa-trash"></i></button>
+                                                <button class="btn btn-sm btn-danger ms-5"><i class="fas fa-solid fa-trash"></i></button>
                                             </form>
                                         </div>
                                         <div class="pr-1">
@@ -76,4 +76,27 @@
         </div>
     </div>
 </section>
+
+@push('js')
+<script>
+    $('.delete').submit(function () {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+        return false;
+    });
+</script>
+@endpush
+
 @endsection

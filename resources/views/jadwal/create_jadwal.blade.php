@@ -100,7 +100,7 @@
 
                 <div class="form-group mt-3">
                     <input type="hidden" value="1" id="counter" name="counter">
-                    <button class="btn btn-sm btn-primary">Simpan</button>
+                    <button class="btn btn-sm btn-success">Simpan</button>
                   </div>
               </form>
       

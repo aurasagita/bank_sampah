@@ -30,13 +30,13 @@
               @enderror
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label>Foto</label>
               <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" onchange="previewPhotoCreate()" style="padding: 0; height: 100%;">
               @error('foto')
                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
               @enderror
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label>Alamat</label>
@@ -71,7 +71,7 @@
             </div>
             
             <div class="form-group">
-              <button class="btn btn-sm btn-primary">Simpan</button>
+              <button class="btn btn-sm btn-success">Simpan</button>
             </div>
             
           </form>

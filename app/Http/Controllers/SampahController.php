@@ -57,7 +57,7 @@ class SampahController extends Controller
         ]);
 
         return redirect('sampah')
-            ->with('success','Sampah berhasil ditambahkan');
+            ->with('success','Sampah Berhasil Ditambahkan');
     }
 
     /**
@@ -109,7 +109,7 @@ class SampahController extends Controller
         ]);
 
         return redirect('sampah')
-            ->with('success', 'Mahasiswa Berhasil Diedit');
+            ->with('success', 'Sampah Berhasil Diubah');
     }
 
     /**
@@ -123,6 +123,6 @@ class SampahController extends Controller
         
         SampahModel::where('id','=',$id)->delete();
         return redirect('sampah')
-        ->with('success','Mahasiswa Berhasil Dihapus');
+        ->with('success','Sampah Berhasil Dihapus');
     }
 }

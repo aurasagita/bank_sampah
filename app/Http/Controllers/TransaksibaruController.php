@@ -141,7 +141,7 @@ class TransaksibaruController extends Controller
         $request['harga'] = $harga;
         $data = TransaksiBaruModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
-        return redirect('jadwal')->with('success', 'Data Berhasil Diedit');
+        return redirect('jadwal')->with('success', 'Jadwal Berhasil Diubah');
     }
 
     /**

@@ -50,18 +50,18 @@ class NasabahController extends Controller
         $request->validate([
             'id_nasabah'=>'required|string|max:10|unique:nasabah,id_nasabah',
             'nama'=>'required|string',
-            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            // 'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'alamat'=>'required|string|max:255',
             'phone'=>'required|digits_between:5, 15',
             'email'=>'required|string|unique:users,email',
             'password' => 'required|string|min:4'
         ]);
 
-        if ($request->file('foto')) {
-            $file = $request->file('foto');
-            $filename = 'nasabah-' . 'nama' . '.' . $file->getClientOriginalExtension();
-            $image_name = $file->storeAs('nasabahprofile', $filename, 'public');
-        }
+        // if ($request->file('foto')) {
+        //     $file = $request->file('foto');
+        //     $filename = 'nasabah-' . 'nama' . '.' . $file->getClientOriginalExtension();
+        //     $image_name = $file->storeAs('nasabahprofile', $filename, 'public');
+        // }
 
         User::create([
             'name' => $request->input('nama'),
@@ -72,7 +72,7 @@ class NasabahController extends Controller
         NasabahModel::create([
             'id_nasabah' => $request->input('id_nasabah'),
             'nama' => $request->input('nama'),
-            'foto' => $image_name,
+            // 'foto' => $image_name,
             'alamat' => $request->input('alamat'),
             'phone' => $request->input('phone'),
             'email' => $request->input('email'),
@@ -120,21 +120,21 @@ class NasabahController extends Controller
         $request->validate([
             'id_nasabah'=>'required|string|max:10|unique:nasabah,id_nasabah,'.$id,
             'nama'=>'required|string|max:50',
-            'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
+            // 'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
             'alamat'=>'required|string|max:255',
             'phone'=>'required|digits_between:5, 15',
         ]);
 
         $nasabah = NasabahModel::find($id);
 
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $fotoName = 'nasabahprofile/'.'nasabah-' . $nasabah->nama . '.' . $foto->getClientOriginalExtension();
-            !is_null($nasabah->foto) && Storage::delete($nasabah->foto);
+        // if ($request->hasFile('foto')) {
+        //     $foto = $request->file('foto');
+        //     $fotoName = 'nasabahprofile/'.'nasabah-' . $nasabah->nama . '.' . $foto->getClientOriginalExtension();
+        //     !is_null($nasabah->foto) && Storage::delete($nasabah->foto);
 
-            $foto->storeAs('nasabahprofile', $fotoName, 'public');
-            $nasabah->foto = $fotoName;
-        }
+        //     $foto->storeAs('nasabahprofile', $fotoName, 'public');
+        //     $nasabah->foto = $fotoName;
+        // }
         
         NasabahModel::where('id', $id)->update([
             'id_nasabah' => $request->id_nasabah,
@@ -160,7 +160,7 @@ class NasabahController extends Controller
         }
 
         return redirect('nasabah')
-            ->with('success', 'Nasabah Berhasil Ditambahkan');
+            ->with('success', 'Nasabah Berhasil Diubah');
     }
 
     /**

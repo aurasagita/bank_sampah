@@ -75,7 +75,7 @@ class PageSopirController extends Controller
 
         $data = TransaksiBaruModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
-        return redirect('jadwalsopir')->with('success', 'Data Berhasil Diedit');
+        return redirect('jadwalsopir')->with('success', 'Status Berhasil Diubah');
     }
 
 }
