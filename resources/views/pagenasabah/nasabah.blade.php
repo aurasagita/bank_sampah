@@ -24,7 +24,7 @@
         <div class="col-lg-12 col-3">
           <div class="small-box bg-success">
             <div class="inner text-center">
-              <h5>Anda telah ikut serta melestarikan lingkungan dengan menyumbang sampah senilai <b>Rp {{$total}},00</b></h5>
+              <h5>Anda telah menyetorkan sampah senilai <b>Rp {{$total}},00</b></h5>
             </div>
           </div>
         </div>
