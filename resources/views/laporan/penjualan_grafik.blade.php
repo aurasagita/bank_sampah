@@ -13,7 +13,9 @@
             </div>
         </div>
     </div>
- 
+ <div>
+    <a class="btn btn-success mt-3" href="{{ url('/laporan') }}">Kembali</a>
+ </div>
 </div>
    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript">
