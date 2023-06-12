@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="content">
-
+  <a class="btn btn-success mt-3" href="{{ url('/jadwalnasabah') }}">Kembali</a>
     <!-- Default Box-->
     <div class="card">
         <div class="card-header">
@@ -25,11 +25,10 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-sm btn-success">Simpan</button>
-                  </div>
+               
               </form>
         </div>
     </div>
+    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/jadwalsopir') }}">Kembali</a></div>
 </section>
 @endsection

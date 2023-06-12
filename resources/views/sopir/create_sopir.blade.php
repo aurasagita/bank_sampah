@@ -71,11 +71,13 @@
             </div>
             
             <div class="form-group">
-              <button class="btn btn-sm btn-success">Simpan</button>
+              <button class="btn btn-sm btn-success" style="float: right">Simpan</button>
             </div>
             
           </form>
         </div>
     </div>
+    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/sopir') }}">Kembali</a></div>
+   
 </section>
 @endsection

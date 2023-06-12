@@ -65,5 +65,6 @@
             {{$sopir->links()}}
         </div>
     </div>
+   
 </section>
 @endsection

@@ -42,5 +42,6 @@
       
         </div>
     </div>
+    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/sampah') }}">Kembali</a></div>
 </section>
 @endsection

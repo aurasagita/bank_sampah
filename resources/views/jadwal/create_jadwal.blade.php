@@ -90,6 +90,7 @@
       
         </div>
     </div>
+    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/jadwal') }}">Kembali</a></div>
 </section>
 <script>
   var counter = 1; // Menambahkan variabel counter

@@ -29,13 +29,13 @@
                 <li class="list-group-item"><b>Harga : </b>Rp.&nbsp;{{$jadwal->harga}},00</li>
                 <li class="list-group-item"><b>Konfirmasi :  </b>{{$jadwal->konfirmasi}}</li>
             </ul>
-            <a class="btn btn-success mt-3" href="{{ url('/jadwalnasabah') }}">Kembali</a>
+          
         </div>
         
     </div>
        
       
     <!-- /.card -->
-
+    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/jadwalnasabah') }}">Kembali</a></div>
     </section>
 @endsection

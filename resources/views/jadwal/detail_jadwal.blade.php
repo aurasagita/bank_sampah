@@ -40,13 +40,13 @@
                 <li class="list-group-item"><b>Tanggal Pengambilan : </b>{{$jdw->tanggal_pengambilan}}</li>
                 <li class="list-group-item"><b>Konfirmasi :  </b>{{$jdw->konfirmasi}}</li>
             </ul>
-            <a class="btn btn-success mt-3" href="{{ url('/jadwal') }}">Kembali</a>
+           
         </div>
         
     </div>
        
       
     <!-- /.card -->
-
+    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/jadwal') }}">Kembali</a></div>
     </section>
 @endsection

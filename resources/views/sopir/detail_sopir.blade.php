@@ -24,7 +24,7 @@
                 <li class="list-group-item"><b>Alamat : </b>{{$sopir->alamat}}</li>
                 <li class="list-group-item"><b>No. Telepon : </b>{{$sopir->phone}}</li>
             </ul>
-            <a class="btn btn-success mt-3" href="{{ url('/sopir') }}">Kembali</a>
+            <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/sopir') }}">Kembali</a></div>
         </div>
         
     </div>
