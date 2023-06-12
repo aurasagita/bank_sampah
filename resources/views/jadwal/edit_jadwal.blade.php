@@ -27,7 +27,7 @@
                     is-invalid @enderror">
                     @foreach($nasabah as $nsb)
                     <option value="{{$nsb->id}}" {{ old('id_nasabah', $jdw->id_nasabah) == $nsb->id ? 'selected' : null }}> 
-                      {{$nsb->id_nasabah}}
+                      {{$nsb->id_nasabah}} --  {{$nsb->nama}}
                     </option>
                     @endforeach
                   </select>
@@ -38,7 +38,7 @@
                   <select name="id_sopir" class="form-control @error('id_sopir')
                     is-invalid @enderror">
                     @foreach($sopir as $spr)
-                    <option value="{{$spr->id}}" {{ old('id_sopir', $jdw->id_sopir) == $spr->id ? 'selected' : null }}>{{$spr->id_sopir}}</option>
+                    <option value="{{$spr->id}}" {{ old('id_sopir', $jdw->id_sopir) == $spr->id ? 'selected' : null }}>{{$spr->id_sopir}} -- {{$spr->nama}}</option>
                     @endforeach
                   </select>
                 </div>

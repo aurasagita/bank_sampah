@@ -49,14 +49,14 @@
                       <td>Rp{{$k->harga}},00</td>
                       <td>{{$k->konfirmasi}}</td>
                       <td>
-                        <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-
+                        @if ($k->konfirmasi != 'Selesai' && $k->konfirmasi != 'Dibatalkan')
+                        <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>                        
                         <form class="delete d-inline-block" method="POST" action="{{url('/jadwal/'.$k->id)}}">
                           @csrf
                           @method('DELETE')
                           <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
                         </form>
-
+                        @endif
                         <a href="{{url('/jadwal/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>
                       </td>
                     </tr>
