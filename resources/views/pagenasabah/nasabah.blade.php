@@ -51,6 +51,7 @@
                   <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
                   <th>Berat</th>
+                  <th>Jenis Sampah</th>
                   <th>Total</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -65,6 +66,7 @@
                       <td>{{$k->sopir->nama ?? "Tidak ada sopir"}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->berat}}</td>
+                      <td>{{$k->sampah->jenis_sampah}}</td>
                       <td>Rp{{$k->harga}},00</td>
                       <td>{{$k->konfirmasi}}</td>
                       <td>
