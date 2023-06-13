@@ -152,7 +152,11 @@ class TransaksibaruController extends Controller
      */
     public function destroy($id)
     {
-        TransaksiBaruModel::where('id', '=', $id)->delete();
+        $confirm = 'Dibatalkan';
+        TransaksiBaruModel::where('id', '=', $id)
+            ->update([
+                'konfirmasi' => $confirm
+            ]);
         return redirect('jadwal')
             ->with('success', 'Jadwal Berhasil Dihapus');
     }
