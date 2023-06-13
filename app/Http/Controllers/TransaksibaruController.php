@@ -24,7 +24,7 @@ class TransaksibaruController extends Controller
         if($request->has('search')){
             $jadwal = TransaksiBaruModel::where('id_transaksibaru','LIKE','%'.$request->search.'%')->paginate(25);
         }else{
-            $jadwal = TransaksiBaruModel::paginate(25);
+            $jadwal = TransaksiBaruModel::paginate(10);
         }
        
         return view('jadwal.jadwal')->with('jadwal',$jadwal);

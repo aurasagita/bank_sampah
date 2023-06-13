@@ -20,7 +20,7 @@ class DashboardController extends Controller
     if($request->has('search')){
         $transaksi = TransaksiBaruModel::where('id_transaksibaru','LIKE','%'.$request->search.'%')->paginate(25);
     }else{
-        $transaksi = TransaksiBaruModel::orderBy('created_at', 'desc')->paginate(25);
+        $transaksi = TransaksiBaruModel::orderBy('created_at', 'desc')->paginate(10);
     }
    
     return view('layouts.dashboard')->with('transaksi',$transaksi);
