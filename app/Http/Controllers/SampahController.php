@@ -15,7 +15,7 @@ class SampahController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $sampah = SampahModel::where('jenis_sampah','LIKE','%'.$request->search.'%')->paginate(25);
+            $sampah = SampahModel::where('jenis_sampah','LIKE','%'.$request->search.'%')->paginate(10);
         }else{
             $sampah = SampahModel::paginate(25);
         }

@@ -20,7 +20,7 @@ class SopirController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $sopir = SopirModel::where('nama','LIKE','%'.$request->search.'%')->paginate(25);
+            $sopir = SopirModel::where('nama','LIKE','%'.$request->search.'%')->paginate(10);
         }else{
             $sopir = SopirModel::paginate(25);
         }

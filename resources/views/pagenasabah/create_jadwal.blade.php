@@ -26,59 +26,68 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
-                <div id="tambahData">
-                  <div class="form-group">
-                    <label for="Jenis Sampah">Jenis Sampah</label>
-                    <select name="jenis_sampah_0" class="form-control @error('jenis_sampah') is-invalid @enderror">
+               <table id="tambahData"  >
+                <th>Jenis Sampah</th>
+                <th>Berat</th>
+                <th>Action</th>
+                <tr >
+                  <td>
+                   
+                    <select  name="jenis_sampah_0" class="form-control @error('jenis_sampah') is-invalid @enderror">
                       @foreach($sampah as $s)
                       <option value="{{$s->id}}">{{$s->jenis_sampah}} ({{($s->harga)}}/kg)</option>
                       @endforeach
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Berat</label>
+                    </select></td>
+                  <td >
+                   
                     <input class="form-control @error('berat') is-invalid @enderror" name="berat_0" type="text"/>
                     @error('berat')
                       <span class="error invalid-feedback">{{ $message }} </span>
-                    @enderror
-                  </div>
-                </div>
-
-                <a class="btn btn-success" onclick="tambahData()">Tambah</a>
-
-                <div class="form-group mt-3">
-                    <input type="hidden" value="1" id="counter" name="counter">
-                    <button class="btn btn-sm btn-primary">Simpan</button>
-                </div>
+                    @enderror</td>
+                  <td> <a style="float: right"   class="btn  btn-success" onclick="tambahData()"><i class="fa  fa-plus" aria-hidden="true"></i></a></td>
+                </tr>
+               
+               </table>
+               <div class="form-group mt-3">
+                <input type="hidden" value="1" id="counter" name="counter">
+                <button class="btn btn-sm btn-primary">Simpan</button>
+            </div>
               </form>
-      
         </div>
+        
     </div>
+    <div>
+      <a class="btn btn-success mt-3" href="{{ url('/jadwalnasabah') }}">Kembali</a>
+   </div>
     <script>
       var counter = 1; // Menambahkan variabel counter
     
       function tambahData() {
         var tempHtml = `
-        <div class="form-group">
-          <label for="Jenis Sampah">Jenis Sampah</label>
-          <select name="jenis_sampah_${counter}" class="form-control @error('jenis_sampah') is-invalid @enderror">
-            @foreach($sampah as $s)
+        <tr >
+            <td>
+            <select name="jenis_sampah_${counter}" class="form-control @error('jenis_sampah') is-invalid @enderror">
+             @foreach($sampah as $s)
             <option value="{{$s->id}}">{{$s->jenis_sampah}} ({{($s->harga)}}/kg)</option>
             @endforeach
-          </select>
-        </div>
-    
-        <div class="form-group">
-          <label>Berat</label>
-          <input class="form-control @error('berat') is-invalid @enderror" name="berat_${counter}" type="text"/>
-        </div>`;
+            </select>
+            </td>
+            <td >
+              <input class="form-control @error('berat') is-invalid @enderror" name="berat_${counter}" type="text"/>
+            </td>
+            <td> <a style="float: right"   class="btn  btn-danger remove-table-row" "><i class="fa fa-times" aria-hidden="true"></i></a></td>
+          </tr>`;
     
         $('#tambahData').append(tempHtml);
         counter++; // Meningkatkan counter setelah menambahkan elemen
     
         $('#counter').val(counter); // Mengisi nilai pada input counter
+
+        $(document).on('click','.remove-table-row',function(){
+          $(this).parents('tr').remove();
+        });
       }
+     
     </script>
 </section>
 

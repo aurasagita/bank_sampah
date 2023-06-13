@@ -21,7 +21,7 @@ class JadwalController extends Controller
         if($request->has('search')){
             $jadwal = jadwalModel::where('id_jadwal','LIKE','%'.$request->search.'%')->paginate(25);
         }else{
-            $jadwal = jadwalModel::paginate(25);
+            $jadwal = jadwalModel::paginate(10);
         }
        
         return view('jadwal.jadwal')->with('jadwal',$jadwal);
