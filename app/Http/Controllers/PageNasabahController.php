@@ -8,6 +8,7 @@ use App\Models\SampahModel;
 use App\Models\SopirModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,8 @@ class PageNasabahController extends Controller
         $user = Auth::user();
         $jadwal = TransaksiBaruModel::where('id_nasabah', $user->nasabah->id)->get();
         $nasabah = NasabahModel::where('email', $user->email)->first();
-        return view('pagenasabah.nasabah', compact('jadwal'), compact('nasabah'));
+        $former = NULL;
+        return view('pagenasabah.nasabah', compact('jadwal'), compact('nasabah'))->with('former', $former);
     }
 
     /**
@@ -49,14 +51,20 @@ class PageNasabahController extends Controller
      */
     public function store(Request $request)
     {
+        $nsbid = $request->id_nasabah;
+        $id = IdGenerator::generate(['table'=>'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
+        $newid = "J".$id;
+        $confirm = 'Menunggu Konfirmasi';
         for($i = 0; $i < $request->counter; $i++){
             $berat = $request['berat_'.$i];
             $jenisSampah = SampahModel::find($request['jenis_sampah_'.$i]);
             $harga = $jenisSampah->harga * $berat;
 
             TransaksiBaruModel::insert([
+                'id_transaksibaru' => $newid,
                 'id_nasabah' => $request->id_nasabah,
                 'jenis_sampah' => $request['jenis_sampah_'.$i],
+                'konfirmasi' => $confirm,
                 'berat' => $berat,
                 'harga' => $harga,
             ]);

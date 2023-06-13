@@ -26,44 +26,52 @@
                   <th>#</th>
                   <th>Id Jadwal</th>
                   <th>Nama Nasabah</th>
-                  <th>Id Sopir</th>
+                  <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
-                  <th>Jenis Sampah</th>
-                  <th>Berat</th>
-                  <th>Total</th>
                   <th>Konfirmasi</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                @if ($jadwal ->count() > 0)
+                @if ($jadwal -> count() > 0)
                   @foreach ($jadwal as $i => $k)
-                    <tr>
-                      <td>{{++$i}}</td>
-                      <td>{{$k->id_transaksibaru}}</td>
-                      <td>{{$k->nasabah->nama}}</td>
-                      <td>{{$k->sopir->id_sopir ?? "Sopir tidak ada"}}</td>
-                      <td>{{$k->tanggal_pengambilan}}</td>
-                      <td>{{$k->sampah->jenis_sampah}}</td>
-                      <td>{{$k->berat}}</td>
-                      <td>Rp{{$k->harga}},00</td>
-                      <td>{{$k->konfirmasi}}</td>
-                      <td>
-                        @if ($k->konfirmasi != 'Selesai' && $k->konfirmasi != 'Dibatalkan')
-                        <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>                        
-                        <form class="delete d-inline-block" method="POST" action="{{url('/jadwal/'.$k->id)}}">
-                          @csrf
-                          @method('DELETE')
-                          <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
-                        </form>
+                    @if ($k->id_transaksibaru != $former)
+                      <tr>
+                        <td>{{++$i}}</td>
+                        <td>{{$k->id_transaksibaru}}</td>
+                        <td>{{$k->nasabah->nama}}</td>
+                        <td>{{$k->sopir->nama ?? "Sopir tidak ada"}}</td>
+                        @if($k->tanggal_pengambilan == NULL) 
+                          <td>Menunggu Konfirmasi</td>
+                        @else  
+                          <td>{{$k->tanggal_pengambilan}}</td>
                         @endif
-                        <a href="{{url('/jadwal/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>
-                      </td>
-                    </tr>
+                        <td>{{$k->konfirmasi}}</td>
+                        <td>
+                          @if ($k->konfirmasi != 'Selesai' && $k->konfirmasi != 'Dibatalkan')
+                          <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>                        
+                          <form class="delete d-inline-block" method="POST" action="{{url('/jadwal/'.$k->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
+                          </form>
+                          @endif
+                          <a href="{{url('/jadwal/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>
+                        </td>
+                      </tr>
+                    @else
+                      <?php
+                        continue;
+                        $former = $k->id_transaksibaru;
+                      ?>
+                    @endif
+                    <?php
+                      $former = $k->id_transaksibaru;
+                    ?>
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="10" class="text-center">Data tidak ada</td>
+                    <td colspan="7" class="text-center">Data tidak ada</td>
                   </tr>
                 @endif
               </tbody>

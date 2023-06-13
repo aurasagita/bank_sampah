@@ -13,13 +13,6 @@
             <form method="POST" action="{{$url_form}}">
                 @csrf
                 {!! (isset($jdw))? method_field('PUT'):''!!}
-                <div class="form-group">
-                  <label>Id Jadwal</label>
-                  <input class="form-control @error('id_transaksibaru') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_transaksibaru : old('id_transaksibaru') }}" name="id_transaksibaru" type="text" />
-                  @error('id_transaksibaru')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
 
                 <div class="form-group">
                   <label for="Id Nasabah">Id Nasabah</label>

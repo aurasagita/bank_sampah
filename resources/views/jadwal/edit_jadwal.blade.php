@@ -15,7 +15,7 @@
                 {!! (isset($jdw))? method_field('PUT'):''!!}
                 <div class="form-group">
                   <label>Id Jadwal</label>
-                  <input class="form-control @error('id_transaksibaru') is-invalid @enderror" value="{{isset($jdw)?$jdw->id_transaksibaru : old('id_transaksibaru',$jdw->id_transaksibaru) }}" name="id_transaksibaru" type="text" />
+                  <input disabled class="form-control @error('id_transaksibaru') is-invalid @enderror" value="{{isset($jdw)?$jdw->id_transaksibaru : old('id_transaksibaru',$jdw->id_transaksibaru) }}" name="id_transaksibaru" type="text" />
                   @error('id_transaksibaru')
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
@@ -62,6 +62,8 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
+                
+                <!--
                 <div class="form-group">
                   <label for="Jenis Sampah">Jenis Sampah</label>
                   <select name="jenis_sampah" class="form-control @error('jenis_sampah') is-invalid @enderror">
@@ -78,14 +80,15 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
-
+                -->
                 <div class="form-group">
                     <button class="btn btn-sm btn-success">Simpan</button>
-                  </div>
+                    <a href="{{ url('/jadwal') }}"><button class="btn btn-sm btn-primary">Kembali</button></a>
+                </div>
               </form>
       
         </div>
     </div>
-    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/jadwal') }}">Kembali</a></div>
+    
 </section>
 @endsection
