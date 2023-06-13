@@ -57,19 +57,20 @@
                   ?>
                   @if ($transaksi ->count() > 0)
                     @foreach ($transaksi as $i => $k)
-                      <tr>
-                        <td>{{++$i}}</td>
-                        <td>{{$k->id_transaksibaru}}</td>
-                        <td>{{$k->nasabah->nama}}</td>
-                        <td>{{$k->sopir->nama}}</td>
-                        <td>{{$k->tanggal_pengambilan}}</td>
-                        <td>{{$k->konfirmasi}}</td>
-                        <td>{{$k->jenis_sampah}}</td>
-                        <td>{{$k->berat}}</td>
-                        <td>Rp{{$k->harga}},00</td>
-                     
-                        <?php $total += $k->harga; ?>
-                      </tr>
+                      @if ($k->konfirmasi == 'Selesai')
+                    <tr>
+                      <td>{{++$i}}</td>
+                      <td>{{$k->id_transaksibaru}}</td>
+                      <td>{{$k->nasabah->nama}}</td>
+                      <td>{{$k->sopir->nama}}</td>
+                      <td>{{$k->tanggal_pengambilan}}</td>
+                      <td>{{$k->konfirmasi}}</td>
+                      <td>{{$k->jenis_sampah}}</td>
+                      <td>{{$k->berat}}</td>
+                      <td>Rp{{$k->harga}},00</td>
+                      <?php $total += $k->harga; ?>
+                    </tr>
+                    @endif 
                     @endforeach
                     <td colspan="8"><b>Total Pemasukan</b></td>
                     <td><b>Rp{{$total}},00</b></td>
@@ -85,8 +86,6 @@
         </div> 
     </div>
 </div>
-<script type="text/javascript">
-    window.print();
-</script>
+
 </body>
 </html>
