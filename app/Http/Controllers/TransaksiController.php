@@ -30,8 +30,10 @@ class TransaksiController extends Controller
                   
             });
         }
-    
-        $transaksi = $transaksi->get();
+
+        $transaksi = $transaksi->whereHas('jadwal', function ($query) {
+            $query->where('status', 'selesai');
+        })->get();
         return view('transaksi.transaksi', compact('transaksi'));
     
     }
