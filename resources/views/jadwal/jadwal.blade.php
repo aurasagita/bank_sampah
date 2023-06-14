@@ -35,10 +35,9 @@
               <tbody>
                 @if ($jadwal -> count() > 0)
                   @foreach ($jadwal as $i => $k)
-                    @if ($k->id_transaksibaru != $former)
                       <tr>
                         <td>{{++$i}}</td>
-                        <td>{{$k->id_transaksibaru}}</td>
+                        <td>{{$k->id_jadwal}}</td>
                         <td>{{$k->nasabah->nama}}</td>
                         <td>{{$k->sopir->nama ?? "Sopir tidak ada"}}</td>
                         @if($k->tanggal_pengambilan == NULL) 
@@ -59,15 +58,6 @@
                           <a href="{{url('/jadwal/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>
                         </td>
                       </tr>
-                    @else
-                      <?php
-                        continue;
-                        $former = $k->id_transaksibaru;
-                      ?>
-                    @endif
-                    <?php
-                      $former = $k->id_transaksibaru;
-                    ?>
                   @endforeach
                 @else
                   <tr>

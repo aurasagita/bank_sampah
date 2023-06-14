@@ -18,9 +18,9 @@ class DashboardController extends Controller
     public function index(Request $request) {
 
     if($request->has('search')){
-        $transaksi = TransaksiBaruModel::where('id_transaksibaru','LIKE','%'.$request->search.'%')->paginate(25);
+        $transaksi = JadwalModel::where('id_jadwal','LIKE','%'.$request->search.'%')->paginate(25);
     }else{
-        $transaksi = TransaksiBaruModel::orderBy('created_at', 'desc')->paginate(10);
+        $transaksi = JadwalModel::orderBy('created_at', 'desc')->paginate(10);
     }
    
     return view('layouts.dashboard')->with('transaksi',$transaksi);

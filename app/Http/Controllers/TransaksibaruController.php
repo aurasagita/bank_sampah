@@ -22,7 +22,6 @@ class TransaksibaruController extends Controller
      */
     public function index(Request $request)
     {
-
         if($request->has('search')){
             $jadwal = TransaksiBaruModel::where('id_transaksibaru','LIKE','%'.$request->search.'%')->paginate(10);
         }else{

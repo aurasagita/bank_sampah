@@ -119,9 +119,8 @@
                                       <th>#</th>
                                       <th>Id Jadwal</th>
                                       <th>Nama Nasabah</th>
-                                      <th>Id Sopir</th>
+                                      <th>Nama Sopir</th>
                                       <th>Tanggal Ambil</th>
-                                      <th>Jenis Sampah</th>
                                       <th>Konfirmasi</th>
                                     </tr>
                                   </thead>
@@ -130,17 +129,16 @@
                                       @foreach ($transaksi as $i => $k)
                                         <tr>
                                           <td>{{++$i}}</td>
-                                          <td>{{$k->id_transaksibaru}}</td>
+                                          <td>{{$k->id_jadwal}}</td>
                                           <td>{{$k->nasabah->nama}}</td>
                                           <td>{{$k->sopir->id_sopir ?? "Sopir tidak ada"}}</td>
                                           <td>{{$k->tanggal_pengambilan}}</td>
-                                          <td>{{$k->sampah->jenis_sampah}}</td>
                                           <td>{{$k->konfirmasi}}</td>
                                         </tr>
                                       @endforeach
                                     @else
                                       <tr>
-                                        <td colspan="7" class="text-center">Data tidak ada</td>
+                                        <td colspan="6" class="text-center">Data tidak ada</td>
                                       </tr>
                                     @endif
                                   </tbody>

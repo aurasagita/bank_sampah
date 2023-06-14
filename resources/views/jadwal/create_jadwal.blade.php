@@ -80,12 +80,13 @@
                 <div class="form-group mt-3">
                     <input type="hidden" value="1" id="counter" name="counter">
                     <button class="btn btn-sm btn-success">Simpan</button>
-                  </div>
+                    <a class="btn btn-sm btn-primary" href="{{ url('/jadwal') }}">Kembali</a>
+                </div>
               </form>
       
         </div>
     </div>
-    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/jadwal') }}">Kembali</a></div>
+    <div style="padding-bottom: 30px"> </div>
 </section>
 <script>
   var counter = 1; // Menambahkan variabel counter
