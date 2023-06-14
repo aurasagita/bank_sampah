@@ -9,8 +9,14 @@ use App\Models\SampahModel;
 use App\Models\SopirModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Haruncpi\LaravelIdGenerator\IdGeneratorServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\DataTables;
+
+
 
 class TransaksibaruController extends Controller
 {
@@ -22,12 +28,13 @@ class TransaksibaruController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $jadwal = TransaksiBaruModel::where('id_transaksibaru','LIKE','%'.$request->search.'%')->paginate(25);
+            $jadwal = TransaksiBaruModel::where('id_transaksibaru','LIKE','%'.$request->search.'%')->paginate(10);
         }else{
-            $jadwal = TransaksiBaruModel::paginate(25);
+            $jadwal = TransaksiBaruModel::paginate(10);
+            //$jadwal = TransaksiBaruModel::select('id_transaksibaru')->distinct()->get();
         }
-       
-        return view('jadwal.jadwal')->with('jadwal',$jadwal);
+        $former = NULL;
+        return view('jadwal.jadwal')->with(['jadwal'=>$jadwal, 'former'=>$former]);
     }
 
     /**
@@ -37,7 +44,6 @@ class TransaksibaruController extends Controller
      */
     public function create()
     {
-        
         $sampah = SampahModel::all();
         $nasabah = NasabahModel::all();
         $sopir = SopirModel::all();
@@ -54,13 +60,16 @@ class TransaksibaruController extends Controller
      */
     public function store(Request $request)
     {
+        $nsbid = $request->id_nasabah;
+        $id = IdGenerator::generate(['table' => 'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
+        $newid = "J" . $id;
         $request->validate([
-            'id_transaksibaru' => 'required|string|max:10|unique:transaksibaru,id_transaksibaru',
-            'id_nasabah'=>'required',
-            'id_sopir'=>'required',
-            'tanggal_pengambilan'=>'required|date',
-            'konfirmasi'=>'required|string',
+            'id_nasabah' => 'required',
+            'id_sopir' => 'required',
+            'tanggal_pengambilan' => 'required|date',
+            'konfirmasi' => 'required|string',
         ]);
+
         for($i = 0; $i < $request->counter; $i++){
             $berat = $request['berat_'.$i];
             $jenisSampah = SampahModel::find($request['jenis_sampah_'.$i]);
@@ -68,7 +77,7 @@ class TransaksibaruController extends Controller
 
             TransaksiBaruModel::insert(
                 [
-                    'id_transaksibaru' => $request->id_transaksibaru,
+                    'id_transaksibaru' => $newid,
                     'id_nasabah' => $request->id_nasabah,
                     'id_sopir' => $request->id_sopir,
                     'tanggal_pengambilan' => $request->tanggal_pengambilan,
@@ -128,20 +137,20 @@ class TransaksibaruController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_transaksibaru' => 'required|string|max:10'.$id,
+            //'id_transaksibaru' => 'required|string|max:10'.$id,
             'id_sopir'=>'required',
             'tanggal_pengambilan'=>'required|date',
             'konfirmasi'=>'required|string',
         ]);
 
-        $berat = $request->berat;
-        $jenisSampah = SampahModel::find($request->jenis_sampah);
-        $harga = $jenisSampah->harga * $berat;
+        // $berat = $request->berat;
+        // $jenisSampah = SampahModel::find($request->jenis_sampah);
+        // $harga = $jenisSampah->harga * $berat;
 
-        $request['harga'] = $harga;
+        // $request['harga'] = $harga;
         $data = TransaksiBaruModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
-        return redirect('jadwal')->with('success', 'Jadwal Berhasil Diubah');
+        return redirect('jadwal')->with(['success'=>'Jadwal Berhasil Diubah']);
     }
 
     /**
@@ -152,7 +161,11 @@ class TransaksibaruController extends Controller
      */
     public function destroy($id)
     {
-        TransaksiBaruModel::where('id', '=', $id)->delete();
+        $confirm = 'Dibatalkan';
+        TransaksiBaruModel::where('id', '=', $id)
+            ->update([
+                'konfirmasi' => $confirm
+            ]);
         return redirect('jadwal')
             ->with('success', 'Jadwal Berhasil Dihapus');
     }

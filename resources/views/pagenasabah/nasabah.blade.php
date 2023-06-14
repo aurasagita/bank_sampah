@@ -13,7 +13,9 @@
   if ($jadwal->count() > 0) {
       foreach ($jadwal as $i => $k) {
           // Calculate the total
-          $total += $k->harga;
+          if ($k->konfirmasi == 'Selesai') {
+                  $total += $k->harga;
+              }
       }
   }
   
@@ -24,7 +26,7 @@
         <div class="col-lg-12 col-3">
           <div class="small-box bg-success">
             <div class="inner text-center">
-              <h5>Anda telah ikut serta melestarikan lingkungan dengan menyumbang sampah senilai <b>Rp {{$total}},00</b></h5>
+              <h5>Anda telah menyetorkan sampah senilai <b>Rp {{$total}},00</b></h5>
             </div>
           </div>
         </div>
@@ -50,8 +52,6 @@
                   <th>Id Jadwal</th>
                   <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
-                  <th>Berat</th>
-                  <th>Total</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -59,20 +59,31 @@
               <tbody>
                 @if ($jadwal ->count() > 0)
                   @foreach ($jadwal as $i => $k)
-                    <tr>
-                      <td>{{++$i}}</td>
-                      <td>{{$k->id_transaksibaru}}</td>
-                      <td>{{$k->sopir->nama ?? "Tidak ada sopir"}}</td>
-                      <td>{{$k->tanggal_pengambilan}}</td>
-                      <td>{{$k->berat}}</td>
-                      <td>Rp{{$k->harga}},00</td>
-                      <td>{{$k->konfirmasi}}</td>
-                      <td>
-                        <div class="pr-1">
-                          <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalTransaksi{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
-                        </div>
-                      </td>
-                    </tr>
+                    @if ($k->id_transaksibaru != $former)
+                      <tr>
+                        <td>{{++$i}}</td>
+                        <td>{{$k->id_transaksibaru}}</td>
+                        <td>{{$k->sopir->nama ?? "Tidak ada sopir"}}</td>
+                        @if($k->tanggal_pengambilan == NULL) 
+                          <td>Menunggu Konfirmasi</td>
+                        @else  
+                          <td>{{$k->tanggal_pengambilan}}</td>
+                        @endif
+                        <td>{{$k->konfirmasi}}</td>
+                        <td>
+                          <div class="pr-1">
+                            <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalTransaksi{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                    @else
+                      <?php
+                        continue;
+                      ?>
+                    @endif
+                      <?php
+                        $former = $k->id_transaksibaru;
+                      ?>
                   @endforeach
                 @else
                   <tr>

@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Jadwal;
 use App\Models\JadwalModel;
 use App\Models\NasabahModel;
+use App\Models\SampahModel;
 use App\Models\SopirModel;
+use App\Models\TransaksiBaruModel;
+use App\Models\TransaksiModel;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,12 +23,11 @@ class JadwalController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $jadwal = jadwalModel::where('id_jadwal','LIKE','%'.$request->search.'%')->paginate(25);
-        }else{
-            $jadwal = jadwalModel::paginate(25);
+            $jadwal = JadwalModel::where('id_jadwal', 'LIKE', '%'.$request->search.'%')->paginate(10);
+        } else {
+            $jadwal = JadwalModel::paginate(10);
         }
-       
-        return view('jadwal.jadwal')->with('jadwal',$jadwal);
+        return view('jadwal.jadwal')->with(['jadwal'=>$jadwal]);
     }
 
     /**
@@ -34,9 +37,11 @@ class JadwalController extends Controller
      */
     public function create()
     {
+        $sampah = SampahModel::all();
         $nasabah = NasabahModel::all();
         $sopir = SopirModel::all();
-        return view('jadwal.create_jadwal',['nasabah'=>$nasabah],['sopir'=>$sopir])
+        
+        return view('jadwal.create_jadwal',['sampah'=>$sampah,'nasabah'=>$nasabah,'sopir'=>$sopir])
         ->with('url_form', url('/jadwal'));
     }
 
@@ -48,15 +53,46 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
+        $nsbid = $request->id_nasabah;
+        $id = IdGenerator::generate(['table'=>'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
+        $newid = "J".$id;
         $request->validate([
-            'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal',
+            //'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal',
             'id_nasabah'=>'required',
             'id_sopir'=>'required',
             'tanggal_pengambilan'=>'required|date',
             'konfirmasi'=>'required|string'
         ]);
 
-        JadwalModel::insert($request->except(['_token']));
+        //JadwalModel::insert($request->except(['_token']));
+        JadwalModel::insert(
+            [
+                'id_jadwal'=>$newid,
+                'id_nasabah' => $request->id_nasabah,
+                'id_sopir' => $request->id_sopir,
+                'tanggal_pengambilan' => $request->tanggal_pengambilan,
+                'konfirmasi' => $request->konfirmasi,
+            ]
+        );
+
+        for($i = 0; $i < $request->counter; $i++){
+            $berat = $request['berat_'.$i];
+            $jenisSampah = SampahModel::find($request['jenis_sampah_'.$i]);
+            $harga = $jenisSampah->harga * $berat;
+
+            TransaksiBaruModel::insert(
+                [
+                    'id_transaksibaru' => $newid,
+                    'id_nasabah' => $request->id_nasabah,
+                    'id_sopir' => $request->id_sopir,
+                    'tanggal_pengambilan' => $request->tanggal_pengambilan,
+                    'konfirmasi' => $request->konfirmasi,
+                    'jenis_sampah' => $request['jenis_sampah_'.$i],
+                    'berat' => $berat,
+                    'harga' => $harga,
+                ]
+            );
+        }
 
         //$data = JadwalModel::create($request->except(['_token']));
         return redirect('jadwal')
@@ -102,15 +138,23 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $findjdw = JadwalModel::find($request['id_jadwal_'.$id]);
+        // $idtrans = $findjdw->id_jadwal; 
         $request->validate([
             'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal,'.$id,
-            'id_nasabah'=>'required',
+            // 'id_nasabah'=>'required',
             'id_sopir'=>'required',
             'tanggal_pengambilan'=>'required|date',
             'konfirmasi'=>'required|string'
         ]);
 
+
         $data = JadwalModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        TransaksiBaruModel::where('id_transaksibaru', '=', $request->id_jadwal)->update([
+            'id_sopir' => $request -> id_sopir,
+            'tanggal_pengambilan' => $request -> tanggal_pengambilan,
+            'konfirmasi' => $request -> konfirmasi
+        ]);
 
         return redirect('jadwal')->with('success', 'Jadwal Berhasil Diubah');
     }
@@ -123,8 +167,16 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        JadwalModel::where('id', '=', $id)->delete();
+        $confirm = 'Dibatalkan';
+        $findJdw = JadwalModel::where('id', '=', $id)->first();
+
+        JadwalModel::where('id', '=', $id)->update([
+            'konfirmasi' => $confirm
+        ]);
+        TransaksiBaruModel::where('id_transaksibaru', '=', $findJdw->id_jadwal)->update([
+            'konfirmasi' => $confirm
+        ]);
         return redirect('jadwal')
-            ->with('success', 'Jadwal Berhasil Dihapus');
+            ->with('success', 'Jadwal Berhasil Dibatalkan');
     }
 }
