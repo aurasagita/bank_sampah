@@ -10,8 +10,13 @@ use App\Models\SopirModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Haruncpi\LaravelIdGenerator\IdGeneratorServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\DataTables;
+
+
 
 class TransaksibaruController extends Controller
 {
@@ -56,14 +61,13 @@ class TransaksibaruController extends Controller
     public function store(Request $request)
     {
         $nsbid = $request->id_nasabah;
-        $id = IdGenerator::generate(['table'=>'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
-        $newid = "J".$id;
+        $id = IdGenerator::generate(['table' => 'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
+        $newid = "J" . $id;
         $request->validate([
-            //'id_transaksibaru' => 'required|string|max:10|unique:transaksibaru,id_transaksibaru',
-            'id_nasabah'=>'required',
-            'id_sopir'=>'required',
-            'tanggal_pengambilan'=>'required|date',
-            'konfirmasi'=>'required|string',
+            'id_nasabah' => 'required',
+            'id_sopir' => 'required',
+            'tanggal_pengambilan' => 'required|date',
+            'konfirmasi' => 'required|string',
         ]);
 
         for($i = 0; $i < $request->counter; $i++){

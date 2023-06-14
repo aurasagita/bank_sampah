@@ -13,7 +13,9 @@
   if ($jadwal->count() > 0) {
       foreach ($jadwal as $i => $k) {
           // Calculate the total
-          $total += $k->harga;
+          if ($k->konfirmasi == 'Selesai') {
+                  $total += $k->harga;
+              }
       }
   }
   
