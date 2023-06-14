@@ -55,6 +55,7 @@ header ul li a{
     margin-left: 40px;
     text-decoration: none;
     padding: 0.3rem 0.5rem;
+    font-weight: 400;
 }
 
 header ul li a:hover{
@@ -281,6 +282,7 @@ header .logo{
     grid-template-columns: repeat(auto-fit, minmax(230px, auto));
     gap: 1.5rem;
     margin-top: 2rem;
+    cursor: pointer;
 }
 
 .box{
@@ -309,6 +311,68 @@ header .logo{
     font-size: 14px;
     letter-spacing: 1px;
     color: #b92323;
+}
+
+.sampah-preview{
+    position: fixed;
+    top: 0; left: 0;
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, .8);
+    display: none;
+    justify-content: center;
+}
+
+.sampah-preview .preview{
+    display: none;
+    padding: 3rem;
+    text-align: center;
+    background: #FFFF;
+    position: relative;
+    margin: 8rem;
+    width: 30rem;
+    border-radius: 0.5rem;
+}
+
+.sampah-preview .preview.active{
+    display: inline-block;
+}
+
+.sampah-preview .preview img{
+   height: 350px;
+}
+
+.sampah-preview .preview .fa-times{
+    position: absolute;
+    top: 1rem; right: 1.2rem;
+    cursor: pointer;
+    color: #303030;
+    font-size: 1.3rem;
+}
+
+.sampah-preview .preview h5{
+    color: #303030;
+    padding-top: 1.5rem ;
+    font-size: 1.5rem;
+}
+
+.sampah-preview .preview h6{
+    color: #b92323;
+    font-size: 1.1rem;
+}
+
+.sampah-preview .preview h6::after{
+    content: "";
+    border-bottom: 2px solid #808080;
+    width: 400px;
+    display: block;
+    margin: 30px auto;
+    border-radius: 0.5rem;
+}
+
+.sampah-preview .preview p {
+    color: #808080;
+    font-size: 1rem;
 }
 
 .temukan-kami-container{
