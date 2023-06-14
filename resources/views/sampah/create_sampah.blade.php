@@ -35,13 +35,14 @@
                     <span class="error invalid-feedback">{{ $message }} </span>
                   @enderror
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-sm btn-success">Simpan</button>
-                  </div>
+                <div class="form-group mt-3">
+                  <button class="btn btn-sm btn-success">Simpan</button>
+                  <a style="float:right " class="btn btn-sm btn-primary" href="{{ url('/sampah') }}">Kembali</a>
+              </div>
               </form>
       
         </div>
     </div>
-    <div style="padding-bottom: 30px"> <a class="btn btn-primary mt-3" href="{{ url('/sampah') }}">Kembali</a></div>
+   
 </section>
 @endsection

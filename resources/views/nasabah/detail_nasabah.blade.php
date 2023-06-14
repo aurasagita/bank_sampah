@@ -24,7 +24,7 @@
                 <li class="list-group-item"><b>Alamat : </b>{{$nasabah->alamat}}</li>
                 <li class="list-group-item"><b>No. Telepon : </b>{{$nasabah->phone}}</li>
             </ul>
-            <a class="btn btn-success mt-3" href="{{ url('/nasabah') }}">Kembali</a>
+            <a class="btn btn-primary mt-3" href="{{ url('/nasabah') }}">Kembali</a>
         </div>
         
     </div>
