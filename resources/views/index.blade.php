@@ -14,7 +14,7 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/95c066a903.js" crossorigin="anonymous"></script>
     
@@ -22,46 +22,27 @@
 <body>
   <!-- Navbar -->
   <section id="beranda">
-    <nav class="navbar fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="assets/dist/img/logo.png" alt="logo" width="80">
-          </a>
-          <ul>
-            <li class="nav-item">
-              <a class="active" href="#beranda">Beranda</a>
-            </li>
-            <li class="nav-item">
-              <a href="#tentang-kami">Tentang Kami</a>
-            </li>
-            <li class="nav-item">
-              <a href="#sampah">Sampah</a>
-            </li>
-            <li class="nav-item">
-              <a href="#temukan-kami">Temukan Kami</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ url('/login') }}" target="_blank">Login</a>
-            </li>
-          </ul>
+    <div class="beranda">
+      <header>
+        <a href="#" class="logo"><img src="assets/dist/img/logo.png" alt="logo" width="60"></a>
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#tentang-kami">Tentang Kami</a></li>
+          <li><a href="#sampah">Jenis Sampah</a></li>
+          <li><a href="#temukan-kami">Temukan Kami</a></li>
+          <li><a href="{{ url('/login') }}" target="_blank">Login</a></li>
+        </ul>
+      </header>
+      <div class="head-content">
+        <div class="textBox">
+          <h2>Ikut lestarikan lingkungan melalui <br><span>Bank Sampah Malang</span></h2>
+          <p>Setor pilahan sampah anda, kami akan mengubahnya menjadi barang yang memiliki nilai jual. 
+            Menguntungkan bagi alam juga bagi manusia.
+          </p>
+          <a href="#gabung">Daftar Menjadi Nasabah Kami</a>
         </div>
-    </nav>
-    <!-- Carousel -->
-    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active c-item">
-          <img src="assets/dist/img/slide3-2.jpg" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="assets/dist/img/slide2-1.jpg" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="assets/dist/img/slide1.jpg" class="d-block w-100 c-img" alt="...">
+        <div class="imgBox">
+          <img src="assets/dist/img/login.png" alt="" width="650px">
         </div>
       </div>
     </div>
@@ -112,7 +93,7 @@
   <!-- Sampah -->
   <section id="sampah">
     <div class="sampah-container">
-      <h3>Sampah</h3>
+      <h3>Jenis Sampah</h3>
       <div class="sampah">
         <div class="box">
           <img src="assets/dist/img/K1.jpg" alt="">
@@ -276,6 +257,33 @@
       width="1100" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="clearfix"></div>
+  </section>
+
+  <!--Gabung Bersama Kami-->
+  <section id="gabung">
+    <div class="gabung">
+      <div class="container">
+        <h3>Gabung Bersama Kami</h3>
+        <div class="row">
+          <div class="col-12">
+            <div class="gabung-content">
+              <div class="gabung-content-kiri">
+                <h4 class="text-white">Daftar Menjadi Nasabah Kami</h4>
+                <p class="text-white">Sayarat dan Ketentuan</p>
+                <ul class="text-white">
+                  <li>Melakukan registrasi akun pada menu <a href="{{ url('/login') }}">Login</a></li>
+                  <li>Beralamat di Kota Malang</li>
+                  <li>Menyetorkan sampah yang sudah dipilah</li>
+                  <li>Pick up sampah minimal berat 20kg</li>
+                  <li>Sampah dengan berat &lt;20kg disetorkan langsung ke kantor Bank Sampah Malang</li>
+                </ul>
+              </div>
+              <img src="assets/dist/img/daftar.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
