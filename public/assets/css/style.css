@@ -1,55 +1,185 @@
-body {
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*
+{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    background: #ffffff;
-    padding-top: 101px;
-}
-
-nav{
-    background-color: #07AA14;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 9999;
-}
-
-.navbar-brand{
-    margin: 0 3%;
-}
-
-nav ul {
-    margin: 0 3%;
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-nav li a {
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: normal;
     color: #FFFF;
-    font-family: 'Poppins', sans-serif;
 }
 
-nav li a:hover{
-    background-color: #FFFF;
+section{
+    padding: 4.5rem 0 1 1.5rem;
+}
+
+.beranda{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFF;
+    /* box-shadow: 0 6px 9px rgba(152, 152, 152, 0.15); */
+    transition: 0.5s;
+}
+
+header ul{
+    position: relative;
+    display: flex;
+}
+
+header ul li{
+    list-style: none;
+    font-size: 16px;
+}
+
+header ul li a{
+    display: inline-block;
     color: #07AA14;
-    transition: 1s;
+    font-weight: 400;
+    margin-left: 40px;
+    text-decoration: none;
+    padding: 0.3rem 0.5rem;
 }
 
-.nav-item a img{
-    height: 40px;
+header ul li a:hover{
+    background: #07AA14;
+    border-radius: 5rem;
+    color: #FFFF;
+    transition: background 0.5s;
 }
 
-.c-item {
-    height: 700px;
+header .logo{
+    position: relative;
+    max-width: 80px;
+}
+
+.head-content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head-content .textBox{
+    position: relative;
+    max-width: 600px;
+}
+
+.head-content .textBox h2{
+    color: #07AA14;
+    font-size: 2em;
+    line-height: 1.5em;
+    font-weight: 500;
+}
+
+.head-content .textBox h2 span{
+    color: #07AA14;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.head-content .textBox p{
+    margin-top: 20px;
+    color: #808080;
+    font-weight: normal;
+}
+
+.head-content .textBox a{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: #07AA14;
+    color: #FFFF;
+    border-radius: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.head-content .imgBox{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+
+.head-content .imgBox img{
+    max-width: 600px;
+}
+
+.gabung h3{
+    padding-top: 40px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    color: #07AA14;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.gabung h3::after {
+    content: "";
+    border-bottom: 5px solid #07AA14;
+    width: 90px;
+    display: block;
+    margin: 15px auto;
+}
+
+.gabung-content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem;
+    border-radius: 10px;
+    background-color: #07AA14;
+    margin-bottom: 3rem;
+}
+
+.gabung-content img{
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.gabung-content h4{
+    font-weight: 600;
+}
+
+.gabung-content p{
+    margin-top: 1rem;
+    margin-bottom: -0.2px;
+}
+
+.gabung-content ul{
+    line-height: 2em;
+}
+
+.gabung-content ul li a{
+    text-decoration: none;
+    color: #FFFF;
+    font-weight: 600;
 }
 
 .tentang-kami-container h3 {
-    padding-top: 40px;
     padding-bottom: 10px;
-    font-weight: bolder;
+    font-weight: 600;
     color: #07AA14;
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -66,7 +196,7 @@ nav li a:hover{
 .tentang-kami-container img{
     width: 670px;
     float: left;
-    margin:0 3% 5% 5%;
+    margin:0 3% 7% 7%;
 }
 
 .judul-isi{
@@ -74,7 +204,7 @@ nav li a:hover{
     margin-bottom: 10px;
     color: #303030;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .tentang-kami-container p{
@@ -83,7 +213,7 @@ nav li a:hover{
     color: #808080;
     font-family: 'Poppins', sans-serif;
     text-align: justify;
-    margin-right: 4%;
+    margin-right: 7%;
     line-height: 1.5;
 }
 
@@ -92,7 +222,7 @@ nav li a:hover{
     gap: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin: 0% 5% 0% 5%;
+    margin: 0% 7% 0% 7%;
 
 }
 
@@ -125,14 +255,14 @@ nav li a:hover{
 }
 
 .sampah-container{
-    padding: 70px 5%;
+    margin-left: 7%;
+    margin-right: 7%;
     padding-top: 2%;
-    height: 1700px;
-    background-color: #efefef;
+    background: #FFFF;
 }
 
 .sampah-container h3{
-    font-weight: bolder;
+    font-weight: 600;
     color: #07AA14;
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -147,31 +277,27 @@ nav li a:hover{
 }
 
 .sampah{
-    padding: 30px 1% ;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
-    align-items: center;
-    gap: 15px;
-    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(230px, auto));
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .box{
-    padding: 20px 0px 5px 0px;
-    background: #FFFF;
-    box-shadow: 5px 30px 56.1276px rgb(55 55 55 / 12%);
-    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 1px 2px 11px 4px rgb(14 55 54 / 15%);
+    border-radius: 0.5rem;
     position: relative;
-    transition: all 35.s ease;
 }
 
 .box img{
-    width: 60%;
+    width: 100%;
     height: auto;
 }
 
 .box h5{
     margin-top: 10px;
-    font-weight: bold;
+    font-weight: 500;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
     color: #303030;
@@ -186,16 +312,16 @@ nav li a:hover{
 }
 
 .temukan-kami-container{
-    padding-top: 3%;
+    padding-top: 7%;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 .temukan-kami-container h3{
-    font-weight: bolder;
+    font-weight: 600;
     color: #07AA14;
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -215,7 +341,7 @@ nav li a:hover{
 }
 
 .bg{
-    background-color:#efefef;
+    background-color:#303030;
 }
 
 .copyright{
