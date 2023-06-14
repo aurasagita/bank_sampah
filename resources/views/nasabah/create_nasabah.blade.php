@@ -68,9 +68,11 @@
               @enderror
             </div>
           
-            <div class="form-group">
+            <div class="form-group mt-3">
               <button class="btn btn-sm btn-success">Simpan</button>
-            </div>
+              <a style="float:right " class="btn btn-sm btn-primary" href="{{ url('/nasabah') }}">Kembali</a>
+          </div>
+         
             
           </form>
         </div>
