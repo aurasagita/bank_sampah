@@ -8,10 +8,6 @@
     color: #FFFF;
 }
 
-section{
-    padding: 4.5rem 0 1 1.5rem;
-}
-
 .beranda{
     position: relative;
     width: 100%;
@@ -20,6 +16,8 @@ section{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: -10%;
+    margin-bottom: -7.9%;
 }
 
 header{
@@ -125,58 +123,8 @@ header .logo{
     max-width: 600px;
 }
 
-.gabung h3{
-    padding-top: 40px;
-    padding-bottom: 10px;
-    font-weight: 600;
-    color: #07AA14;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-}
-
-.gabung h3::after {
-    content: "";
-    border-bottom: 5px solid #07AA14;
-    width: 90px;
-    display: block;
-    margin: 15px auto;
-}
-
-.gabung-content{
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5rem;
-    border-radius: 10px;
-    background-color: #07AA14;
-    margin-bottom: 3rem;
-}
-
-.gabung-content img{
-    width: 250px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.gabung-content h4{
-    font-weight: 600;
-}
-
-.gabung-content p{
-    margin-top: 1rem;
-    margin-bottom: -0.2px;
-}
-
-.gabung-content ul{
-    line-height: 2em;
-}
-
-.gabung-content ul li a{
-    text-decoration: none;
-    color: #FFFF;
-    font-weight: 600;
+.tentang-kami-container{
+    padding-top: 6.5%;
 }
 
 .tentang-kami-container h3 {
@@ -222,10 +170,7 @@ header .logo{
 .layanan-container{
     display: flex;
     gap: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     margin: 0% 7% 0% 7%;
-
 }
 
 .layanan-container .icons{
@@ -238,7 +183,6 @@ header .logo{
     display: flex;
     align-items: center;
     flex: 1 1 25rem;
-    margin-bottom: 5%;
 }
 
 .layanan-container .icons h5{
@@ -259,7 +203,7 @@ header .logo{
 .sampah-container{
     margin-left: 7%;
     margin-right: 7%;
-    padding-top: 2%;
+    padding-top: 7%;
     background: #FFFF;
 }
 
@@ -404,6 +348,60 @@ header .logo{
 
 .daftar-nasabah h3{
     padding-top: 10%;
+}
+
+.gabung h3{
+    padding-top: 40px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    color: #07AA14;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.gabung h3::after {
+    content: "";
+    border-bottom: 5px solid #07AA14;
+    width: 90px;
+    display: block;
+    margin: 15px auto;
+}
+
+.gabung-content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem;
+    border-radius: 10px;
+    background-color: #07AA14;
+    margin-bottom: 3rem;
+}
+
+.gabung-content img{
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.gabung-content h4{
+    font-weight: 600;
+}
+
+.gabung-content p{
+    margin-top: 1rem;
+    margin-bottom: -0.2px;
+}
+
+.gabung-content ul{
+    line-height: 2em;
+}
+
+.gabung-content ul li a{
+    text-decoration: none;
+    color: #FFFF;
+    font-weight: 600;
 }
 
 .bg{
