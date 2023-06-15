@@ -15,7 +15,7 @@
           // Calculate the total
           if ($k->konfirmasi == 'Selesai') {
                   $total += $k->harga;
-              }
+          }
       }
   }
   
