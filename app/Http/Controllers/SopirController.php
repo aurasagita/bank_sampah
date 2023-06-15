@@ -14,7 +14,7 @@ use Yajra\DataTables\DataTables;
 
 class SopirController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
