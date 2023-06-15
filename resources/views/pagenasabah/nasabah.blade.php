@@ -41,7 +41,7 @@
           </div>
           <br>
           <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
-              <a href="{{url('jadwalnasabah/create')}}" class="btn -btn sm btn-success my-2">Buat Jadwal</a>
+              <a href="{{url('jadwalnasabah/create')}}" class="btn -btn sm btn-success my-2">Mulai Setor</a>
 
             </div>
             </div>
@@ -52,23 +52,36 @@
                   <th>Id Jadwal</th>
                   <th>Nama Sopir</th>
                   <th>Tanggal Ambil</th>
+                  <th>Total</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 @if ($jadwal ->count() > 0)
-                  @foreach ($jadwal as $i => $k)
-                    @if ($k->id_transaksibaru != $former)
+                  @foreach ($transaksi as $i => $k)
                       <tr>
                         <td>{{++$i}}</td>
-                        <td>{{$k->id_transaksibaru}}</td>
+                        <td>{{$k->id_jadwal}}</td>
                         <td>{{$k->sopir->nama ?? "Tidak ada sopir"}}</td>
                         @if($k->tanggal_pengambilan == NULL) 
                           <td>Menunggu Konfirmasi</td>
                         @else  
                           <td>{{$k->tanggal_pengambilan}}</td>
                         @endif
+                        <td>
+                        <?php
+                          $cetak = 0;
+                        ?>
+                          @foreach($jadwal as $j => $z)
+                            @if($z->id_transaksibaru == $k->id_jadwal)
+                              <?php
+                                $cetak += $z->harga;
+                              ?>
+                            @endif
+                          @endforeach
+                        Rp{{$cetak}}
+                        </td>
                         <td>{{$k->konfirmasi}}</td>
                         <td>
                           <div class="pr-1">
@@ -76,14 +89,6 @@
                           </div>
                         </td>
                       </tr>
-                    @else
-                      <?php
-                        continue;
-                      ?>
-                    @endif
-                      <?php
-                        $former = $k->id_transaksibaru;
-                      ?>
                   @endforeach
                 @else
                   <tr>
@@ -96,64 +101,75 @@
     </div>
 </section>
 
-@foreach ($jadwal as $jadwal)
+@foreach ($transaksi as $trs)
 <!-- Modal Detail-->
-<div class="modal fade" id="detailModalTransaksi{{$jadwal->id}}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{$jadwal->id}}" aria-hidden="true">
+<div class="modal fade" id="detailModalTransaksi{{$trs->id}}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{$trs->id}}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="detailModalLabel {{$jadwal->id}}">Detail Transaksi
-                {{ $jadwal->id_transaksibaru }}
+              <h5 class="modal-title" id="detailModalLabel {{$trs->id}}">Detail Transaksi
+                {{ $trs->id_jadwal }}
               </h5>
           </div>
           <div class="modal-body">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <div class="d-flex justify-content-between align-items-center">
-                  <b>Id Jadwal</b>
-                  <span>
-                    {{ $jadwal->id_transaksibaru }}
-                    </span>
-                </div>
+                  @if($trs->konfirmasi == 'Dibatalkan')
+                      <li class="small-box bg-danger inner text-center" style="padding : 10px"><b>DIBATALKAN</li>
+                  @elseif($trs->konfirmasi == 'Selesai')
+                      <li class="small-box bg-success inner text-center" style="padding : 10px"><b>SELESAI</li>
+                  @else
+                      <li class="small-box bg-warning inner text-center" style="padding : 10px"><b>{{$trs->konfirmasi}}</li>
+                  @endif
               </li>
               <li class="list-group-item">
                 <div class="d-flex justify-content-between align-items-center">
                   <b>Tanggal Ambil</b>
                   <span>
-                    {{ $jadwal->tanggal_pengambilan }}
+                    {{ $trs->tanggal_pengambilan }}
                   </span>
                 </div>
               </li>
               <li class="list-group-item">
-                <div class="d-flex justify-content-between align-items-center">
-                  <b>Jenis Sampah</b>
-                  <span>
-                    {{ $jadwal->sampah->jenis_sampah }}
-                  </span>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="d-flex justify-content-between align-items-center">
-                  <b>Berat</b>
-                  <span>
-                    {{ $jadwal->berat }}kg
-                  </span>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="d-flex justify-content-between align-items-center">
-                  <b>Total</b>
-                  <span>
-                    Rp{{ $jadwal->harga }},00
-                  </span>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <div class="d-flex justify-content-between align-items-center">
-                  <b>Status</b>
-                  <span>
-                    {{ $jadwal->konfirmasi }}
-                  </span>
+                <div class="align-items-center">
+                  <b>DAFTAR SETORAN SAMPAH</b><br>
+                        <table class="table table-bordered">
+                            <?php
+                                $total = 0;
+                                $no = 1;
+                            ?>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Jenis Sampah</th>
+                                <th>Berat</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($jadwal as $k => $i)
+                              @if($i->id_transaksibaru == $trs->id_jadwal)
+                                <tr>
+                                    <td>{{$no++}}</td>
+                                    <td>{{$i->sampah->jenis_sampah}}</td>
+                                    <td>{{$i->berat}}</td> 
+                                    <td>{{$i->harga}}</td> <?php $total += $i->harga; ?>
+                                </tr>
+                              @else
+                                <?
+                                  continue;
+                                ?>
+                              @endif
+                            @endforeach
+                          
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"> Total </td>
+                                <td><b>{{$total}}</b></td>
+                            </tr>
+                        </tfoot>
+                        </table>
                 </div>
               </li>
             </ul>
