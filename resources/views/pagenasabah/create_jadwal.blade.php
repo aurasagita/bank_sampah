@@ -44,21 +44,20 @@
                     @error('berat')
                       <span class="error invalid-feedback">{{ $message }} </span>
                     @enderror</td>
-                  <td> <a style="float: right"   class="btn  btn-success" onclick="tambahData()"><i class="fa  fa-plus" aria-hidden="true"></i></a></td>
+                  <td> <a style="float: right"   class="btn  btn-primary" onclick="tambahData()"><i class="fa  fa-plus" aria-hidden="true"></i></a></td>
                 </tr>
                
                </table>
                <div class="form-group mt-3">
                 <input type="hidden" value="1" id="counter" name="counter">
-                <button class="btn btn-sm btn-primary">Simpan</button>
+                <button class="btn btn-sm btn-success">Simpan</button>
+                <a class="btn btn-sm btn-danger" href="{{ url('/jadwalnasabah') }}">Kembali</a>
+
             </div>
               </form>
         </div>
         
     </div>
-    <div>
-      <a class="btn btn-success mt-3" href="{{ url('/jadwalnasabah') }}">Kembali</a>
-   </div>
     <script>
       var counter = 1; // Menambahkan variabel counter
     

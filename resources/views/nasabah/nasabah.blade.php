@@ -14,12 +14,8 @@
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('nasabah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form action="" method="GET" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" name="search" type="search" name="query" placeholder="Masukkan Keyword" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
-            </form>
             </div>
-            <table class="table table-striped table-bordered">
+              <table class="table table-bordered table-striped " id="data_nasabah">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -30,48 +26,18 @@
                         <th>No. Telp</th>
                         <th style="width: 150px">Action</th>
                     </tr>
-                </thead>
-                
-                <tbody>
-                    @if($nasabah->count() > 0)
-                        @foreach($nasabah as $i => $m)
-                            <tr>
-                                <td>{{++$i}}</td>
-                                <td>{{$m->id_nasabah}}</td>
-                                <td>{{$m->nama}}</td>
-                                {{-- <td>
-                                    <img src="{{asset('storage/nasabahprofile/'.$m->foto)}}" alt="" width="80px">
-                                </td> --}}
-                                <td>{{$m->alamat}}</td>
-                                <td>{{$m->phone}}</td>
-                                <td>
-                                    <a href="{{url('/nasabah/'. $m->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-            
-                                    <form  class="delete d-inline-block " method="POST" action="{{url('/nasabah/'.$m->id)}}" class="delete">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
-                                    </form>
-                                    <a href="{{url('/nasabah/'. $m->id)}}"class="btn btn-sm btn-primary"><i class="fas fa fa-info-circle"></i></a>
-                                  </td>
-
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td colspan="7" class="text-center">Data tidak ada</td>
-                        </tr>
-                    @endif
-                </tbody>
+                </thead>   
             </table>
-            {{$nasabah->links()}}
+        </div>
         </div>
     </div>
+    </
 </section>
 
 @push('js')
 <script>
-    $('.delete').submit(function () {
+    $(document).on('click', '.btn-delete', function () {
+                let id = $(this).data('id');
         Swal.fire({
             title: 'Apakah anda yakin?',
             text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
@@ -82,12 +48,42 @@
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal'
         }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
+            var form = $('<form>').attr({
+                            action: "{{url('nasabah')}}/" + id,
+                            method: 'POST',
+                            class: 'delete-form'
+                        }).append('@csrf', '@method("DELETE")');
+                        form.appendTo('body').submit();
         })
-        return false;
+
+    });    $(document).ready(function (){
+      var data = $('#data_nasabah').DataTable();
+      data.destroy();
+        var data = $('#data_nasabah').DataTable({
+            processing:true,
+            serverside:true,
+            ajax:{
+                'url': '{{  url('nasabah/data') }}',
+                'dataType': 'json',
+                'type': 'POST',
+            },
+            columns: [
+            { data: 'no', searchable: false, sortable: true },
+            { data: 'id_nasabah', name: 'id_nasabah', searchable: true, sortable: false },
+            { data: 'nama', name: 'nama', sortable: true, searchable: true },
+            { data: 'alamat', name: 'alamat', sortable: false, searchable: true },
+            { data: 'phone', name: 'phone', sortable: false, searchable: true },
+            {
+                data: 'id', name: 'id', searchable: false, sortable: false,
+                render: function (data, type, row, meta) {
+                    return '<a href="{{ url('nasabah') }}/' + data + '/edit" class="btn btn-warning btn-sm mr-1"><i class="fa fa-edit"></i> </a>' +
+                        '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>';
+                }
+            }
+        ]
+        }); 
     });
+
 </script>
 @endpush
 

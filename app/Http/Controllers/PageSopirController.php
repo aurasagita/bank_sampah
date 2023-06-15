@@ -17,7 +17,8 @@ class PageSopirController extends Controller
         $user = Auth::user();
         $sopir = SopirModel::where('email', $user->email)->first();
         $jadwalUser = TransaksiBaruModel::where('id_sopir', $user->sopir->id)->get();
-        return view('pagesopir.sopir', compact('jadwalUser'), compact('sopir'));
+        $transaksi = JadwalModel::where('id_sopir', $user->sopir->id)->get();
+        return view('pagesopir.sopir', compact('jadwalUser', 'sopir', 'transaksi'));
     }
 
     public function store(Request $request)
