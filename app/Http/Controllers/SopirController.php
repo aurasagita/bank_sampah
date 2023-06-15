@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Contracts\DataTable;
+use Yajra\DataTables\DataTables;
 
 class SopirController extends Controller
 {
@@ -19,13 +21,20 @@ class SopirController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search')){
-            $sopir = SopirModel::where('nama','LIKE','%'.$request->search.'%')->paginate(10);
-        }else{
-            $sopir = SopirModel::paginate(25);
-        }
+        // if($request->has('search')){
+        //     $sopir = SopirModel::where('nama','LIKE','%'.$request->search.'%')->paginate(10);
+        // }else{
+        //     $sopir = SopirModel::paginate(25);
+        // }
        
-        return view('sopir.sopir')->with('sopir',$sopir);
+        // return view('sopir.sopir')->with('sopir',$sopir);
+        return view('sopir.sopir');
+    }
+    public function data(){
+        $data = SopirModel::selectRaw('id, id_sopir, nama ,alamat, phone');
+        return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->make(true);
     }
 
     /**
