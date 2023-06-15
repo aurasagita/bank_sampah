@@ -23,8 +23,8 @@
                 <li class="list-group-item"><b>Nama : </b>{{$nasabah->nama}}</li>
                 <li class="list-group-item"><b>Alamat : </b>{{$nasabah->alamat}}</li>
                 <li class="list-group-item"><b>No. Telepon : </b>{{$nasabah->phone}}</li>
+                <a class="btn btn-md btn-primary" href="{{ url('/nasabah') }}">Kembali</a>
             </ul>
-            <a class="btn btn-primary mt-3" href="{{ url('/nasabah') }}">Kembali</a>
         </div>
         
     </div>
