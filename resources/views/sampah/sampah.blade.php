@@ -1,7 +1,5 @@
 @extends('layouts.template')
-
 @section('content')
-
 <section class="content">
   <div >
     {{Breadcrumbs::render('sampah')}}
@@ -9,20 +7,13 @@
     <div class="card">
         <div class="card-header border-0">
           <div class="d-flex justify-content-between">
-           <h3 class="card-title"><b>Daftar Sampah</b></h3>
+           <h3 class="card-title"><b><br>Daftar Sampah</b></h3>
           </div>
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('sampah/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" method="get" action="{{ url('sampah') }}" class="col-md-4" style="padding: 0">
-                <div class="form-group w-100 mb-3">
-                    <input type="search" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
-                </div>
-              </form>
-              
             </div>
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped " id="data_sampah">
               <thead>
                 <tr>
                   <th>#</th>
@@ -32,43 +23,16 @@
                   <th>Aksi</th>
                 </tr>
               </thead>
-              <tbody>
-                @if ($sampah ->count() > 0)
-                  @foreach ($sampah as $i => $k)
-                    <tr>
-                      <td>{{++$i}}</td>
-                      <td>{{$k->jenis_sampah}}</td>
-                      <td>
-                        <img src="{{ asset('storage/'.$k->foto)}}" alt="" width="150px">
-                      </td>
-                      <td>Rp{{$k->harga}},00</td>
-                      <td>
-                        <a href="{{url('/sampah/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-
-                        <form class="delete d-inline-block" method="POST" action="{{url('/sampah/'.$k->id)}}">
-                          @csrf
-                          @method('DELETE')
-                          <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></i></button>
-                        </form>
-                      </td>
-                    </tr>
-                  @endforeach
-                @else
-                  <tr>
-                    <td colspan="8" class="text-center">Data tidak ada</td>
-                  </tr>
-                @endif
-              </tbody>
             </table>
-            {{$sampah->links()}}
           </div>
-        </div>
+      </div>
     </div>
 </section>
 
 @push('js')
 <script>
-    $('.delete').submit(function () {
+    $(document).on('click', '.btn-delete', function () {
+                let id = $(this).data('id');
         Swal.fire({
             title: 'Apakah anda yakin?',
             text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
@@ -79,12 +43,44 @@
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal'
         }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
+          var form = $('<form>').attr({
+                            action: "{{url('sampah')}}/" + id,
+                            method: 'POST',
+                            class: 'delete-form'
+                        }).append('@csrf', '@method("DELETE")');
+                        form.appendTo('body').submit();
         })
-        return false;
+      
     });
+    $(document).ready(function (){
+      var data = $('#data_sampah').DataTable();
+      data.destroy();
+        var data = $('#data_sampah').DataTable({
+            processing:true,
+            serverside:true,
+            ajax:{
+                'url': '{{  url('sampah/data') }}',
+                'dataType': 'json',
+                'type': 'POST',
+            },
+            columns:[
+                {data:'no',searchable:false,sortable:true},
+                {data:'jenis_sampah',name:'jenis_sampah',searchable:true,sortable:false},
+                 {data: 'foto',name: 'foto',sortable: false,searchable: false,render: function(data, type, row, meta) {return "<img src=\"{{ asset('storage') }}/" + data +
+                     "\" height=\"auto\" width=\"100px\" alt=\"foto sampah\">";
+                   }
+                  },
+                {data:'harga',name:'harga',searchable:true,sortable:true},
+                {data:'id',name:'id',searchable:false,sortable:false,
+                render: function(data, type, row, meta){
+                  return '<a href="{{url('sampah')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1"><i class="fa fa-edit"></i> </a>' +
+                                '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>';
+                    }
+                }
+            ]
+        }); 
+    });
+
 </script>
 @endpush
 

@@ -32,6 +32,7 @@
           <li><a href="#tentang-kami">Tentang Kami</a></li>
           <li><a href="#sampah">Jenis Sampah</a></li>
           <li><a href="#temukan-kami">Temukan Kami</a></li>
+          <li><a href="#gabung">Gabung</a></li>
           <li><a href="{{ url('/login') }}" target="_blank">Login</a></li>
         </ul>
       </header>
