@@ -108,7 +108,10 @@ class JadwalController extends Controller
     public function show($id)
     {
         $jadwal = JadwalModel::where('id', $id)->get();
-        return view('jadwal.detail_jadwal', ['jdw' => $jadwal[0]]);
+        $jdw = JadwalModel::where('id', $id)->first();
+        $idtrans = $jdw->id_jadwal;
+        $transaksi = TransaksiBaruModel::where('id_transaksibaru', $idtrans)->get();
+        return view('jadwal.detail_jadwal', ['jdw' => $jadwal[0], 'trs' => $transaksi]);
     }
 
     /**

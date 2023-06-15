@@ -54,7 +54,7 @@
                 <div class="form-group">
                   <label>Konfirmasi</label>
                   <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->id_jadwal : old('id_jadwal', $jdw->konfirmasi) }}" name="konfirmasi" type="text">
-                    <option value="Menunggu Pick Up" {{ old('kofnirmasi', $jdw->konfirmasi) == 'Menunggu Pick Up' ? 'selected' : '' }}>Menunggu Pick Up</option>
+                    <option value="Menunggu Pick Up" {{ old('konfirmasi', $jdw->konfirmasi) == 'Menunggu Pick Up' ? 'selected' : '' }}>Menunggu Pick Up</option>
                     <option value="Pick Up" {{ old('konfirmasi', $jdw->konfirmasi) == 'Pick Up' ? 'selected' : '' }}>Pick Up</option>
                     <option value="Selesai" {{ old('konfirmasi', $jdw->konfirmasi) == 'Selesai' ? 'selected' : '' }}>Selesai</option>
                   </select>
@@ -66,7 +66,7 @@
                 <div class="form-group mt-3">
                
                   <button class="btn btn-sm btn-success">Simpan</button>
-                  <a style="float: right" class="btn btn-sm btn-primary" href="{{ url('/jadwal') }}">Kembali</a>
+                  <a class="btn btn-sm btn-primary" href="{{ url('/jadwal') }}">Kembali</a>
               </div>
               </form>
       

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\SampahModel;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Contracts\DataTable;
+use Yajra\DataTables\DataTables;
 
 class SampahController extends Controller
 {
@@ -14,15 +16,21 @@ class SampahController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search')){
+       /**if($request->has('search')){
             $sampah = SampahModel::where('jenis_sampah','LIKE','%'.$request->search.'%')->paginate(10);
         }else{
             $sampah = SampahModel::paginate(25);
         }
        
-        return view('sampah.sampah')->with('sampah',$sampah);
+        return view('sampah.sampah')->with('sampah',$sampah); */ 
+        return view('sampah.sampah');
     }
-
+    public function data(){
+        $data = SampahModel::selectRaw('id, jenis_sampah, foto ,harga');
+        return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      *

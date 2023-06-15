@@ -18,7 +18,10 @@
   <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
   <!-- Bootstrap 4 -->
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<<<<<<< HEAD
   
+=======
+>>>>>>> a03c8ae2822dbd74f2e871ab57789bd8ff43aaed
 
 <!-- SweetAlert2 -->
    <link rel="stylesheet" href="{{asset('/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
@@ -107,6 +110,10 @@
   });
 </script>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a03c8ae2822dbd74f2e871ab57789bd8ff43aaed
 @stack('js')
 
 @if(session('success'))

@@ -8,6 +8,7 @@ use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 class CetakLaporan extends Controller
 {
@@ -23,11 +24,17 @@ class CetakLaporan extends Controller
         // Query data berdasarkan filter tanggal pembuatan
         $transaksi = TransaksiBaruModel::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])->get();
         
-        // Buat view PDF menggunakan DOMPDF
-        $pdf = PDF::loadView('laporan.export_pdf', compact('transaksi'));
+        $domPdf = Pdf::loadView('laporan.export_pdf', ['transaksi' => $transaksi, 'tanggal_awal' =>  $tanggalAwal, 'tanggal_akhir' =>  $tanggalAkhir]);
 
-        // Return PDF untuk diunduh
-        return $pdf->download('laporan.pdf');
+        $filename = 'laporan_transaksi_' .  $tanggalAkhir . 'to' .  $tanggalAkhir . '.pdf';
+
+        Storage::disk('public')->put('pdf/' . $filename, $domPdf->output());
+
+        return response()->download(public_path('storage/pdf/' . $filename));
     }
+    
+   
+   
+       
 }
 

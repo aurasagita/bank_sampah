@@ -43,10 +43,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::resource('/nasabah', NasabahController::class)->parameter('nasabah','id');
     Route::post('nasabah/data',[NasabahController::class,'data']);
     Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
+    Route::post('sampah/data',[SampahController::class,'data']);
     Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');
     Route::post('sopir/data',[SopirController::class,'data']);
     Route::resource('/transaksi', TransaksiController::class)->parameter('transaksi', 'id');
     Route::get('/laporan',[CetakLaporan::class,'index']);
+    
     Route::post('/laporan/cetak', [CetakLaporan::class,'cetak'])->name('laporan.cetak');
     Route::get('/grafik_penjualan',[TransaksibaruController::class,'grafik']);
     Route::get('/cetakTanggal/{tanggal_awal}/{tanggal_akhir}',[CetakLaporan::class,'cetakTanggal']);
