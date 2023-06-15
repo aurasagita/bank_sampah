@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <title>Transaksi Bank Sampah Malang</title>
-      
     </head>
 <body>
     <style type="text/css">
@@ -46,9 +45,7 @@
                     <th>Jenis Sampah</th>
                     <th>Berat</th>
                     <th>Total</th>
-                   
                   </tr>
-
                 </thead>
                 <tbody>
                   <?php
@@ -57,7 +54,7 @@
                   ?>
                   @if ($transaksi ->count() > 0)
                     @foreach ($transaksi as $i => $k)
-                      @if ($k->konfirmasi == 'Selesai')
+                    @if ($k->konfirmasi=='Selesai')
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->id_transaksibaru}}</td>
@@ -70,10 +67,13 @@
                       <td>Rp{{$k->harga}},00</td>
                       <?php $total += $k->harga; ?>
                     </tr>
-                    @endif 
+                    @else
+                    @endif
                     @endforeach
-                    <td colspan="8"><b>Total Pemasukan</b></td>
-                    <td><b>Rp{{$total}},00</b></td>
+                    <tr>
+                      <td colspan="8"><b>Total Pemasukan</b></td>
+                      <td><b>Rp{{$total}},00</b></td>
+                    </tr>
                   @else
                     <tr>
                       <td colspan="9" class="text-center">Data tidak ada</td>
@@ -86,6 +86,5 @@
         </div> 
     </div>
 </div>
-
 </body>
 </html>
