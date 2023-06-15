@@ -57,8 +57,8 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($jadwal ->count() > 0)
-                  @foreach ($jadwal as $i => $k)
+                @if ($transaksi ->count() > 0)
+                  @foreach ($transaksi as $i => $k)
                     @if ($k->id_transaksibaru != $former)
                       <tr>
                         <td>{{++$i}}</td>
@@ -87,7 +87,7 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="6" class="text-center">Data tidak ada</td>
+                    <td colspan="8" class="text-center">Data tidak ada</td>
                   </tr>
                 @endif
               </tbody>
