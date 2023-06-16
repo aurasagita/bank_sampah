@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
     //Route::resource('user', UserController::class);
     Route::resource('/jadwalnew',TransaksibaruController::class)->parameter('transaksibaru','id');
     Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id'); 
+    Route::post('jadwal/data',[JadwalController::class,'data']);
     Route::resource('/nasabah', NasabahController::class)->parameter('nasabah','id');
     Route::post('nasabah/data',[NasabahController::class,'data']);
     Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');

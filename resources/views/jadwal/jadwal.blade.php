@@ -13,14 +13,9 @@
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('jadwal/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" name="search" method="get" action="{{ url('jadwal') }}" class="col-md-4" style="padding: 0">
-                <div class="form-group w-100 mb-3">
-                    <input type="text" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
-                </div>
-              </form>
+
             </div>
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped " id="data_jadwal">
               <thead>
                 <tr>
                   <th>#</th>
@@ -32,41 +27,9 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-                @if ($jadwal -> count() > 0)
-                  @foreach ($jadwal as $i => $k)
-                      <tr>
-                        <td>{{++$i}}</td>
-                        <td>{{$k->id_jadwal}}</td>
-                        <td>{{$k->nasabah->nama}}</td>
-                        <td>{{$k->sopir->nama ?? "Sopir tidak ada"}}</td>
-                        @if($k->tanggal_pengambilan == NULL) 
-                          <td>Menunggu Konfirmasi</td>
-                        @else  
-                          <td>{{$k->tanggal_pengambilan}}</td>
-                        @endif
-                        <td>{{$k->konfirmasi}}</td>
-                        <td>
-                          @if ($k->konfirmasi != 'Selesai' && $k->konfirmasi != 'Dibatalkan')
-                          <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>                        
-                          <form class="delete d-inline-block" method="POST" action="{{url('/jadwal/'.$k->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
-                          </form>
-                          @endif
-                          <a href="{{url('/jadwal/'. $k->id)}}"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>
-                        </td>
-                      </tr>
-                  @endforeach
-                @else
-                  <tr>
-                    <td colspan="7" class="text-center">Data tidak ada</td>
-                  </tr>
-                @endif
-              </tbody>
+
             </table>
-            {{$jadwal->links()}}
+
           </div>
         </div>
     </div>
@@ -85,11 +48,41 @@
             confirmButtonText: 'Hapus',
             cancelButtonText: 'Batal'
         }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
+          var form = $('<form>').attr({
+                            action: "{{url('jadwal')}}/" + id,
+                            method: 'POST',
+                            class: 'delete-form'
+                        }).append('@csrf', '@method("DELETE")');
+                        form.appendTo('body').submit();
         })
-        return false;
+
+    });
+    $(document).ready(function (){
+      var data = $('#data_jadwal').DataTable();
+      data.destroy();
+        var data = $('#data_jadwal').DataTable({
+            processing:true,
+            serverside:true,
+            ajax:{
+                'url': '{{  url('jadwal/data') }}',
+                'dataType': 'json',
+                'type': 'POST',
+            },
+            columns:[
+            {data:'no',searchable:false,sortable:true},
+            {data:'id_jadwal',name:'id_jadwal',searchable:true,sortable:false},
+            {data:'n_nasabah',name:'id_nasabah',searchable:true,sortable:false},
+            {data:'id_sopir',name:'id_nasabah',searchable:true,sortable:false},
+            {data:'ttanggal_pengambilan',name:'tanggal_pengambilan',searchable:true,sortable:false},
+            {data:'konfirmasi',name:'konfirmasi',searchable:true,sortable:false},
+            {data:'id',name:'id',searchable:false,sortable:false,
+                render: function(data, type, row, meta){
+                  return '<a href="{{url('sampah')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1"><i class="fa fa-edit"></i> </a>' +
+                                '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>';
+                    }
+                }
+        ]
+        }); 
     });
 </script>
 @endpush
