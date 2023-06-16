@@ -18,23 +18,19 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($transaksi ->count() > 0)
-                  @foreach ($transaksi as $i => $k)
+                @if ($jadwalUser ->count() > 0)
+                  @foreach ($jadwalUser as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
-                      <td>{{$k->id_jadwal}}</td>
+                      <td>{{$k->id_transaksibaru}}</td>
                       <td>{{$k->nasabah->nama}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->nasabah->alamat}}</td>
                       <td>{{$k->konfirmasi}}</td>
-                      <td>
-                        <div class="pr-1">
-                          <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalSopir{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
-                          @if ($k->konfirmasi != 'Selesai' && $k->konfirmasi != 'Dibatalkan')
-                          <a href="{{url('/jadwalsopir/'. $k->id.'/edit')}}" class="edit btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                          @endif
-                        </div>
-                      </td>
+                     <td><div class="pr-1">
+                        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalSopir{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
+                        <a href="{{url('/jadwalsopir/'. $k->id.'/edit')}}" class="edit btn btn-sm btn-warning"><i class="fa fa-check" aria-hidden="true"></i></a>
+                    </div></td>
                     </tr>
                   @endforeach
                 @else
