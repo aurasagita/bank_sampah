@@ -38,7 +38,7 @@
 
 @push('js')
 <script>
-     $(document).on('click', '.btn-delete', function () {
+      $(document).on('click', '.btn-delete', function () {
                 let id = $(this).data('id');
         Swal.fire({
             title: 'Apakah anda yakin?',
@@ -48,16 +48,19 @@
             confirmButtonColor: '#198754',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Hapus',
-            cancelButtonText: 'Batal'
+          
         }).then((result) => {
+          if(result.isConfirmed){
             var form = $('<form>').attr({
                             action: "{{url('sopir')}}/" + id,
                             method: 'POST',
                             class: 'delete-form'
                         }).append('@csrf', '@method("DELETE")');
                         form.appendTo('body').submit();
+          }
+         
         })
-
+      
     });
 
     $(document).ready(function (){

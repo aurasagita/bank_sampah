@@ -36,25 +36,29 @@
     
 @push('js')
 <script>
-    $('.delete').submit(function () {
+     $(document).on('click', '.btn-delete', function () {
+                let id = $(this).data('id');
         Swal.fire({
-            title: 'Apakah anda yakin akan membatalkan?',
-            text: "Setelah dibatalkan, Anda tidak dapat memulihkan Data ini lagi!",
+            title: 'Apakah anda yakin?',
+            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#198754',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Pembatalan',
-            cancelButtonText: 'Batal'
+            confirmButtonText: 'Hapus',
+          
         }).then((result) => {
-          var form = $('<form>').attr({
+          if(result.isConfirmed){
+            var form = $('<form>').attr({
                             action: "{{url('jadwal')}}/" + id,
                             method: 'POST',
                             class: 'delete-form'
                         }).append('@csrf', '@method("DELETE")');
                         form.appendTo('body').submit();
+          }
+         
         })
-
+      
     });
     $(document).ready(function (){
       var data = $('#data_jadwal').DataTable();
@@ -76,13 +80,13 @@
             {data:'konfirmasi',name:'konfirmasi',searchable:true,sortable:false},
             {data:'id',name:'id',searchable:false,sortable:false,
                 render: function(data, type, row, meta){
-                  return `<a href="{{url('jadwal')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1 d-inline-block"><i class="fa fa-edit"></i> </a>` +
+                  return `<a href="{{url('jadwal')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1 "><i class="fa fa-edit"></i> </a>` +
                           `<form class="delete d-inline-block" method="POST" action="{{url('/jadwal/')}}/` + data +`" >
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
                           </form>` +
-                          `<a href="{{url('/jadwal/')}}/` + data +`"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>`;
+                          `<a href="{{url('/jadwal/')}}/` + data +`"class="btn btn-sm btn-primary "><i class="fas fa fa-info-circle"></i></a>`;
                     }
                 }
         ]

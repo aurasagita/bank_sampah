@@ -46,17 +46,21 @@
             confirmButtonColor: '#198754',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Hapus',
-            cancelButtonText: 'Batal'
+          
         }).then((result) => {
+          if(result.isConfirmed){
             var form = $('<form>').attr({
                             action: "{{url('nasabah')}}/" + id,
                             method: 'POST',
                             class: 'delete-form'
                         }).append('@csrf', '@method("DELETE")');
                         form.appendTo('body').submit();
+          }
+         
         })
-
-    });    $(document).ready(function (){
+      
+    });
+       $(document).ready(function (){
       var data = $('#data_nasabah').DataTable();
       data.destroy();
         var data = $('#data_nasabah').DataTable({
