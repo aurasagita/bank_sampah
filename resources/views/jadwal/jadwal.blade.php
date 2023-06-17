@@ -76,8 +76,13 @@
             {data:'konfirmasi',name:'konfirmasi',searchable:true,sortable:false},
             {data:'id',name:'id',searchable:false,sortable:false,
                 render: function(data, type, row, meta){
-                  return '<a href="{{url('jadwal')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1"><i class="fa fa-edit"></i> </a>' +
-                                '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>';
+                  return `<a href="{{url('jadwal')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1 d-inline-block"><i class="fa fa-edit"></i> </a>` +
+                          `<form class="delete d-inline-block" method="POST" action="{{url('/jadwal/')}}/` + data +`" >
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
+                          </form>` +
+                          `<a href="{{url('/jadwal/')}}/` + data +`"class="btn btn-sm btn-primary d-inline-block"><i class="fas fa fa-info-circle"></i></a>`;
                     }
                 }
         ]
