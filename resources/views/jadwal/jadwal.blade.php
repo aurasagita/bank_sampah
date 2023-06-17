@@ -36,7 +36,7 @@
     
 @push('js')
 <script>
-     $(document).on('click', '.btn-delete', function () {
+    $(document).on('click', '.btn-delete', function () {
                 let id = $(this).data('id');
         Swal.fire({
             title: 'Apakah anda yakin?',
@@ -74,22 +74,22 @@
             columns:[
             {data:'no',searchable:false,sortable:true},
             {data:'id_jadwal',name:'id_jadwal',searchable:true,sortable:false},
-            {data:'id_nasabah',name:'id_nasabah',searchable:true,sotable:false},
+            {data:'id_nasabah',name:'id_nasabah',searchable:true,sortable:false},
             {data:'id_sopir',name:'id_nasabah',searchable:true,sortable:false},
             {data:'tanggal_pengambilan',name:'tanggal_pengambilan',searchable:true,sortable:false},
             {data:'konfirmasi',name:'konfirmasi',searchable:true,sortable:false},
             {data:'id',name:'id',searchable:false,sortable:false,
                 render: function(data, type, row, meta){
-                  return `<a href="{{url('jadwal')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1 "><i class="fa fa-edit"></i> </a>` +
-                          `<form class="delete d-inline-block" method="POST" action="{{url('/jadwal/')}}/` + data +`" >
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-sm btn-danger"><i class="fas fa-solid fa-trash"></i></button>
-                          </form>` +
-                          `<a href="{{url('/jadwal/')}}/` + data +`"class="btn btn-sm btn-primary "><i class="fas fa fa-info-circle"></i></a>`;
-                    }
+                  if (row.konfirmasi !== 'Dibatalkan' && row.konfirmasi !== 'Selesai') {
+                    return `<a href="{{url('jadwal')}}/` + data + `/edit" class="btn btn-warning btn-sm mr-1 "><i class="fa fa-edit"></i> </a>` +
+                    '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>' + 
+                    `<a href="{{url('/jadwal/')}}/` + data +`"class="btn btn-sm btn-primary "><i class="fas fa fa-info-circle"></i></a>`;
+                  } else {
+                    return `<a href="{{url('/jadwal/')}}/` + data +`"class="btn btn-sm btn-primary "><i class="fas fa fa-info-circle"></i></a>`
+                  }
                 }
-        ]
+            }
+            ]
         }); 
     });
 </script>
