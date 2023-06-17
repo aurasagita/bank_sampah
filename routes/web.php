@@ -38,7 +38,7 @@ Route::get('/logout',[LoginController::class,'logout']);
 Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //Route::resource('user', UserController::class);
-    Route::resource('/jadwalnew',TransaksibaruController::class)->parameter('transaksibaru','id');
+        Route::resource('/jadwalnew',TransaksibaruController::class)->parameter('transaksibaru','id');
     Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id'); 
     Route::post('jadwal/data',[JadwalController::class,'data']);
     Route::resource('/nasabah', NasabahController::class)->parameter('nasabah','id');

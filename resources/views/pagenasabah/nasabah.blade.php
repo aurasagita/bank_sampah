@@ -108,7 +108,7 @@
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="detailModalLabel {{$trs->id}}">Detail Transaksi
-                {{ $trs->id_jadwal }}
+                <b>{{ $trs->id_jadwal }}<b>
               </h5>
           </div>
           <div class="modal-body">

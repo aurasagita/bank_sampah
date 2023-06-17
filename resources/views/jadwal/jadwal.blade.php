@@ -77,8 +77,11 @@
             {data:'konfirmasi',name:'konfirmasi',searchable:true,sortable:false},
             {data:'id',name:'id',searchable:false,sortable:false,
                 render: function(data, type, row, meta){
-                  return '<a href="{{url('sampah')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1"><i class="fa fa-edit"></i> </a>' +
-                                '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>';
+                  return 
+                    '<a href="{{url('jadwal')}}/' + data + '/edit" class="btn btn-warning btn-sm mr-1"><i class="fa fa-edit"></i> </a>' +
+                    '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '">
+                      <i class="fa fa-trash"></i> 
+                    </button>';
                     }
                 }
         ]
