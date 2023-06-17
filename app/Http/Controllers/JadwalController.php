@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\DataTables;
 
+
 class JadwalController extends Controller
 {
     /**
