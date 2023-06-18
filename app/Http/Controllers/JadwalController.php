@@ -43,7 +43,7 @@ class JadwalController extends Controller
         $data = JadwalModel::all();
         foreach ($data as $key => $value) {
             $value->id_nasabah = $value->nasabah->nama;
-            $value->id_sopir = $value->sopir->id_sopir;
+            $value->id_sopir = $value->sopir->nama;
             unset($value->nasabah);
             unset($value->sopir);
         }
