@@ -84,7 +84,8 @@
                 data: 'id', name: 'id', searchable: false, sortable: false,
                 render: function (data, type, row, meta) {
                     return '<a href="{{ url('sopir') }}/' + data + '/edit" class="btn btn-warning btn-sm mr-1"><i class="fa fa-edit"></i> </a>' +
-                        '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>';
+                        '<button class="btn btn-danger btn-sm btn-delete" data-id="' + data + '"><i class="fa fa-trash"></i> </button>' + 
+                    `<a href="{{url('/sopir/')}}/` + data +`"class="btn btn-sm btn-primary "><i class="fas fa fa-info-circle"></i></a>`;
                 }
                 }
             ]
