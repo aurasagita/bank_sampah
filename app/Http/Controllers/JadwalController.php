@@ -30,11 +30,23 @@ class JadwalController extends Controller
         // } else {
         //     $jadwal = JadwalModel::paginate(10);
         // }
+        
+        $data=[
+            'nasabah'=>NasabahModel::all(),
+            'sopir'=>SopirModel::all(),
+        ];
         // return view('jadwal.jadwal')->with(['jadwal'=>$jadwal]);
-        return view('jadwal.jadwal');
+        return view('jadwal.jadwal')
+        ->with('data',$data);
     }
     public function data(){
-        $data = JadwalModel::selectRaw('id, id_jadwal, id_nasabah, id_sopir, tanggal_pengambilan, konfirmasi');
+        $data = JadwalModel::all();
+        foreach ($data as $key => $value) {
+            $value->id_nasabah = $value->nasabah->nama;
+            $value->id_sopir = $value->sopir->id_sopir;
+            unset($value->nasabah);
+            unset($value->sopir);
+        }
         return DataTables::of($data)
                     ->addIndexColumn()
                     ->make(true);
