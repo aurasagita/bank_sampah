@@ -1,4 +1,4 @@
-@extends('layouts.sidebar_sopir')
+@extends('layouts.sidebar_nasabah')
 
 @section('content')
 <section class="content">
