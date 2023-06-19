@@ -51,12 +51,14 @@
                   <?php
                   $total=0;
                   $jumlah=0;
+                  $n=1;
                   ?>
+
                   @if ($transaksi ->count() > 0)
                     @foreach ($transaksi as $i => $k)
                     @if ($k->konfirmasi=='Selesai')
                     <tr>
-                      <td>{{++$i}}</td>
+                      <td>{{$n++}}</td>
                       <td>{{$k->id_transaksibaru}}</td>
                       <td>{{$k->nasabah->nama}}</td>
                       <td>{{$k->sopir->nama}}</td>

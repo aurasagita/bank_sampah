@@ -23,9 +23,9 @@ class PageNasabahController extends Controller
     {
         $user = Auth::user();
         $jadwal = TransaksiBaruModel::where('id_nasabah', $user->nasabah->id)->get();
+        $transaksi = JadwalModel::where('id_nasabah', $user->nasabah->id)->get();
         $nasabah = NasabahModel::where('email', $user->email)->first();
-        $former = NULL;
-        return view('pagenasabah.nasabah', compact('jadwal'), compact('nasabah'))->with('former', $former);
+        return view('pagenasabah.nasabah', compact('jadwal', 'nasabah', 'transaksi'));
     }
 
     /**
@@ -55,6 +55,15 @@ class PageNasabahController extends Controller
         $id = IdGenerator::generate(['table'=>'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
         $newid = "J".$id;
         $confirm = 'Menunggu Konfirmasi';
+
+        JadwalModel::insert(
+            [
+                'id_jadwal'=>$newid,
+                'id_nasabah' => $request->id_nasabah,
+                'konfirmasi' => $confirm,
+            ]
+        );
+
         for($i = 0; $i < $request->counter; $i++){
             $berat = $request['berat_'.$i];
             $jenisSampah = SampahModel::find($request['jenis_sampah_'.$i]);

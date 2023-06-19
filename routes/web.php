@@ -38,12 +38,15 @@ Route::get('/logout',[LoginController::class,'logout']);
 Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //Route::resource('user', UserController::class);
-    Route::resource('/jadwalnew',TransaksibaruController::class)->parameter('transaksibaru','id');
-        Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id'); 
-    Route::resource('/nasabah', NasabahController::class)->parameter('nasabah', 'id');
+        Route::resource('/jadwalnew',TransaksibaruController::class)->parameter('transaksibaru','id');
+    Route::resource('/jadwal',JadwalController::class)->parameter('jadwal','id'); 
+    Route::post('jadwal/data',[JadwalController::class,'data']);
+    Route::resource('/nasabah', NasabahController::class)->parameter('nasabah','id');
+    Route::post('nasabah/data',[NasabahController::class,'data']);
     Route::resource('/sampah', SampahController::class)->parameter('sampah', 'id');
     Route::post('sampah/data',[SampahController::class,'data']);
     Route::resource('/sopir', SopirController::class)->parameter('sopir', 'id');
+    Route::post('sopir/data',[SopirController::class,'data']);
     Route::resource('/transaksi', TransaksiController::class)->parameter('transaksi', 'id');
     Route::get('/laporan',[CetakLaporan::class,'index']);
     
@@ -58,6 +61,7 @@ Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
 
 Route::group(['middleware' => ['auth', 'role:sopir']], function(){
     Route::resource('/jadwalsopir', PageSopirController::class)->parameter('jadwalsopir', 'id');
+    Route::post('/jadwalsopir/data', [PageSopirController::class, 'data'])->name('jadwalsopir.data');
 });
 
 Route::get('/index', [IndexController::class, 'index']);

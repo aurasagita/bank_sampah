@@ -12,6 +12,9 @@ use App\Models\TransaksiModel;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Contracts\DataTable;
+use Yajra\DataTables\DataTables;
+
 
 class JadwalController extends Controller
 {
@@ -22,12 +25,31 @@ class JadwalController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search')){
-            $jadwal = JadwalModel::where('id_jadwal', 'LIKE', '%'.$request->search.'%')->paginate(10);
-        } else {
-            $jadwal = JadwalModel::paginate(10);
+        // if($request->has('search')){
+        //     $jadwal = JadwalModel::where('id_jadwal', 'LIKE', '%'.$request->search.'%')->paginate(10);
+        // } else {
+        //     $jadwal = JadwalModel::paginate(10);
+        // }
+        
+        $data=[
+            'nasabah'=>NasabahModel::all(),
+            'sopir'=>SopirModel::all(),
+        ];
+        // return view('jadwal.jadwal')->with(['jadwal'=>$jadwal]);
+        return view('jadwal.jadwal')
+        ->with('data',$data);
+    }
+    public function data(){
+        $data = JadwalModel::all();
+        foreach ($data as $key => $value) {
+            $value->id_nasabah = $value->nasabah->nama;
+            $value->id_sopir = $value->sopir->nama;
+            unset($value->nasabah);
+            unset($value->sopir);
         }
-        return view('jadwal.jadwal')->with(['jadwal'=>$jadwal]);
+        return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->make(true);
     }
 
     /**

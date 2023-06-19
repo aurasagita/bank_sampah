@@ -9,6 +9,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Contracts\DataTable;
+use Yajra\DataTables\DataTables;
+
 
 class NasabahController extends Controller
 {
@@ -19,15 +22,22 @@ class NasabahController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search')){
-            $nasabah = NasabahModel::where('nama','LIKE','%'.$request->search.'%')->paginate(25);
-        }else{
-            $nasabah = NasabahModel::paginate(25);
-        }
+        // if($request->has('search')){
+        //     $nasabah = NasabahModel::where('nama','LIKE','%'.$request->search.'%')->paginate(25);
+        // }else{
+        //     $nasabah = NasabahModel::paginate(25);
+        // }
        
-        return view('nasabah.nasabah')->with('nasabah',$nasabah);
+        // return view('nasabah.nasabah')->with('nasabah',$nasabah);
+        return view('nasabah.nasabah');
     }
-
+    public function data(){
+        $data = NasabahModel::selectRaw('id, id_nasabah, nama, alamat ,phone');
+        return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->make(true);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
