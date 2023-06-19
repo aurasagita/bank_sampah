@@ -24,7 +24,7 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
-  @include('layouts.navbar')
+  @include('layouts.navbar-nasabah')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->

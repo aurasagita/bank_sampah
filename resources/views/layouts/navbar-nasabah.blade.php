@@ -33,19 +33,19 @@
                   <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#detailModal">
                       <i class="fas fa-info-circle mr-2"></i> Detail
                   </a>
-                  {{-- @if (Auth::user()->role == "admin")
+                  @if (Auth::user()->role == "admin")
                     <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="" style="pointer-events: none; cursor: default; opacity: 0.5;">
                         <i class="fas fa-edit mr-2"></i> Edit
                     </a>                    
                     @elseif (Auth::user()->role == "nasabah")
-                    <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModalNasabah-{{ $nasabah->id }}">
+                    <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModalNasabah{{ $nasabah->id }}">
                         <i class="fas fa-edit mr-2"></i> Edit
                     </a>
                     @else
                     <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModalSopir-{{ $sopir->id }}">
                         <i class="fas fa-edit mr-2"></i> Edit
                     </a>
-                    @endif --}}
+                    @endif
                   <a class="dropdown-item btn btn-success" href="{{ url('/logout') }}">
                       <i class="fas fa-sign-out-alt mr-2"></i> Logout
                   </a>
@@ -183,4 +183,63 @@
     </div>
 </div>
 
+<!-- Modal Edit -->
+<div class="modal fade" id="editModalNasabah{{ $nasabah->id}}" tabindex="-1" role="dialog" aria-labelledby="editModalNasabah{{ $nasabah->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalNasabah{{ $nasabah->id}}"><strong>Edit Nasabah </strong>{{ $nasabah->nama }}</h5>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="{{ url('update-nasabah/'. $nasabah->id) }}" enctype="multipart/form-data">
+            @csrf
+            {!!(isset($nasabah))? method_field('PUT') : '' !!}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="name">Nama</label>
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $nasabah->nama }}" placeholder="Masukkan Nama">
+                  @error('name')
+                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="name">Alamat</label>
+                  <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{  $nasabah->alamat }}" placeholder="Masukkan Alamat">
+                  @error('alamat')
+                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ $nasabah->email }}" placeholder="Masukkan Email">
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="name">Nomor Handphone</label>
+                  <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ $nasabah->phone }}" placeholder="Masukkan Nomor Handphone">
+                  @error('phone')
+                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Masukkan Password">
+                  @error('password')
+                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                  @enderror
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal">Batal</button> 
+            <button type="submit" class="btn btn-primary btn-sm btn-success">Ubah</button>
+        </div>
+      </div>                              
+    </div>
+  </div>
 
