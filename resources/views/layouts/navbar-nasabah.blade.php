@@ -184,18 +184,25 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade" id="editModalNasabah{{ $nasabah->id}}" tabindex="-1" role="dialog" aria-labelledby="editModalNasabah{{ $nasabah->id }}" aria-hidden="true">
+<div class="modal fade" id="editModalNasabah{{ $nasabah->id}}" tabindex="-1" role="dialog" aria-labelledby="editModalNasabahLabel" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editModalNasabah{{ $nasabah->id}}"><strong>Edit Nasabah </strong>{{ $nasabah->nama }}</h5>
+          <h5 class="modal-title" id="editModalNasabahLabel"><strong>Edit Nasabah </strong>{{ $nasabah->nama }}</h5>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ url('update-nasabah/'. $nasabah->id) }}" enctype="multipart/form-data">
+          <form id="editForm{{$nasabah->id}}" method="POST" action="{{ url('/jadwalnasabah')}}" enctype="multipart/form-data">
             @csrf
-            {!!(isset($nasabah))? method_field('PUT') : '' !!}
+            @method('PUT')
             <div class="row">
               <div class="col-md-12">
+                <div class="form-group">
+                  <label for="name">ID Nasabah</label>
+                  <input readonly="text" class="form-control @error('id_nasabah') is-invalid @enderror" id="id_nasabah" name="id_nasabah" value="{{ $nasabah->id_nasabah }}">
+                  @error('id_nasabah')
+                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                  @enderror
+                </div>
                 <div class="form-group">
                   <label for="name">Nama</label>
                   <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $nasabah->nama }}" placeholder="Masukkan Nama">
@@ -237,7 +244,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal">Batal</button> 
-            <button type="submit" class="btn btn-primary btn-sm btn-success">Ubah</button>
+            <button type="submit" class="btn btn-primary btn-sm btn-success" form="editForm{{ $nasabah->id }}">{{ __('Edit') }}</button>
         </div>
       </div>                              
     </div>

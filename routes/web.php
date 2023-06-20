@@ -8,6 +8,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\PageNasabahController;
 use App\Http\Controllers\PageSopirController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SampahController;
 use App\Http\Controllers\SopirController;
 use App\Http\Controllers\TransaksibaruController;
@@ -57,6 +58,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
 
 Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
     Route::resource('/jadwalnasabah', PageNasabahController::class)->parameter('pagenasabah', 'id');
+    Route::put('/jadwalnasabah', [ProfileController::class, 'update']);
 });
 
 Route::group(['middleware' => ['auth', 'role:sopir']], function(){
