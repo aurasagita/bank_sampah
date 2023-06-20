@@ -42,7 +42,7 @@
                         <i class="fas fa-edit mr-2"></i> Edit
                     </a>
                     @else
-                    <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModalSopir-{{ $sopir->id }}">
+                    <a class="dropdown-item btn btn-success" data-toggle="modal" data-target="#editModalSopir{{ $sopir->id }}">
                         <i class="fas fa-edit mr-2"></i> Edit
                     </a>
                     @endif
@@ -244,7 +244,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal">Batal</button> 
-            <button type="submit" class="btn btn-primary btn-sm btn-success" form="editForm{{ $nasabah->id }}">{{ __('Edit') }}</button>
+            <button type="submit" class="btn btn-primary btn-sm btn-success" form="editForm{{ $nasabah->id }}">{{ __('Ubah') }}</button>
         </div>
       </div>                              
     </div>

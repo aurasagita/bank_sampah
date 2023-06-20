@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\NasabahModel;
+use App\Models\SopirModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,30 @@ class ProfileController extends Controller
         
         NasabahModel::where('email', Auth::user()->email)->update([
             'id_nasabah' => $request->id_nasabah,
+            'nama' => $request->name,
+            'alamat' => $request->alamat,
+            'phone' => $request->phone,
+            'email' => $request->email,
+        ]);
+
+        User::where('email', Auth::user()->email)->update([
+            'email' => $request->email,
+        ]);
+
+        if ($request->filled('password')) {
+            User::where('email', Auth::user()->email)->update([
+                'password' => Hash::make($request->input('password')),
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Profile Berhasil Diubah.');
+    }
+
+    public function updateSopir(Request $request)
+    {
+        
+        SopirModel::where('email', Auth::user()->email)->update([
+            'id_sopir' => $request->id_sopi,
             'nama' => $request->name,
             'alamat' => $request->alamat,
             'phone' => $request->phone,
