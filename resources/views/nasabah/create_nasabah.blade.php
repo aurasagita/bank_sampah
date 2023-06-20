@@ -62,7 +62,7 @@
 
             <div class="form-group">
               <label>Password</label>
-              <input class="form-control @error('password') is-invalid @enderror" value="{{ isset($nsb)? $nsb->password :old('password') }}" name="password" type="text"/>
+              <input class="form-control @error('password') is-invalid @enderror" value="" name="password" type="text"/>
               @error('password')
                 <span class="error invalid-feedback">{{ $message }} </span>
               @enderror
@@ -73,7 +73,7 @@
               <a class="btn btn-sm btn-primary" href="{{ url('/nasabah') }}">Kembali</a>
           </div>
          
-            
+
           </form>
         </div>
     </div>

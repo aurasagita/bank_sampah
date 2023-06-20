@@ -151,7 +151,7 @@ class NasabahController extends Controller
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'phone' => $request->phone,
-            'email' => $request->email
+            'email' => $request->email,
         ]);
 
         $nsb = User::where('email', $nasabah->email)->first();
@@ -165,7 +165,7 @@ class NasabahController extends Controller
 
         if ($request->filled('password')) {
             $user = User::where('email', $nasabah->email)->first();
-            $nasabah->password = Hash::make($request->password);
+            $user->password = Hash::make($request->input('password'));
             $user->save();
         }
 
