@@ -11,8 +11,8 @@
                   <th>#</th>
                   <th>Id Jadwal</th>
                   <th>Nama Nasabah</th>
-                  <th>Tanggal Ambil</th>
                   <th>Alamat Pengambilan</th>
+                  <th>Tanggal Ambil</th>
                   <th>Konfirmasi</th>
                   <th>Action</th>
                 </tr>
@@ -24,8 +24,8 @@
                       <td>{{++$i}}</td>
                       <td>{{$k->id_jadwal}}</td>
                       <td>{{$k->nasabah->nama}}</td>
-                      <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->nasabah->alamat}}</td>
+                      <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>
                      <td>
                         <div class="pr-1">

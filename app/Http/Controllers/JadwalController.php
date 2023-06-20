@@ -9,6 +9,7 @@ use App\Models\SampahModel;
 use App\Models\SopirModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
+use Carbon\Carbon;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -43,9 +44,17 @@ class JadwalController extends Controller
         $data = JadwalModel::all();
         foreach ($data as $key => $value) {
             $value->id_nasabah = $value->nasabah->nama;
-            $value->id_sopir = $value->sopir->nama;
             unset($value->nasabah);
-            unset($value->sopir);
+            if($value->id_sopir != NULL) {
+                $value->id_sopir = $value->sopir->nama;
+                unset($value->sopir);
+            } else {
+                $value->id_sopir = 'Menunggu Konfirmasi';
+            }
+
+            if($value->tanggal_pengambilan == NULL){
+                $value->tanggal_pengambilan = 'Menunggu Konfirmasi';
+            }
         }
         return DataTables::of($data)
                     ->addIndexColumn()
@@ -76,8 +85,9 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         $nsbid = $request->id_nasabah;
-        $id = IdGenerator::generate(['table'=>'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
-        $newid = "J".$id;
+        $current = Carbon::now();
+        $pre = $current->format('mYdHis');
+        $newid = $nsbid.'-'.$pre;
         $request->validate([
             //'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal',
             'id_nasabah'=>'required',
@@ -166,7 +176,7 @@ class JadwalController extends Controller
         // $findjdw = JadwalModel::find($request['id_jadwal_'.$id]);
         // $idtrans = $findjdw->id_jadwal; 
         $request->validate([
-            'id_jadwal' => 'required|string|max:10|unique:jadwal,id_jadwal,'.$id,
+            //'id_jadwal' => 'required|string|max:50|unique:jadwal,id_jadwal,'.$id,
             // 'id_nasabah'=>'required',
             'id_sopir'=>'required',
             'tanggal_pengambilan'=>'required|date',
