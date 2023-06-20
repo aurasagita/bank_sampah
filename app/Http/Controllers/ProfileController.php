@@ -99,7 +99,7 @@ class ProfileController extends Controller
     {
         
         SopirModel::where('email', Auth::user()->email)->update([
-            'id_sopir' => $request->id_sopi,
+            'id_sopir' => $request->id_sopir,
             'nama' => $request->name,
             'alamat' => $request->alamat,
             'phone' => $request->phone,

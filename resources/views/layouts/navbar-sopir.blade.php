@@ -197,9 +197,9 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="name">ID Nasabah</label>
-                  <input readonly="text" class="form-control @error('id_sopir') is-invalid @enderror" id="id_nasabah" name="id_nasabah" value="{{ $sopir->id_sopir }}">
-                  @error('id_nasabah')
+                  <label for="name">ID Sopir</label>
+                  <input readonly="text" class="form-control @error('id_sopir') is-invalid @enderror" id="id_sopir" name="id_sopir" value="{{ $sopir->id_sopir }}">
+                  @error('id_sopir')
                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                   @enderror
                 </div>
