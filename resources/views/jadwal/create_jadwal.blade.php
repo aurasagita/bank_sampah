@@ -33,28 +33,32 @@
                     @endforeach
                   </select>
                 </div>
-
-                <div class="form-group">
-                  <label>Tanggal Pengambilan</label>
-                  <input class="form-control @error('tanggal_pengambilan') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_pengambilan : old('tanggal_pengambilan') }}" name="tanggal_pengambilan" type="date"/>
-                  @error('tanggal_pengambilan')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
-                <div class="form-group">
-                  <label>Konfirmasi</label>
-                  <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->konfirmasi : old('konfirmasi') }}" name="konfirmasi" type="text">
-                    <option value="Menunggu Pick Up">Menunggu Pick Up</option>
-                    <option value="Pick Up">Pick Up</option>
-                    <option value="Selesai">Selesai</option>
-                  </select>
+                <table id="konfirmasi">
+                  <th>Tanggal Pengambilan&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</th>
+                  <th></th>
+                  <th>Konfirmasi&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                  <tr>
+                    <td>
+                      <input class="form-control @error('tanggal_pengambilan') is-invalid @enderror" value="{{isset($jdw)? $jdw->tanggal_pengambilan : old('tanggal_pengambilan') }}" name="tanggal_pengambilan" type="date"/>
+                    @error('tanggal_pengambilan')
+                      <span class="error invalid-feedback">{{ $message }} </span>
+                    @enderror
+                    </td>
+                    <td style="width: 50px"></td>
+                    <td>
+                      <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->konfirmasi : old('konfirmasi') }}" name="konfirmasi" type="text">
+                        <option value="Menunggu Pick Up">Menunggu Pick Up</option>
+                        <option value="Pick Up">Pick Up</option>
+                        <option value="Selesai">Selesai</option>
+                      </select>
+                    @error('konfirmasi')
+                      <span class="error invalid-feedback">{{ $message }} </span>
+                    @enderror
+                    </td>
+                  </tr>
+                  </table>
                   
-                  @error('konfirmasi')
-                    <span class="error invalid-feedback">{{ $message }} </span>
-                  @enderror
-                </div>
-
-                <table id="tambahData"  >
+                <table id="tambahData"  style="margin-top: 16px">
                   <th>Jenis Sampah</th>
                   <th>Berat</th>
                   <th>Action</th>
