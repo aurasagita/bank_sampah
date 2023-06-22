@@ -9,6 +9,7 @@ use App\Models\SampahModel;
 use App\Models\SopirModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
+use Carbon\Carbon;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -61,8 +62,9 @@ class TransaksibaruController extends Controller
     public function store(Request $request)
     {
         $nsbid = $request->id_nasabah;
-        $id = IdGenerator::generate(['table' => 'transaksibaru', 'length' => 5, 'prefix' => $nsbid]);
-        $newid = "J" . $id;
+        $current = Carbon::now();
+        $pre = $current->format('mYdHis');
+        $newid = $nsbid.'-'.$pre;
         $request->validate([
             'id_nasabah' => 'required',
             'id_sopir' => 'required',

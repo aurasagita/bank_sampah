@@ -108,32 +108,36 @@
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title" id="detailModalLabel {{$trs->id}}">Detail Transaksi
-                <b>{{ $trs->id_jadwal }}<b>
+                <b>{{ $trs->id_jadwal }}</b>
               </h5>
           </div>
           <div class="modal-body">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                   @if($trs->konfirmasi == 'Dibatalkan')
-                      <li class="small-box bg-danger inner text-center" style="padding : 10px"><b>DIBATALKAN</li>
+                      <li class="small-box bg-danger inner text-center" style="padding : 10px"><b>DIBATALKAN</b></li>
                   @elseif($trs->konfirmasi == 'Selesai')
-                      <li class="small-box bg-success inner text-center" style="padding : 10px"><b>SELESAI</li>
+                      <li class="small-box bg-success inner text-center" style="padding : 10px"><b>SELESAI</b></li>
                   @else
-                      <li class="small-box bg-warning inner text-center" style="padding : 10px"><b>{{$trs->konfirmasi}}</li>
+                      <li class="small-box bg-warning inner text-center" style="padding : 10px"><b>{{$trs->konfirmasi}}</b></li>
                   @endif
               </li>
               <li class="list-group-item">
                 <div class="d-flex justify-content-between align-items-center">
-                  <b>Tanggal Ambil</b>
+                  Tanggal Ambil
                   <span>
-                    {{ $trs->tanggal_pengambilan }}
+                    @if($trs->tanggal_pengambilan != NULL)
+                      {{ $trs->tanggal_pengambilan }}
+                    @else 
+                      <p>-</p>
+                    @endif
                   </span>
                 </div>
               </li>
               <li class="list-group-item">
                 <div class="align-items-center">
-                  <b>DAFTAR SETORAN SAMPAH</b><br>
-                        <table class="table table-bordered">
+                  DAFTAR SETORAN SAMPAH<br>
+                        <table class="table table-borderless">
                             <?php
                                 $total = 0;
                                 $no = 1;
@@ -165,7 +169,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3"> Total </td>
+                                <td colspan="3"> <b> Total </b></td>
                                 <td><b>{{$total}}</b></td>
                             </tr>
                         </tfoot>
@@ -173,9 +177,9 @@
                 </div>
               </li>
             </ul>
-          </div>
-          <div class="modal-footer">
+            <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-sm btn-danger" data-dismiss="modal">Tutup</button>            
+            </div>
           </div>
       </div>
   </div>

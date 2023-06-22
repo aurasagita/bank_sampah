@@ -132,7 +132,11 @@
                                           <td>{{$k->id_jadwal}}</td>
                                           <td>{{$k->nasabah->nama}}</td>
                                           <td>{{$k->sopir->id_sopir ?? "Sopir tidak ada"}}</td>
-                                          <td>{{$k->tanggal_pengambilan}}</td>
+                                          @if($k->tanggal_pengambilan != NULL)
+                                            <td>{{$k->tanggal_pengambilan}}</td>
+                                          @else
+                                            <td>Menunggu Konfirmasi</td>
+                                          @endif
                                           <td>{{$k->konfirmasi}}</td>
                                         </tr>
                                       @endforeach
