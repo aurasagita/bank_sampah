@@ -40,7 +40,7 @@
                 let id = $(this).data('id');
         Swal.fire({
             title: 'Apakah anda yakin?',
-            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
+            text: "Setelah dibatalkan, Anda tidak dapat memulihkannya lagi!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#198754',

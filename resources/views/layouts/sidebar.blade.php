@@ -38,7 +38,7 @@
           <a href="{{url('/sampah')}}" class="nav-link {{request()->is('sampah')?'active' : ''}}">
             <i class="nav-icon fa fa-trash"></i>
             <p>
-              Sampah
+              Jenis Sampah
             </p>
           </a>
           
