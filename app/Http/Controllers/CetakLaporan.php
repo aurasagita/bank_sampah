@@ -6,6 +6,7 @@ use App\Models\JadwalModel;
 use App\Models\SampahModel;
 use App\Models\TransaksiBaruModel;
 use App\Models\TransaksiModel;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -20,6 +21,8 @@ class CetakLaporan extends Controller
     {
         $tanggalAwal = $request->input('tanggal_awal');
         $tanggalAkhir = $request->input('tanggal_akhir');
+        $tgl_aw = DateTime::createFromFormat('Y-m-d', $tanggalAwal);
+        $tgl_ak = DateTime::createFromFormat('Y-m-d', $tanggalAkhir);
         
         // Query data berdasarkan filter tanggal pembuatan
         $transaksi = JadwalModel::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])->get();

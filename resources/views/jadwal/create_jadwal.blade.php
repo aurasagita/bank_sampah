@@ -47,8 +47,7 @@
                     <td style="width: 50px"></td>
                     <td>
                       <select class="form-control @error('konfirmasi') is-invalid @enderror" value="{{isset($jdw)? $jdw->konfirmasi : old('konfirmasi') }}" name="konfirmasi" type="text">
-                        <option value="Menunggu Pick Up">Menunggu Pick Up</option>
-                        <option value="Pick Up">Pick Up</option>
+                        <option value="Menunggu Pick Up">Menunggu Pick Up</option>                        
                         <option value="Selesai">Selesai</option>
                       </select>
                     @error('konfirmasi')

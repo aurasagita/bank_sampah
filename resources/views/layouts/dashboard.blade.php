@@ -75,7 +75,7 @@
                           <div class="inner">
                             <h3>{{ $hitungSampah }}</h3>
             
-                            <p>Sampah</p>
+                            <p>Jenis Sampah</p>
                           </div>
                           <div class="icon">
                             <i class="fa fa-trash"></i>

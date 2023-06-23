@@ -25,7 +25,8 @@
        }
     </style>
      <center>
-        <h5 class="title">CETAK LAPORAN TRANSAKSI</h4><br><br>
+        <h4 class="title">CETAK LAPORAN TRANSAKSI</h4>
+        <h6 class="sub-title">Periode {{$tanggal_awal}} — {{$tanggal_akhir}}</h6><br><br>
     </center>
     <div class="container mt-2">
         <div class="row justify-content-center align-items-center">

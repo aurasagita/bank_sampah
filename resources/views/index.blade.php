@@ -320,7 +320,7 @@
         <img src="assets/dist/img/A6.jpg" alt="">
         <h5>LOGAM - A6</h5>
         <h6>Rp 3500/kg</h6>
-        <p>Logam besi tutup botol</p>
+        <p>Tutup botol yang berbahan logam. Umumnya berasal dari botol minuman yang berbahan kaca</p>
       </div>
       <div class="preview" data-target="s11">
         <i class="fas fa-times"></i>
