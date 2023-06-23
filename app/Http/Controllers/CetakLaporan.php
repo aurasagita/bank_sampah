@@ -22,9 +22,10 @@ class CetakLaporan extends Controller
         $tanggalAkhir = $request->input('tanggal_akhir');
         
         // Query data berdasarkan filter tanggal pembuatan
-        $transaksi = TransaksiBaruModel::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])->get();
+        $transaksi = JadwalModel::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])->get();
+        $trs = TransaksiBaruModel::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])->get();
         
-        $domPdf = Pdf::loadView('laporan.export_pdf', ['transaksi' => $transaksi, 'tanggal_awal' =>  $tanggalAwal, 'tanggal_akhir' =>  $tanggalAkhir]);
+        $domPdf = Pdf::loadView('laporan.export_pdf', ['transaksi' => $transaksi, 'tanggal_awal' =>  $tanggalAwal, 'tanggal_akhir' =>  $tanggalAkhir, 'trs' => $trs]);
 
         $filename = 'laporan_transaksi_' .  $tanggalAkhir . 'to' .  $tanggalAkhir . '.pdf';
 

@@ -38,42 +38,53 @@
                   <tr>
                     <th>#</th>
                     <th>Id Jadwal</th>
-                    <th>Id Nasabah</th>
-                    <th>Id Sopir</th>
+                    <th>Nama Nasabah</th>
+                    <th>Nama Sopir</th>
                     <th>Tanggal Pengambilan</th>
                     <th>Konfirmasi</th>
-                    <th>Jenis Sampah</th>
-                    <th>Berat</th>
                     <th>Total</th>
+                    {{-- <th>Berat</th>
+                    <th>Total</th> --}}
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   $total=0;
+                  $harga = 0;
                   $jumlah=0;
                   $n=1;
                   ?>
 
                   @if ($transaksi ->count() > 0)
                     @foreach ($transaksi as $i => $k)
-                    @if ($k->konfirmasi=='Selesai')
+                    @if ($k->konfirmasi=='Selesai' || $k->konfirmasi=='Dibatalkan')
                     <tr>
                       <td>{{$n++}}</td>
-                      <td>{{$k->id_transaksibaru}}</td>
+                      <td>{{$k->id_jadwal}}</td>
                       <td>{{$k->nasabah->nama}}</td>
                       <td>{{$k->sopir->nama}}</td>
                       <td>{{$k->tanggal_pengambilan}}</td>
                       <td>{{$k->konfirmasi}}</td>
-                      <td>{{$k->jenis_sampah}}</td>
-                      <td>{{$k->berat}}</td>
-                      <td>Rp{{$k->harga}},00</td>
-                      <?php $total += $k->harga; ?>
+                      {{-- <td>{{$k->jenis_sampah}}</td>
+                      <td>{{$k->berat}}</td> --}}
+                      <td>
+                          @foreach($trs as $z => $t)
+                            @if($t->id_transaksibaru == $k->id_jadwal && $t->konfirmasi != 'Dibatalkan')
+                              <?php
+                                $harga += $t->harga;
+                              ?>
+                            @else 
+                            @endif
+                          @endforeach
+                        Rp{{$harga}},00</td>
+                        <?php $total += $harga; $harga = 0 ?>
+                      </td>
                     </tr>
                     @else
                     @endif
                     @endforeach
                     <tr>
-                      <td colspan="8"><b>Total Pemasukan</b></td>
+                      <td colspan="6"><b>Total Pemasukan</b></td>
                       <td><b>Rp{{$total}},00</b></td>
                     </tr>
                   @else
