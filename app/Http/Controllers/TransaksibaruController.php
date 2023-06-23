@@ -172,15 +172,18 @@ class TransaksibaruController extends Controller
             ->with('success', 'Jadwal Berhasil Dihapus');
     }
     public function grafik(Request $request){
-
+        $confirm = 'Selesai';
+       if(TransaksiBaruModel::where('konfirmasi', $confirm))
         $harga = TransaksiBaruModel::select(DB::raw("CAST(SUM(harga)as int) as harga"))
-        ->whereYear("created_at",date('Y'))
-        ->GroupBy(DB::raw("Month(created_at)"))
+        ->where('konfirmasi', $confirm)
+        ->whereYear("tanggal_pengambilan",date('Y'))
+        ->groupBy(DB::raw("MONTH(tanggal_pengambilan)"))
         ->pluck('harga');
        
-        $bulan = TransaksiBaruModel::select(DB::raw("MONTHNAME(created_at) as bulan"))
-        ->whereYear("created_at",date('Y'))
-        ->GroupBy(DB::raw("MONTHNAME(created_at)"))
+        $bulan = TransaksiBaruModel::select(DB::raw("MONTHNAME(tanggal_pengambilan) as bulan"))
+        ->where('konfirmasi', $confirm)
+        ->whereYear("tanggal_pengambilan",date('Y'))
+        ->GroupBy(DB::raw("MONTHNAME(tanggal_pengambilan)"))
         ->pluck('bulan');
        
         return view('laporan.penjualan_grafik',compact('harga','bulan'));
