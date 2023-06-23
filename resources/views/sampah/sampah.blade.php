@@ -67,8 +67,8 @@
                 'type': 'POST',
             },
             columns:[
-                {data:'no',searchable:false,sortable:true},
-                {data:'jenis_sampah',name:'jenis_sampah',searchable:true,sortable:false},
+                {data:'no',searchable:false,sortable:false},
+                {data:'jenis_sampah',name:'jenis_sampah',searchable:true,sortable:true},
                  {data: 'foto',name: 'foto',sortable: false,searchable: false,render: function(data, type, row, meta) {return "<img src=\"{{ asset('storage') }}/" + data +
                      "\" height=\"auto\" width=\"100px\" alt=\"foto sampah\">";
                    }

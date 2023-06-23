@@ -72,8 +72,8 @@
                 'type': 'POST',
             },
             columns: [
-            { data: 'no', searchable: false, sortable: true },
-            { data: 'id_nasabah', name: 'id_nasabah', searchable: true, sortable: false },
+            { data: 'no', searchable: false, sortable: false },
+            { data: 'id_nasabah', name: 'id_nasabah', searchable: true, sortable: true },
             { data: 'nama', name: 'nama', sortable: true, searchable: true },
             { data: 'alamat', name: 'alamat', sortable: false, searchable: true },
             { data: 'phone', name: 'phone', sortable: false, searchable: true },

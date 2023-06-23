@@ -72,11 +72,11 @@
                 'type': 'POST',
             },
             columns:[
-            {data:'no',searchable:false,sortable:true},
-            {data:'id_jadwal',name:'id_jadwal',searchable:true,sortable:false},
+            {data:'no',searchable:false,sortable:false},
+            {data:'id_jadwal',name:'id_jadwal',searchable:true,sortable:true},
             {data:'id_nasabah',name:'id_nasabah',searchable:true,sortable:false},
             {data:'id_sopir',name:'id_nasabah',searchable:true,sortable:false},
-            {data:'tanggal_pengambilan',name:'tanggal_pengambilan',searchable:true,sortable:false},
+            {data:'tanggal_pengambilan',name:'tanggal_pengambilan',searchable:true,sortable:true},
             {data:'konfirmasi',name:'konfirmasi',searchable:true,sortable:false},
             {data:'id',name:'id',searchable:false,sortable:false,
                 render: function(data, type, row, meta){
@@ -88,7 +88,7 @@
                     return `<a href="{{url('/jadwal/')}}/` + data +`"class="btn btn-sm btn-primary "><i class="fas fa fa-info-circle"></i></a>`
                   }
                 }
-            }
+            } 
             ]
         }); 
     });
