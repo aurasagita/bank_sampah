@@ -63,7 +63,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="3"> Total </td>
-                                <td><b>{{$total}}</b></td>
+                                <td><b>Rp {{ number_format($total, 0, ',','.') }},00</b></td>
                             </tr>
                         </tfoot>
                         </table>

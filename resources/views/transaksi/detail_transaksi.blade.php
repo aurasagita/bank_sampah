@@ -27,7 +27,7 @@
                 <br>
 
                 <li class="list-group-item"><b>Berat Setoran :  </b>{{$trs->berat}}</li>
-                <li class="list-group-item"><b>Total :  </b>Rp{{$trs->harga}}</li>
+                <li class="list-group-item"><b>Total :  </b>Rp {{ number_format($trs->harga, 0, ',','.') }},00</li>
             </ul>
             <a class="btn btn-success mt-3" href="{{ url('/transaksi') }}">Kembali</a>
         </div>
