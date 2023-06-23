@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header border-0">
           <div class="d-flex justify-content-between"><h3 class="card-title"><b>Daftar Jadwal Sopir</b></h3></div>
-            <br><table class="table table-bordered table-striped">
+            <br><table class="table table-bordered table-striped" id="tableJadwal">
               <thead>
                 <tr>
                   <th>#</th>
@@ -34,7 +34,7 @@
                             <form class="update d-inline-block" method="POST" action="{{url('/jadwalsopir/'.$k->id)}}">
                               @csrf
                               @method('DELETE')
-                              <button class="btn btn-sm btn-success">
+                              <button class="btn btn-sm btn-success btn-delete">
                                 <i class="fa fa-check" aria-hidden="true"></i>
                               </button>
                             </form>
@@ -153,13 +153,28 @@
 
 @push('js')
 <script>
-    $('.edit').submit(function () {
-      Swal.fire({
-      icon: 'success',
-      title: 'Status Berhasil Diubah',
-      showConfirmButton: false,
-      timer: 1500 
-      })
+    $('#tableJadwal tr td').on('click', '.btn-delete', function () {
+        let id = $(this).data('id');
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+        }).then((result) => {
+          if(result.isConfirmed){
+            var form = $('<form>').attr({
+                            action: "{{url('sampah')}}/" + id,
+                            method: 'POST',
+                            class: 'delete-form'
+                        }).append('@csrf', '@method("DELETE")');
+                        form.appendTo('body').submit();
+          }
+          
+        })
+      
     });
 </script>
 @endpush
