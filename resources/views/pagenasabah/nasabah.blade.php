@@ -42,8 +42,6 @@
           <br>
           <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('jadwalnasabah/create')}}" class="btn -btn sm btn-success my-2">Mulai Setor</a>
-
-            </div>
             </div>
             <table class="table table-bordered table-striped">
               <thead>
