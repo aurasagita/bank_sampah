@@ -63,8 +63,7 @@ Route::group(['middleware' => ['auth', 'role:nasabah']], function(){
 
 Route::group(['middleware' => ['auth', 'role:sopir']], function(){
     Route::resource('/jadwalsopir', PageSopirController::class)->parameter('jadwalsopir', 'id');
-    Route::post('/jadwalsopir/data', [PageSopirController::class, 'data'])->name('jadwalsopir.data');
-    Route::put('/jadwalsopir', [ProfileController::class, 'updateSopir']);
+    Route::post('jadwalsopir_api/{id}', [PageSopirController::class,'delete_api']);
 });
 
 Route::get('/index', [IndexController::class, 'index']);

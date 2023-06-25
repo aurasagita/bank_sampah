@@ -16,9 +16,12 @@ class PageSopirController extends Controller
     public function index(){
         $user = Auth::user();
         $sopir = SopirModel::where('email', $user->email)->first();
-        $jadwalUser = TransaksiBaruModel::where('id_sopir', $user->sopir->id)->get();
-        $transaksi = JadwalModel::where('id_sopir', $user->sopir->id)->get();
-        return view('pagesopir.sopir', compact('jadwalUser', 'sopir', 'transaksi'));
+        $transaksi = TransaksiBaruModel::where('id_sopir', $user->sopir->id)->get();
+        $jadwalUser = JadwalModel::where('id_sopir', $user->sopir->id)->get();
+        return view('pagesopir.sopir')
+            ->with('sopir', $sopir)
+            ->with('transaksi', $transaksi)
+            ->with('jadwalUser', $jadwalUser);
     }
 
      public function show($id)
@@ -39,20 +42,30 @@ class PageSopirController extends Controller
      * @param  \App\Models\Jadwal  $jadwal
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $confirm = 'Pick Up';
-        $findJdw = JadwalModel::where('id', '=', $id)->first();
+    
+    public function delete_api($id){
+        $jadwal = JadwalModel::find($id);
+    
+        if ($jadwal) {
+            // $jadwal->delete();
+            $jadwal->update([
+                'konfirmasi' => 'Pick Up'
+            ]);
+          
+            TransaksiBaruModel::where('id_transaksibaru', $jadwal->id_jadwal)->update([
+                'konfirmasi' => 'Pick Up'
 
-        JadwalModel::where('id', '=', $id)->update([
-            'konfirmasi' => $confirm
-        ]);
-        TransaksiBaruModel::where('id_transaksibaru', '=', $findJdw->id_jadwal)->update([
-            'konfirmasi' => $confirm
-        ]);
-
-        return redirect('jadwalsopir')
-            ->with('success', 'Sampah Berhasil Di-Pick Up');
+            ]);
+    
+            return response()->json([
+                'message' => 'Sampah berhasil di-Pick Up'
+            ]);
+            } else {
+                return response()->json([
+                    'message' => 'Jadwal tidak ditemukan'
+                ], 404);
+            }
     }
+
 
 }

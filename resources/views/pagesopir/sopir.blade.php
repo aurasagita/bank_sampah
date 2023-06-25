@@ -18,8 +18,9 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($transaksi ->count() > 0)
-                  @foreach ($transaksi as $i => $k)
+                @if ($jadwalUser ->count() > 0)
+                
+                  @foreach ($jadwalUser as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->id_jadwal}}</td>
@@ -29,16 +30,15 @@
                       <td>{{$k->konfirmasi}}</td>
                      <td>
                         <div class="pr-1">
+                        
+                        @if($k->konfirmasi == 'Menunggu Pick Up')
                         <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalSopir{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
-                          @if($k->konfirmasi == 'Menunggu Pick Up')
-                            <form class="update d-inline-block" method="POST" action="{{url('/jadwalsopir/'.$k->id)}}">
-                              @csrf
-                              @method('DELETE')
-                              <button class="btn btn-sm btn-success btn-delete">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                              </button>
-                            </form>
-                          @endif
+                        <button class="btn btn-sm btn-success btn-delete" data-id="{{ $k->id }}">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </button>
+                        @elseif($k->konfirmasi == 'Pick Up')
+                        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detailModalSopir{{$k->id}}"><i class="fas fa fa-info-circle"></i></a>
+                    @endif
                         </div>
                     </td>
                     </tr>
@@ -54,7 +54,7 @@
         </div>
 </section>
 
-@foreach ($transaksi as $jadwal)
+@foreach ($jadwalUser as $jadwal)
 <!-- Modal Detail-->
 <div class="modal fade" id="detailModalSopir{{$jadwal->id}}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{$jadwal->id}}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -116,7 +116,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($jadwalUser as $k => $i)
+                            @foreach ($transaksi as $k => $i)
                               @if($i->id_transaksibaru == $jadwal->id_jadwal)
                                 <tr>
                                     <td>{{$no++}}</td>
@@ -153,30 +153,47 @@
 
 @push('js')
 <script>
-    $('#tableJadwal tr td').on('click', '.btn-delete', function () {
-        let id = $(this).data('id');
-        Swal.fire({
-            title: 'Apakah anda yakin?',
-            text: "Setelah dihapus, Anda tidak dapat memulihkan Data ini lagi!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#198754',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Hapus',
-        }).then((result) => {
-          if(result.isConfirmed){
-            var form = $('<form>').attr({
-                            action: "{{url('sampah')}}/" + id,
-                            method: 'POST',
-                            class: 'delete-form'
-                        }).append('@csrf', '@method("DELETE")');
-                        form.appendTo('body').submit();
-          }
-          
-        })
-      
-    });
+  // Memasukkan kode ini di bawah kode jQuery sebelumnya
+
+// Tangkap klik tombol hapus
+$('#tableJadwal').on('click', '.btn-delete', function () {
+   let id = $(this).data('id');
+
+   Swal.fire({
+       title: 'Apakah Anda yakin?',
+       text: "Setelah dikonfirmasi, status akan diubah menjadi Pick Up",
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#198754',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Ganti',
+   }).then((result) => {
+       if (result.isConfirmed) {
+           deleteData(id); 
+       }
+   });
+});
+
+// Fungsi untuk menghapus data menggunakan AJAX
+function deleteData(id){
+   $.ajax({
+       url: '/jadwalsopir_api/' + id,
+       type: 'POST',
+       data: {
+           "_token": "{{ csrf_token() }}"
+       },
+       success: function (response) {
+           Swal.fire('Berhasil!', response.message, 'success');
+           setTimeout(function(){ window.location.reload() }, 1500);
+       },
+       error: function (xhr, status, error) {
+           Swal.fire('Gagal!', 'Terjadi kesalahan saat merubah status.', 'error');
+       }
+   });
+}
+
 </script>
+
 @endpush
 
 @endsection
