@@ -26,7 +26,7 @@
         <div class="col-lg-12 col-3">
           <div class="small-box bg-success">
             <div class="inner text-center">
-              <h5>Anda telah menyetorkan sampah senilai <b>Rp {{$total}},00</b></h5>
+              <h5>Anda telah menyetorkan sampah senilai <b>Rp {{ number_format($total, 0, ',','.') }},00</b></h5>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@
                               ?>
                             @endif
                           @endforeach
-                        Rp{{$cetak}}
+                          Rp {{ number_format($cetak, 0, ',','.') }}
                         </td>
                         <td>{{$k->konfirmasi}}</td>
                         <td>
@@ -155,7 +155,7 @@
                                     <td>{{$no++}}</td>
                                     <td>{{$i->sampah->jenis_sampah}}</td>
                                     <td>{{$i->berat}}</td> 
-                                    <td>{{$i->harga}}</td> <?php $total += $i->harga; ?>
+                                    <td>Rp {{ number_format($i->harga, 0, ',','.') }}</td> <?php $total += $i->harga; ?>
                                 </tr>
                               @else
                                 <?
@@ -168,7 +168,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="3"> <b> Total </b></td>
-                                <td><b>{{$total}}</b></td>
+                                <td><b>Rp {{ number_format($total, 0, ',','.') }},00</b></td>
                             </tr>
                         </tfoot>
                         </table>

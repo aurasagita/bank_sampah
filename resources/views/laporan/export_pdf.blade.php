@@ -77,7 +77,7 @@
                             @else 
                             @endif
                           @endforeach
-                        Rp{{$harga}},00</td>
+                          <td><b>Rp {{ number_format($harga, 0, ',','.') }},00</b></td>
                         <?php $total += $harga; $harga = 0 ?>
                       </td>
                     </tr>
@@ -86,7 +86,7 @@
                     @endforeach
                     <tr>
                       <td colspan="6"><b>Total Pemasukan</b></td>
-                      <td><b>Rp{{$total}},00</b></td>
+                      <td><b>Rp {{ number_format($total, 0, ',','.') }},00</b></td>
                     </tr>
                   @else
                     <tr>
